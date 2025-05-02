@@ -1,10 +1,14 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidora Lorenzo</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -24,6 +28,8 @@
         <div class="info-telefono">
         <p><i class="fas fa-phone"></i> (809) 906-3559</p>
         </div>
+
+        
     </div>
 
     <div class="navegador-info">
@@ -35,11 +41,13 @@
             <li><a href="html/contacto.php">Contacto</a></li>
         </ul>
     </nav>
+    
 
     <div class="icons">
-    <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
-    <i class="fas fa-search"></i>
-    <ul id="sugerencias" class="sugerencias"></ul>
+
+        <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
+        <i class="fas fa-search"></i>
+        <ul id="sugerencias" class="sugerencias"></ul>
 
         <?php 
             if (isset($_SESSION['usuario'])) {
@@ -55,14 +63,14 @@
     </div>
 </header>
 
-<script>
+<!--<script>
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
 
     toggle.addEventListener('click', () => {
         nav.classList.toggle('active');
     });
-</script>
+</script>-->
 
 <!--SLIDER-->
 

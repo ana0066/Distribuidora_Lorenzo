@@ -62,9 +62,7 @@ header {
 }
 
 /* Estilo para el menú cuando está activo */
-.nav {
-    display: none; /* Ocultar el menú por defecto */
-}
+.
 
 .nav.active {
     display: block; /* Mostrar el menú cuando tiene la clase active */
