@@ -61,8 +61,7 @@ header {
     color: #fff;
 }
 
-/* Estilo para el menú cuando está activo */
-.
+
 
 .nav.active {
     display: block; /* Mostrar el menú cuando tiene la clase active */
@@ -103,9 +102,9 @@ header {
 /* Estilos generales del input del buscador */
 
 .buscador-container {
-    position: relative;
-    width: 60%; /* Ajustar según sea necesario */
-  }
+    position: relative; /* Necesario para posicionar las sugerencias */
+    width: 100%; /* Ajusta el ancho según sea necesario */
+}
 
 .buscador {
     margin: 10px;
@@ -126,39 +125,41 @@ header {
 
 /* Lista de sugerencias */
 .sugerencias {
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  width: 100%;
-  max-height: 200px; /* Limitar la altura de las sugerencias */
-  overflow-y: auto; /* Agregar desplazamiento si las sugerencias son muchas */
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: #000;
+    position: absolute; /* Posiciona las sugerencias de forma absoluta */
+    top: 100%; /* Coloca las sugerencias justo debajo del buscador */
+    left: 0;
+    width: 100%; /* Asegura que las sugerencias ocupen el mismo ancho que el buscador */
+    max-height: 200px; /* Limita la altura de las sugerencias */
+    overflow-y: auto; /* Agrega desplazamiento si hay muchas sugerencias */
+    background-color: white; /* Fondo blanco */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+    z-index: 10; /* Asegura que las sugerencias estén por encima de otros elementos */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc; /* Borde para separar visualmente */
+    border-radius: 5px; /* Bordes redondeados */
 }
-
-/* Estilo para cada sugerencia */
-.sugerencias li {
-  padding: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  color: #000000;
-  text-transform: capitalize;
-}
-
-.sugerencias li:hover {
-  background-color: #f0f0f0;
-}
-
-/* Resaltar la palabra clave */
-.highlight {
-  background-color: yellow;
-}
+  
+  /* Estilo para cada sugerencia */
+  .sugerencias li {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000000;
+    text-transform: capitalize;
+  }
+  
+  .sugerencias li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Resaltar la palabra clave */
+  .highlight {
+    background-color: yellow;
+  }
+  
 
 
 

@@ -45,9 +45,10 @@ session_start();
 
     <div class="icons">
 
-        <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
-        <i class="fas fa-search"></i>
-        <ul id="sugerencias" class="sugerencias"></ul>
+        <div class="buscador-container">
+            <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
+            <ul id="sugerencias" class="sugerencias"></ul>
+        </div>
 
         <?php 
             if (isset($_SESSION['usuario'])) {
