@@ -135,3 +135,26 @@ function toggleCart() {
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const cartToggle = document.getElementById("cart-toggle");
+    const cartAside = document.getElementById("cart-aside");
+    const closeCart = document.getElementById("close-cart");
+
+    // Abrir el carrito
+    cartToggle.addEventListener("click", () => {
+        cartAside.classList.add("open");
+    });
+
+    // Cerrar el carrito
+    closeCart.addEventListener("click", () => {
+        cartAside.classList.remove("open");
+    });
+
+    // Cerrar el carrito al hacer clic fuera de él
+    document.addEventListener("click", (e) => {
+        if (!cartAside.contains(e.target) && !cartToggle.contains(e.target)) {
+            cartAside.classList.remove("open");
+        }
+    });
+});

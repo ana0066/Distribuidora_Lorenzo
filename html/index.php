@@ -9,6 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidora Lorenzo</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrito.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -65,6 +66,21 @@ session_start();
     </div>
 </header>
 
+<aside id="cart-aside" class="cart-modal">
+    <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button id="close-cart" class="close-cart">&times;</button> <!-- Botón de cerrar -->
+    </div> 
+    <div class="cart-items">
+        <!-- Aquí se agregarán los productos dinámicamente -->
+        <p>Tu carrito está vacío.</p>
+    </div>
+    <div class="cart-footer">
+        <p>Total: <span id="cart-total">$0.00</span></p>
+        <button class="checkout-button">Finalizar Compra</button>
+    </div>
+</aside> 
+ 
 <script>
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
@@ -156,6 +172,7 @@ session_start();
         </div>
     </footer>
 
+    <script src="../js/productos.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/slider.js"></script>
     <script src="../js/carrito.js"></script>

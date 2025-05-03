@@ -26,8 +26,10 @@
             <li><a href="../html/productos.php">Productos</a></li>
             <li><a href="../html/contacto.php">Contacto</a></li>
             <?php 
-            if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+            if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'admin') {
                 echo "<li><a href='../admin/admin.php'>Panel Admin</a></li>";
+            } else {
+                echo "";
             }
             ?>
         </ul>
@@ -43,9 +45,9 @@
         </div>
 
         <?php 
-            if (isset($_SESSION['usuario' || 'admin'])) {
+            if (isset($_SESSION['usuario'])) {
                 echo "<a class='searchToggle logoutBtn' id='logoutBtn' href='../php/logout.php'><i class='fas fa-sign-out-alt'></i></a>";
-                echo "<span class='username'>" . $_SESSION['usuario' || 'admin'] . "</span>";
+                echo "<span class='username'>" . $_SESSION['usuario'] . "</span>";
             } else {
                 echo "<a class='searchToggle' href='../php/login.php'><i class='fas fa-user'></i></a>";
             }
@@ -55,6 +57,8 @@
     </div>
     </div>
 </header>
+
+
 
 <script>
     const toggle = document.getElementById('menu-toggle');

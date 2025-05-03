@@ -7,7 +7,7 @@ const contenedor = document.getElementById('contenedor');
 
 // Función para obtener productos desde la base de datos
 function fetchProductos() {
-    fetch('php/fetchProducts.php')
+    fetch('../php/fetchProducts.php')
         .then(response => response.json())
         .then(data => {
             productos = data;

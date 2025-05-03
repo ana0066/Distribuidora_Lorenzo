@@ -160,10 +160,7 @@ header {
   /* Resaltar la palabra clave */
   .highlight {
     background-color: yellow;
-  }
-  
-
-
+}
 
 #cart-count {
     background: red;
@@ -178,6 +175,7 @@ header {
 .username {
     margin-left: 10px;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 /* Menu Toggle */

@@ -1,6 +1,6 @@
 <?php 
-include '../menu.php'; 
-session_start(); // Inicia la sesión al principio del archivo
+session_start(); 
+include '../menu.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +11,7 @@ session_start(); // Inicia la sesión al principio del archivo
     <title>Productos</title>
     <link rel="stylesheet" href="../css/productos.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrito.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -50,7 +51,7 @@ session_start(); // Inicia la sesión al principio del archivo
 
     <!-- Scripts -->
      <script src="../js/script.js"></script>
-    <script src="../js/carrito.js?v2"></script>
+    <script src="../js/carrito.js"></script>
     <script src="../js/productos.js"></script>
 </body>
 </html>
