@@ -2,10 +2,10 @@ const buscador = document.getElementById('buscador');
 const sugerencias = document.getElementById('sugerencias');
 
 const paginas = [
-  { nombre: 'Inicio', url: 'index.php' },
-  { nombre: 'Nosotros', url: 'html/nosotros.php' },
-  { nombre: 'Contacto', url: 'html/contacto.php' },
-  { nombre: 'Productos', url: 'html/productos.php' },
+  { nombre: 'Inicio', url: '../html/index.php' },
+  { nombre: 'Nosotros', url: '../html/nosotros.php' },
+  { nombre: 'Contacto', url: '../html/contacto.php' },
+  { nombre: 'Productos', url: '../html/productos.php' },
 ];
 
 // Función para obtener contenido de cada página
@@ -22,10 +22,16 @@ async function buscarEnPaginas(termino) {
       const doc = parser.parseFromString(texto, 'text/html');
 
       // Extraer texto visible de elementos específicos
-      const contenidoVisible = Array.from(doc.querySelectorAll('h1, h2, p, a')).map(el => el.textContent).join(' ');
+      const contenidoVisible = Array.from(doc.querySelectorAll('h1, h2, p, a'))
+        .map(el => el.textContent)
+        .join(' ');
 
-      if (contenidoVisible.toLowerCase().includes(termino.toLowerCase())) {
-        return pagina;
+      // Buscar el término y limitar las palabras alrededor
+      const regex = new RegExp(`(?:\\S+\\s){0,5}\\b${termino}\\b(?:\\s\\S+){0,5}`, 'gi'); // 5 palabras antes y después
+      const coincidencias = contenidoVisible.match(regex);
+
+      if (coincidencias) {
+        return { pagina, coincidencias };
       }
     } catch (e) {
       console.error('Error al buscar en:', pagina.url, e);
@@ -34,9 +40,12 @@ async function buscarEnPaginas(termino) {
   }));
 
   const coincidencias = resultados.filter(p => p);
-  coincidencias.forEach(pagina => {
+  coincidencias.forEach(({ pagina, coincidencias }) => {
     const li = document.createElement('li');
-    li.innerHTML = `<a href="${pagina.url}">${pagina.nombre}</a>`;
+    li.innerHTML = `
+      <a href="${pagina.url}">${pagina.nombre}</a>
+      <p>${coincidencias.join(' ... ')}</p>
+    `;
     sugerencias.appendChild(li);
   });
 }

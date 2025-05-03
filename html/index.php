@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidora Lorenzo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,7 @@ session_start();
     </div>
 
         <div class="info-logo">
-            <img src="img/logo.png" alt="Logo de Distribuidora Lorenzo">
+            <img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo">
         </div>
         <div class="info-nombre">
             <h1>Distribuidora Lorenzo</h1>
@@ -35,10 +35,10 @@ session_start();
     <div class="navegador-info">
     <nav class="nav" id="nav">
         <ul class="nav-links">
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="html/nosotros.php">Nosotros</a></li>
-            <li><a href="html/productos.php">Productos</a></li>
-            <li><a href="html/contacto.php">Contacto</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="../html/nosotros.php">Nosotros</a></li>
+            <li><a href="../html/productos.php">Productos</a></li>
+            <li><a href="../html/contacto.php">Contacto</a></li>
         </ul>
     </nav>
     
@@ -47,6 +47,7 @@ session_start();
 
         <div class="buscador-container">
             <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
+            <i class="fas fa-search"></i>
             <ul id="sugerencias" class="sugerencias"></ul>
         </div>
 
@@ -55,7 +56,7 @@ session_start();
                 echo "<a class='searchToggle logoutBtn' id='logoutBtn' href='../php/logout.php'><i class='fas fa-sign-out-alt'></i></a>";
                 echo "<span class='username'>" . $_SESSION['usuario'] . "</span>";
             } else {
-                echo "<a class='searchToggle' href='php/login.php'><i class='fas fa-user'></i></a>";
+                echo "<a class='searchToggle' href='../php/login.php'><i class='fas fa-user'></i></a>";
             }
         ?>
         <i class="fas fa-shopping-cart" onclick="toggleCart()"></i>
@@ -64,22 +65,22 @@ session_start();
     </div>
 </header>
 
-<!--<script>
+<script>
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
 
     toggle.addEventListener('click', () => {
         nav.classList.toggle('active');
     });
-</script>-->
+</script>
 
 <!--SLIDER-->
 
 <div class="slider-container">
   <div class="slider" id="slider">
-    <div class="slide active"><img src="img/Mobiliarida.jpeg" alt="Imagen 1"></div>
-    <div class="slide"><img src="img/eletrodomestico.jpeg" alt="Imagen 2"></div>
-    <div class="slide"><img src="img/Cocina.jpg" alt="Imagen 3"></div>
+    <div class="slide active"><img src="../img/Mobiliarida.jpeg" alt="Imagen 1"></div>
+    <div class="slide"><img src="../img/eletrodomestico.jpeg" alt="Imagen 2"></div>
+    <div class="slide"><img src="../img/Cocina.jpg" alt="Imagen 3"></div>
   </div>
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -91,53 +92,29 @@ session_start();
     
     <div class="contenedor">
         <div class="categoria">
-            <img src="img/cama.png" alt="Mobiliaria">
+            <img src="../img/cama.png" alt="Mobiliaria">
             <p>MOBILIARIA</p>
         </div>
         <div class="categoria">
-            <img src="img/PRODUCTOS PARA EL HOGAR.jpeg" alt="Productos para el hogar">
+            <img src="../img/PRODUCTOS PARA EL HOGAR.jpeg" alt="Productos para el hogar">
             <p>HERRAMIENTAS</p>
         </div>
         <div class="categoria">
-            <img src="img/eletrodomestico.jpeg" alt="Decoraciones para el hogar">
+            <img src="../img/eletrodomestico.jpeg" alt="Decoraciones para el hogar">
             <p>DECORACIONES PARA EL HOGAR</p>
         </div>
         <div class="categoria">
-            <img src="img/eletrodomestico.jpeg" alt="Electrodomésticos">
+            <img src="../img/eletrodomestico.jpeg" alt="Electrodomésticos">
             <p>ELECTRODOMÉSTICOS</p>
         </div>
         <div class="categoria">
-            <img src="img/Mobiliarida.jpeg" alt="Vajillas">
+            <img src="../img/Mobiliarida.jpeg" alt="Vajillas">
             <p>VAJILLAS</p>
         </div>
     </div>
 </section>
 
-<section class="inicio-comentarios">
-<div class="banner">
-            <p>VIVE LA EXPERIENCIA COMPLETA EN DISTRIBUIDORA LORENZO</p>
-        </div>
-    
-        <div class="comentarios">
-            <div class="comentario">
-                <p class="nombre">DENCEL LAJARA</p>
-                <p>Muy mala, no me llegó el biurí que quería.</p>
-                <h1><div class="estrellas">★★★★☆</div></h1>
-            </div>
-    
-            <div class="comentario">
-                <p class="nombre">CASIMIRA LÓPEZ</p>
-                <p>Buenas</p>
-                <div class="estrellas">★★★★★</div>
-            </div>
-    
-            <div class="comentario">
-                <p class="nombre">SELENA QUINTANILLA</p>
-                <p>Siempre hay nuevas opciones y una gran variedad para elegir, los precios son muy accesibles también.</p>
-                <div class="estrellas">★★★★☆</div>
-            </div>
-        </div>
-</section>
+
 
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">
@@ -145,7 +122,7 @@ session_start();
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="img/LOGO.png" alt="Distribuidora/Lorenzo">
+                        <img src="../img/LOGO.png" alt="Distribuidora/Lorenzo">
                     </a>
                 </figure>
             </div>
@@ -179,7 +156,8 @@ session_start();
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script src="js/slider.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/slider.js"></script>
+    <script src="../js/carrito.js"></script>
 </body>
 </html>

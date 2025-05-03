@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    padding-top: 80px;
+}
+
+/* Contenedor principal */
+.contenedor-cambios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaciado entre los elementos */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Cada sección dentro de contenedor-cambios */
+.cambios {
+    flex: 1 1 calc(33.33% - 20px); /* Tres columnas en una fila */
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: black;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    color: rgb(95, 91, 91);
+}
+
+/* Inputs y selects */
+input, select {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    color: black;
+}
+
+/* Botón */
+.button {
+    background: #5f311f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+    background: #381e13;
+}
+
+/* Contenedor de productos */
+.contenedorProductos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaciado entre los productos */
+    justify-content: flex-start; /* Alinear productos a la izquierda */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.mostrarProductos {
+    display: grid; /* Cambiar a grid para mejor organización */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Productos responsivos */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    color: #000;
+}
+
+/* Cada producto dentro de contenedorProductos */
+.mostrarProductos .producto {
+    flex: 1 1 calc(25% - 20px); /* Cuatro productos por fila */
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.producto-card {
+    background: #f9f9f9;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.producto-card:hover {
+    transform: scale(1.05);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.producto-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.producto-card p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #000;
+}
+
+.producto-card button {
+    background: #5f311f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.producto-card button:hover {
+    background: #381e13;
+}
+

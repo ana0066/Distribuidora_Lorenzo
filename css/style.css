@@ -23,11 +23,13 @@ header {
 /* Principal Info */
 .principal-info {
     width: 100%;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     z-index: 1000;
+    color: #513831;
 }
 
 .info-logo img {
@@ -36,7 +38,7 @@ header {
 
 .info-nombre h1 {
     font-size: 32px;
-    color: #000;
+    color: #513831;
 }
 
 .info-telefono {
@@ -147,12 +149,12 @@ header {
     cursor: pointer;
     font-size: 14px;
     text-decoration: none;
-    color: #000000;
-    text-transform: capitalize;
+    color: #000000; /* Color negro para el texto */
+    text-transform: capitalize; /* Capitaliza el texto */
   }
   
   .sugerencias li:hover {
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
   }
   
   /* Resaltar la palabra clave */
@@ -288,8 +290,8 @@ header {
 /* SLIDER */
 .slider-container {
     position: relative;
-    width: 80%; /* Ocupa el 100% del ancho del contenedor */
-    height: 80vh; /* Ocupa el 70% del alto de la pantalla */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    height: 82vh; /* Ocupa el 70% del alto de la pantalla */
     overflow: hidden;
     margin: 0 auto; /* Centra el slider horizontalmente */
 }
@@ -319,13 +321,16 @@ header {
 .prev, .next {
     position: absolute;
     top: 50%;
+    width: 50px;
+    height: 50px;
+    margin: auto;
     transform: translateY(-50%);
     background-color: rgba(81, 56, 49, 0.7); /* Color de tu empresa con transparencia */
     color: white;
     border: none;
-    padding: 10px;
+    border-radius: 80%;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 30px;
     z-index: 10;
 }
 
