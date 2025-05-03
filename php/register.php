@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $token = bin2hex(random_bytes(16));
 
     // Verificar si el correo ya existe
     $sql = "SELECT * FROM usuarios WHERE email = ?";
@@ -17,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "<p class='error-message'>Este correo electrónico ya está registrado.</p>";
     } else {
         // Si el correo no existe, insertar el nuevo registro
-        $query = "INSERT INTO usuarios (nombre, email, contraseña) VALUES (?, ?, ?)";
+        $query = "INSERT INTO usuarios (nombre, email, contraseña, token) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sss", $nombre, $email, $password);
+        $stmt->bind_param("ssss", $nombre, $email, $password, $token);
 
         if ($stmt->execute()) {
             $message = "<p class='success-message'>Registro exitoso. ¡Bienvenido a nuestra familia!</p>";
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrate</title>
-    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
 

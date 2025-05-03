@@ -1,75 +1,80 @@
 const buscador = document.getElementById('buscador');
-  const sugerencias = document.getElementById('sugerencias');
+const sugerencias = document.getElementById('sugerencias');
 
-  const paginas = [
-    { nombre: 'Inicio', url: 'index.php' },
-    { nombre: 'Nosotros', url: 'html/nosotros.php' },
-    { nombre: 'Contacto', url: 'html/contacto.php' },
-    { nombre: 'Productos', url: 'html/productos.php' },
-    { nombre: 'Iniciar sesión', url: 'php/login.php' },
-    // Agrega más páginas según necesites
-  ];
+const paginas = [
+  { nombre: 'Inicio', url: '../html/index.php' },
+  { nombre: 'Nosotros', url: '../html/nosotros.php' },
+  { nombre: 'Contacto', url: '../html/contacto.php' },
+  { nombre: 'Productos', url: '../html/productos.php' },
+];
 
-  // Función para obtener el contenido visible de cada página
-  async function buscarEnPaginas(termino) {
-    sugerencias.innerHTML = '';
+// Función para obtener contenido de cada página
+async function buscarEnPaginas(termino) {
+  sugerencias.innerHTML = '';
 
-    const resultados = await Promise.all(paginas.map(async (pagina) => {
-      try {
-        const res = await fetch(pagina.url);
-        const texto = await res.text();
-        
-        // Crear un elemento temporal para procesar el HTML sin afectar el DOM
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(texto, 'text/html');
-        
-        // Seleccionar solo los elementos de texto visibles
-        const contenidoVisible = doc.body.textContent || doc.body.innerText;
-        
-        // Buscar si el término está presente en el texto visible
-        const index = contenidoVisible.toLowerCase().indexOf(termino.toLowerCase());
-        if (index !== -1) {
-          // Resaltar el término en el texto visible
-          const parteTexto = contenidoVisible.substring(index - 30, index + 30); // Extraer una parte alrededor de la palabra clave
-          const textoResaltado = parteTexto.replace(new RegExp(termino, 'gi'), (match) => `<span class="highlight">${match}</span>`);
-          
-          return { nombre: pagina.nombre, url: pagina.url, textoResaltado };
-        }
-      } catch (e) {
-        return null;
+  const resultados = await Promise.all(paginas.map(async (pagina) => {
+    try {
+      const res = await fetch(pagina.url);
+      const texto = await res.text();
+
+      // Crear un DOM virtual para buscar solo en el contenido visible
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(texto, 'text/html');
+
+      // Extraer texto visible de elementos específicos
+      const contenidoVisible = Array.from(doc.querySelectorAll('h1, h2, p, a'))
+        .map(el => el.textContent)
+        .join(' ');
+
+      // Buscar el término y limitar las palabras alrededor
+      const regex = new RegExp(`(?:\\S+\\s){0,5}\\b${termino}\\b(?:\\s\\S+){0,5}`, 'gi'); // 5 palabras antes y después
+      const coincidencias = contenidoVisible.match(regex);
+
+      if (coincidencias) {
+        return { pagina, coincidencias };
       }
-    }));
-
-    const coincidencias = resultados.filter(p => p);
-
-    // Si no hay resultados, mostrar el mensaje de "No se encontraron resultados"
-    if (coincidencias.length === 0) {
-      sugerencias.innerHTML = '<li>No se encontraron resultados</li>';
-    } else {
-      // Mostrar las sugerencias encontradas
-      coincidencias.forEach(pagina => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <strong>${pagina.nombre}</strong>: <a href="${pagina.url}">${pagina.textoResaltado}</a>
-        `;
-        sugerencias.appendChild(li);
-      });
+    } catch (e) {
+      console.error('Error al buscar en:', pagina.url, e);
+      return null;
     }
+  }));
+
+  const coincidencias = resultados.filter(p => p);
+  coincidencias.forEach(({ pagina, coincidencias }) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <a href="${pagina.url}">${pagina.nombre}</a>
+      <p>${coincidencias.join(' ... ')}</p>
+    `;
+    sugerencias.appendChild(li);
+  });
+}
+
+// Escucha del input
+buscador.addEventListener('input', () => {
+  const termino = buscador.value.trim();
+  if (termino.length > 1) {
+    buscarEnPaginas(termino);
+  } else {
+    sugerencias.innerHTML = '';
   }
+});
 
-  // Escucha del input
-  buscador.addEventListener('input', () => {
-    const termino = buscador.value.trim();
-    if (termino.length > 2) {
-      buscarEnPaginas(termino);
-    } else {
-      sugerencias.innerHTML = '';
-    }
+// Ocultar sugerencias al hacer clic fuera
+document.addEventListener('click', (e) => {
+  if (!buscador.contains(e.target) && !sugerencias.contains(e.target)) {
+    sugerencias.innerHTML = '';
+  }
+});
+
+/*MENU*/
+
+(() => {
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
   });
 
-  // Ocultar sugerencias al hacer clic fuera
-  document.addEventListener('click', (e) => {
-    if (!buscador.contains(e.target) && !sugerencias.contains(e.target)) {
-      sugerencias.innerHTML = '';
-    }
-  });
+})();
