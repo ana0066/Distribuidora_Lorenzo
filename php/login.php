@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id_usuario = $user['id_usuario']; // ID del usuario obtenido de la base de datos
             $_SESSION['id_usuario'] = $id_usuario; // Guardar el ID del usuario en la sesión
 
-            header("Location: ../index.php");
+            header("Location: ../html/index.php");
             exit();
         } else {
             echo "<p style='color: red;'>Contraseña incorrecta</p>";
