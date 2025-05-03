@@ -569,3 +569,168 @@ header {
         color: white;
     }
 }
+
+
+
+
+
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f7f7f7;
+    padding: 2rem;
+    color: #333;
+  }
+  
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-container h2{
+    font-size: 32px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .description {
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .card {
+    background: #e2dddd; /*tarjetas color*/
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card img {
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+  
+  .card h3 {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  .card .sub {
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card .price {
+    color: #1a0c0e;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .add-btn {
+    border: 1.5px solid #110f0f;
+    background: transparent;
+    color: #0a0708;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .add-btn:hover {
+    background-color: #0a0809;
+    color: white;
+  }
+  
+  .promo {
+    background-image: url("Distri.png");
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .promo .overlay {
+    color: white;
+    text-align: center;
+  }
+  
+  .promo h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .promo p {
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .info-btn {
+    border: 1.5px solid #fff;
+    background: transparent;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .info-btn:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  @media (max-width: 900px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .card img {
+      height: 120px;
+    }
+  
+    .section-container h2 {
+      font-size: 24px;
+    }
+  
+    .add-btn, .info-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  
+    body {
+      padding: 1rem;
+    }
+  }
+  

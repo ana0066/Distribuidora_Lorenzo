@@ -104,31 +104,105 @@
     </div>
 </section>
 
-<section class="inicio-comentarios">
-<div class="banner">
-            <p>VIVE LA EXPERIENCIA COMPLETA EN DISTRIBUIDORA LORENZO</p>
+<body>
+  <section class="section-container">
+    <h2><strong>Nuestros Mejores Productos</strong></h2>
+    <p class="description"></p>
+
+    <div class="product-grid">
+      <!-- Tarjeta 1 -->
+      <div class="card">
+        <img src="grescas.png" alt="Silla blanca">
+        <h3>Greca</h3>
+        <p class="sub">Informacion</p>
+        <p class="price">$600</p>
+        <button class="add-btn">Ver más</button>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="card">
+        <img src="vajillllas.jpeg" alt="Silla gris">
+        <h3>Vajillas</h3>
+        <p class="sub"></p>
+        <p class="price">$300</p>
+        <button class="add-btn">Ver más</button>
+      </div>
+
+      <!-- Promocional -->
+      <div class="promo">
+        <div class="overlay">
+          <h2></h2>
+          <p>PRODUCTOS</p>
+          <button class="info-btn">Informacion</button>
         </div>
-    
-        <div class="comentarios">
-            <div class="comentario">
-                <p class="nombre">DENCEL LAJARA</p>
-                <p>Muy mala, no me llegó el biurí que quería.</p>
-                <h1><div class="estrellas">★★★★☆</div></h1>
-            </div>
-    
-            <div class="comentario">
-                <p class="nombre">CASIMIRA LÓPEZ</p>
-                <p>Buenas</p>
-                <div class="estrellas">★★★★★</div>
-            </div>
-    
-            <div class="comentario">
-                <p class="nombre">SELENA QUINTANILLA</p>
-                <p>Siempre hay nuevas opciones y una gran variedad para elegir, los precios son muy accesibles también.</p>
-                <div class="estrellas">★★★★☆</div>
-            </div>
+      </div>
+
+      <!-- Promocional duplicado -->
+      <div class="promo">
+        <div class="overlay">
+          <h2></h2>
+          <p>PRODUCTOS</p>
+          <button class="info-btn">Informacion</button>
         </div>
-</section>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="card">
+        <img src="ESTUFAAA.png" alt="Silla rosada">
+        <h3>Estufa</h3>
+        <p class="sub">calidad premium</p>
+        <p class="price">$15,000</p>
+        <button class="add-btn">Ver más</button>
+      </div>
+
+      <!-- Tarjeta 4 -->
+      <div class="card">
+        <img src="../img/cama" alt="Silla verde">
+        <h3>Cama</h3>
+        <p class="sub">calidad premium</p>
+        <p class="price">$20,000</p>
+        <button class="add-btn">Ver más</button>
+      </div>
+    </div>
+  </section>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">
