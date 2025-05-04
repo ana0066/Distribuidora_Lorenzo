@@ -166,10 +166,10 @@
 /* Contenedor del filtro */
 .filtro-container {
     display: flex;
-    justify-content: flex-start; /* Alinea el filtro a la izquierda */
+    justify-content: center;
     align-items: center;
-    gap: 10px; /* Espaciado entre el label y el select */
-    margin-bottom: 20px; /* Espaciado inferior para separar del contenido */
+    gap: 10px; 
+    margin: 20px auto; 
     padding: 10px 20px;
     background-color: #f9f9f9;
     border: 1px solid #e5d6c5;
