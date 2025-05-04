@@ -1,3 +1,11 @@
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrito.css">
+    <link rel="stylesheet" href="../css/productos.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
 <header>
     <div class="principal-info">
 
@@ -60,6 +68,20 @@
     </div>
 </header>
 
+<div id="cartModal" class="cart-modal">
+    <div class="cart-header">
+        <h2>Tu Carrito</h2>
+        <button class="close-cart" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items">
+        <!-- Los productos se generarán dinámicamente con JavaScript -->
+    </div>
+    <div class="cart-footer">
+        <p>Total: <span id="cart-total">$0.00</span></p>
+        <button class="checkout-button" onclick="checkout()">Ir a Checkout</button>
+    </div>
+</div>
+
 <script>
     const toggle = document.getElementById('menu-toggle');
     const nav = document.getElementById('nav');
@@ -76,3 +98,7 @@
         }
     }
 </script>
+
+<script src="../js/script.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script src="../js/productos.js"></script>

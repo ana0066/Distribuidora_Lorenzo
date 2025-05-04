@@ -35,6 +35,7 @@ header {
     align-items: center;
     flex-wrap: wrap;
     z-index: 1000;
+  /*  background-color: #dad2d0;*/
     color: #513831;
 }
 
@@ -49,6 +50,7 @@ header {
 
 .info-telefono {
     font-size: 14px;
+    margin: 10px;
 }
 
 /* Navigation & Icons */
@@ -61,9 +63,6 @@ header {
     color: #fff;
     background-color: #513831;
 }
-
-
-
 
 
 /*inicio incono letras slider*/  
@@ -137,8 +136,6 @@ header {
     color: #fff;
 }
 
-
-
 .nav.active {
     display: block; /* Mostrar el menú cuando tiene la clase active */
 }
@@ -156,8 +153,7 @@ header {
 }
 
 .nav-links li a:hover {
-    color: sienna;
-    border-bottom: 1px solid sienna;
+    color: #cfbfba;
     transform: scale(1.1);
 }
 
@@ -178,8 +174,8 @@ header {
 /* Estilos generales del input del buscador */
 
 .buscador-container {
-    position: relative; /* Necesario para posicionar las sugerencias */
-    width: 100%; /* Ajusta el ancho según sea necesario */
+    position: relative; 
+    width: 100%; 
 }
 
 .buscador {
@@ -201,20 +197,20 @@ header {
 
 /* Lista de sugerencias */
 .sugerencias {
-    position: absolute; /* Posiciona las sugerencias de forma absoluta */
-    top: 100%; /* Coloca las sugerencias justo debajo del buscador */
+    position: absolute; 
+    top: 100%; 
     left: 0;
-    width: 100%; /* Asegura que las sugerencias ocupen el mismo ancho que el buscador */
-    max-height: 200px; /* Limita la altura de las sugerencias */
-    overflow-y: auto; /* Agrega desplazamiento si hay muchas sugerencias */
-    background-color: white; /* Fondo blanco */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
-    z-index: 10; /* Asegura que las sugerencias estén por encima de otros elementos */
+    width: 100%; 
+    max-height: 200px; 
+    overflow-y: auto; 
+    background-color: white; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10; 
     list-style: none;
     padding: 0;
     margin: 0;
-    border: 1px solid #ccc; /* Borde para separar visualmente */
-    border-radius: 5px; /* Bordes redondeados */
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
 }
   
   /* Estilo para cada sugerencia */
