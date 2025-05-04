@@ -1,9 +1,11 @@
 <?php
 session_start();
+include "../menu.php";
 ?>
 
     <title>Contact Form</title>
     <link rel="stylesheet" href="../css/Contacto.css" />
+    <link rel="stylesheet" href="../css/style.css">
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -31,15 +33,15 @@ session_start();
 
           <div class="info">
             <div class="information">
-              <img src="" class="icon" alt="" />
+              
               <p>Santiago- La Ceibita, Santiago de los Caballeros 51000</p>
             </div>
             <div class="information">
-              <img src="" class="icon" alt="" />
+              
               <p>distribuidoralorenzo19@gmail.com</p>
             </div>
             <div class="information">
-              <img src="" class="icon" alt="" />
+              
               <p> +1 (829) 653-0243</p>
             </div>
           </div>
@@ -97,7 +99,7 @@ session_start();
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="img/LOGO.png" alt="Distribuidora/Lorenzo">
+                        <img src="../img/LOGO.png" alt="Distribuidora/Lorenzo">
                     </a>
                 </figure>
             </div>
