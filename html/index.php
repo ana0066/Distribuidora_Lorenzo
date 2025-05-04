@@ -233,7 +233,7 @@ session_start();
                 </figure>
             </div>
             <div class="box">
-                <b><h2>MENÚ INFERIOR</h2>
+                <b><h2>Menú Inferior</h2>
                 <p>Inicio</p>
                 <p>Contactos</p>
                 <p>Nosotros</p>
@@ -243,7 +243,7 @@ session_start();
             </div>
             
             <div class="box">
-                <h2>SIGUENOS</h2>
+                <h2>Siguenos</h2>
                 <div class="red-social">
                     <a href="https://www.facebook.com/distribuidoralorenzo00/" class="fa fa-facebook"><i class='bx bxl-facebook-circle' style='color:#ece0e0' ></i></a>
                     <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="fa fa-instagram"><i class='bx bxl-instagram' style='color:#ece0e0'  ></i></a>
