@@ -97,7 +97,7 @@ session_start();
       <img src="../img/Electo.jpg" alt="Imagen 2" />
       <div class="image-data">
      
-        <h2>Nuestra Variedades<br />Electrónicos</h2>
+        <h2>Nuestra Variedades<br /> De Electródomesticos</h2>
         <a href="#" class="button">Más información</a>
       </div>
     </div>
@@ -116,6 +116,35 @@ session_start();
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  <!--Codigo para que las fotos salgan en automatico Inicio -->
+  <script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+    });
+    slides[index].classList.add('active');
+    document.getElementById('slider').style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function moveSlide(n) {
+    currentIndex = (currentIndex + n + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  // Cambio automático cada 5 segundos
+  setInterval(() => {
+    moveSlide(1);
+  }, 5000);
+
+  // Mostrar la primera slide al cargar
+  showSlide(currentIndex);
+</script>
+<!--Codigo para que las fotos salgan en automatico final -->
+
 </div>
 
 
