@@ -108,7 +108,7 @@ session_start();
     
     <div class="contenedor">
         <div class="categoria">
-            <img src="../img/cama.png" alt="Mobiliaria">
+            <img src="../img/Mobiliarida.jpeg" alt="Mobiliaria">
             <p>MOBILIARIA</p>
         </div>
         <div class="categoria">
@@ -116,7 +116,7 @@ session_start();
             <p>HERRAMIENTAS</p>
         </div>
         <div class="categoria">
-            <img src="../img/eletrodomestico.jpeg" alt="Decoraciones para el hogar">
+            <img src="../img/Decoracion de hogar.jpeg" alt="Decoraciones para el hogar">
             <p>DECORACIONES PARA EL HOGAR</p>
         </div>
         <div class="categoria">
@@ -124,7 +124,7 @@ session_start();
             <p>ELECTRODOMÉSTICOS</p>
         </div>
         <div class="categoria">
-            <img src="../img/Mobiliarida.jpeg" alt="Vajillas">
+            <img src="../img/vaji.jpeg" alt="Vajillas">
             <p>VAJILLAS</p>
         </div>
     </div>
@@ -138,7 +138,7 @@ session_start();
     <div class="product-grid">
       <!-- Tarjeta 1 -->
       <div class="card">
-        <img src="grescas.png" alt="Silla blanca">
+        <img src="../img/Grequita.png" alt="Silla blanca">
         <h3>Greca</h3>
         <p class="sub">Informacion</p>
         <p class="price">$600</p>
@@ -147,7 +147,7 @@ session_start();
 
       <!-- Tarjeta 2 -->
       <div class="card">
-        <img src="vajillllas.jpeg" alt="Silla gris">
+        <img src="../img/vajilla.jpeg" alt="Silla gris">
         <h3>Vajillas</h3>
         <p class="sub"></p>
         <p class="price">$300</p>
@@ -174,7 +174,7 @@ session_start();
 
       <!-- Tarjeta 3 -->
       <div class="card">
-        <img src="ESTUFAAA.png" alt="Silla rosada">
+        <img src="../img/estufa.png" alt="Silla rosada">
         <h3>Estufa</h3>
         <p class="sub">calidad premium</p>
         <p class="price">$15,000</p>
@@ -183,7 +183,7 @@ session_start();
 
       <!-- Tarjeta 4 -->
       <div class="card">
-        <img src="../img/cama" alt="Silla verde">
+        <img src="../img/cama.png" alt="Silla verde">
         <h3>Cama</h3>
         <p class="sub">calidad premium</p>
         <p class="price">$20,000</p>
@@ -229,6 +229,7 @@ session_start();
 	}
 	// ]]>
 </script>
+
 
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">

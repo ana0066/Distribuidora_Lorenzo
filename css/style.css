@@ -655,7 +655,7 @@ header {
   }
   
   .promo {
-    background-image: url("Distri.png");
+    background-image: url("../img/Distri.jpg");
     background-size: cover;
     background-position: center;
     height: 300px;
