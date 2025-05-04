@@ -33,6 +33,8 @@ session_start();
         
     </div>
 
+<!--NAVEGADOR -->
+
     <div class="navegador-info">
     <nav class="nav" id="nav">
         <ul class="nav-links">
@@ -66,20 +68,7 @@ session_start();
     </div>
 </header>
 
-<aside id="cart-aside" class="cart-modal">
-    <div class="cart-header">
-        <h2>Tu Carrito</h2>
-        <button id="close-cart" class="close-cart">&times;</button> <!-- Botón de cerrar -->
-    </div> 
-    <div class="cart-items">
-        <!-- Aquí se agregarán los productos dinámicamente -->
-        <p>Tu carrito está vacío.</p>
-    </div>
-    <div class="cart-footer">
-        <p>Total: <span id="cart-total">$0.00</span></p>
-        <button class="checkout-button">Finalizar Compra</button>
-    </div>
-</aside> 
+
  
 <script>
     const toggle = document.getElementById('menu-toggle');
@@ -102,6 +91,8 @@ session_start();
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
 </div>
+
+<!--cartas productos -->
 
 <section class="cards-productos">
 <h2 class="titulo-productos">DISFRUTA DE TODAS NUESTRAS VARIEDADES</h2>
