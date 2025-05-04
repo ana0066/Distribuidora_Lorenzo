@@ -219,7 +219,8 @@ session_start();
 	// ]]>
 </script>
 
-
+<br>
+<br>
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">
         <div class="grupo-1">
