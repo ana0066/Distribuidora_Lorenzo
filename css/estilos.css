@@ -1,10 +1,4 @@
-/* Reset y configuración general */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+
 
 /* Estilo del circulo */
 body {
@@ -18,8 +12,6 @@ body {
 /* Contenedor principal */
 .container {
     display: flex;
-    width: 90%;
-    max-width: 1000px;
     justify-content: space-between;
     align-items: center;
 }
