@@ -284,43 +284,58 @@ session_start();
 <br>
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box">
-                <figure>
-                    <a href="#">
-                        <img src="../img/LOGO.png" alt="Distribuidora/Lorenzo">
-                    </a>
-                </figure>
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#">
+                    <img src="../img/LOGO.png" alt="Distribuidora/Lorenzo">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>Menú Inferior</h2>
+            <p>Inicio</p>
+            <p>Contactos</p>
+            <p>Nosotros</p>
+            <p>Políticas de la empresa</p>
+            <p>Políticas de devolución</p>
+        </div>
+        <div class="box">
+            <h2>Síguenos</h2>
+            <div class="red-social">
+                <a href="https://www.facebook.com/distribuidoralorenzo00/"><i class='fab fa-facebook-f'></i></a>
+                <a href="https://www.instagram.com/distribuidoralorenzo00"><i class='fab fa-instagram'></i></a>
+                <a href="#"><i class='fab fa-twitter'></i></a>
             </div>
-            <div class="box">
-                <b><h2>Menú Inferior</h2>
-                <p>Inicio</p>
-                <p>Contactos</p>
-                <p>Nosotros</p>
-                <p>Políticas de la empresa</p>
-                <p>Políticas de devolución</p>
-            </b>
-            </div>
-            
-            <div class="box">
-                <h2>Siguenos</h2>
-                <div class="red-social">
-                    <a href="https://www.facebook.com/distribuidoralorenzo00/" ><i class='fas fa-facebook' style='color:#ece0e0' ></i></a>
-                    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" ><i class='fas fa-instagram' style='color:#ece0e0'  ></i></a>
-                    <a href="#"><i class='fas fa-twitter'></i></a>
-                
+        </div>
+        <div class="box mapa">
+            <h2>Ubicación</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=..." width="250" height="240" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="box comentarios-footer">
+            <h2>Comentarios</h2>
+            <form action="https://formsubmit.co/distribuidoralorenzo19@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Nuevo Comentario de Estrellas">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <div class="estrellas-footer">
+                    <input type="radio" name="rate" id="footer-rate-5"><label for="footer-rate-5" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="footer-rate-4"><label for="footer-rate-4" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="footer-rate-3"><label for="footer-rate-3" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="footer-rate-2"><label for="footer-rate-2" class="fas fa-star"></label>
+                    <input type="radio" name="rate" id="footer-rate-1"><label for="footer-rate-1" class="fas fa-star"></label>
+                    <input type="hidden" name="puntuacion" id="puntuacion-footer">
                 </div>
-                 </div>
-            <div class="mapa">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d940.7775665097614!2d-70.6877119476317!3d19.4076411519626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf63e9c85b9b%3A0x7a4fbe5dc63a2545!2sDistribuidora%20Lorenzo!5e0!3m2!1ses!2sdo!4v1741976829787!5m2!1ses!2sdo" width="250" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-           
-            </div>
+                <textarea name="comentario" cols="25" rows="3" placeholder="Describe tu experiencia..." required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
         </div>
-        
-        <div class="grupo-2">
-            <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
-        </div>
-    </footer>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
+    </div>
+</footer>
+
 
     <script src="../js/productos.js"></script>
     <script src="../js/script.js"></script>

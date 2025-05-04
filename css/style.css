@@ -493,116 +493,121 @@ header {
     }
 }
 
-/*Comentarios/BANNER*/
-
-.banner {
-    padding: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin: 50px auto;
-}
-
-.comentarios {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.comentario {
-    border: 2px solid black;
-    padding: 15px;
-    width: 250px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.estrellas {
-    color: gold;
-    font-size: 20px;
-}
-
-.nombre {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-  /*PRODUCTOS ABAJO*/
-
-/*FOOTER*/
-
-.pie-pagina{
+/*comentarios/footer*/
+.pie-pagina {
     width: 100%;
-    background-color:#ffffff ;
+    background-color: #ffffff;
+    border-top: 4px solid black;
 }
-.pie-pagina .grupo-1{
-    width: 100%;
+
+.pie-pagina .grupo-1 {
     max-width: 1200px;
     margin: auto;
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap:50px;
-    padding: 45px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 45px 20px;
 }
-.pie-pagina .grupo-1 .box figure{
-    width: 100%;
-    height: 100%;
+
+.pie-pagina .grupo-1 .box figure {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.pie-pagina .grupo-1 .box figure img{
-    width: 350px;
+.pie-pagina .grupo-1 .box figure img {
+    width: 250px;
 }
-.pie-pagina .grupo-1 .box h2{
-    color: #000000;
+
+.pie-pagina .grupo-1 .box h2 {
+    color: #000;
     margin-bottom: 15px;
     font-size: 20px;
 }
-.pie-pagina .grupo-1 .box p{
-    color: #000000;
+
+.pie-pagina .grupo-1 .box p {
+    color: #000;
     margin-bottom: 10px;
 }
-.pie-pagina .grupo-1 .red-social a{
+
+.red-social a {
     display: inline-block;
-    text-decoration: none;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    color: #fff;
-    margin-right: 20px;
-    background-color: #513831;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
-    transition: all 300ms ease;
+    background-color: #513831;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.3s;
 }
-.pie-pagina .box{
-    display: inline-block;
 
+.red-social a:hover {
+    background-color: #a67c52;
 }
 
-.pie-pagina .grupo-1 .red-social a:hover{
-    color: aqua;
+.comentarios-footer form {
+    display: flex;
+    flex-direction: column;
 }
-.pie-pagina .grupo-2{
-    background-color: #513831;;
+
+.comentarios-footer textarea {
+    resize: none;
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.comentarios-footer button {
+    padding: 8px;
+    border: none;
+    background-color: #513831;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.comentarios-footer button:hover {
+    background-color: #a67c52;
+}
+
+.estrellas-footer input[type="radio"] {
+    display: none;
+}
+
+.estrellas-footer label {
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+}
+
+.estrellas-footer input[type="radio"]:checked ~ label,
+.estrellas-footer label:hover,
+.estrellas-footer label:hover ~ label {
+    color: gold;
+}
+
+.pie-pagina .grupo-2 {
+    background-color: #513831;
     padding: 15px 10px;
     text-align: center;
     color: #fff;
 }
-.pie-pagina .grupo-2 small{
+
+.pie-pagina .grupo-2 small {
     font-size: 15px;
 }
-@media screen and (max-width:800px){
-    .pie-pagina .grupo-1{
-        width: 90%;
+
+@media screen and (max-width: 768px) {
+    .pie-pagina .grupo-1 {
         grid-template-columns: repeat(1, 1fr);
-        grid-gap:30px;
-        padding: 35px 0px;
     }
 }
 
 
+/*final*/
 
 
 
