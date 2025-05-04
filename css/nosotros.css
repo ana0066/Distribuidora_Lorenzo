@@ -1,0 +1,166 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #f9f7f3;
+    color: #4b4034;
+  }
+  
+  .hero {
+    background: url('../img/Distri.jpg') no-repeat center;
+    background-size: cover;
+    padding: 120px 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(50, 40, 30, 0.6);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-content h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #f0e6d6;
+  }
+  
+  .hero-content h2 {
+    font-size: 46px;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+    margin-top: 15px;
+    color: #e5d7c0;
+  }
+  
+  .info-section {
+    padding: 60px 20px;
+    background-color: #fffaf5;
+    text-align: center;
+  }
+  
+  .info-section h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+  }
+  
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    padding: 0 10px;
+  }
+  
+  .info-box {
+    background-color: #f4f0e8;
+    padding: 25px;
+    border-left: 6px solid #a1845c;
+    border-radius: 8px;
+    transition: transform 0.3s;
+  }
+  
+  .info-box img {
+    width: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .info-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  .galeria {
+    background: #ece5dd;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  .galeria h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .galeria-grid img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+  }
+  
+  .galeria-grid img:hover {
+    transform: scale(1.05);
+  }
+  
+  .areas {
+    background-color: #d7cfc2;
+    padding: 100px 20px;
+  }
+  
+  .areas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .area-card {
+    background-color: #fff;
+    padding: 25px;
+    flex: 1 1 250px;
+    max-width: 300px;
+    border-top: 4px solid #b49777;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    text-align: justify;
+    transition: all 0.3s ease;
+  }
+  
+  .area-card:hover {
+    background-color: #f9f4ed;
+    transform: translateY(-5px);
+  }
+  
+  .more-about {
+    background-color: #fdfaf6;
+    padding: 60px 20px;
+  }
+  
+  .more-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .text-block {
+    flex: 1 1 400px;
+  }
+  
+  .text-block h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #6b4f2f;
+  }
+  
+  .text-block p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
