@@ -10,10 +10,13 @@ session_start();
     <title>Distribuidora Lorenzo</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/carrito.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 <header>
+    
     <div class="principal-info">
 
     <div class="menu-toggle" id="menu-toggle">
@@ -27,7 +30,7 @@ session_start();
             <h1>Distribuidora Lorenzo</h1>
         </div>
         <div class="info-telefono">
-        <p><i class="fas fa-phone"></i> (809) 906-3559</p>
+        <p><i class="fas fa-phone"></i> <i>(809) 906-3559</p></i>
         </div>
 
         
@@ -81,14 +84,72 @@ session_start();
 
 <div class="slider-container">
   <div class="slider" id="slider">
-    <div class="slide active"><img src="../img/Mobiliarida.jpeg" alt="Imagen 1"></div>
-    <div class="slide"><img src="../img/eletrodomestico.jpeg" alt="Imagen 2"></div>
-    <div class="slide"><img src="../img/Cocina.jpg" alt="Imagen 3"></div>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img src="../img/Tienda.jpg" alt="Imagen 1" />
+      <div class="image-data">
+       
+        <h2>Nuestra Variedades <br />de platos</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="../img/Electo.jpg" alt="Imagen 2" />
+      <div class="image-data">
+     
+        <h2>Nuestra Variedades<br /> De Electródomesticos</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="../img/Cocina.jpg" alt="Imagen 3" />
+      <div class="image-data">
+        <span class="text"></span>
+        <h2>Nuestra Variedades<br />para la Cocina</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
   </div>
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  <!--Codigo para que las fotos salgan en automatico Inicio -->
+  <script>
+  let currentIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+    });
+    slides[index].classList.add('active');
+    document.getElementById('slider').style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function moveSlide(n) {
+    currentIndex = (currentIndex + n + totalSlides) % totalSlides;
+    showSlide(currentIndex);
+  }
+
+  // Cambio automático cada 5 segundos
+  setInterval(() => {
+    moveSlide(1);
+  }, 5000);
+
+  // Mostrar la primera slide al cargar
+  showSlide(currentIndex);
+</script>
+<!--Codigo para que las fotos salgan en automatico final -->
+
 </div>
+
 
 <!--cartas productos -->
 
