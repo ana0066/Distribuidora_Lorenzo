@@ -27,7 +27,7 @@ session_start();
             <h1>Distribuidora Lorenzo</h1>
         </div>
         <div class="info-telefono">
-        <p><i class="fas fa-phone"></i> (809) 906-3559</p>
+        <p><i class="fas fa-phone"></i> <i>(809) 906-3559</p></i>
         </div>
 
         
@@ -81,14 +81,43 @@ session_start();
 
 <div class="slider-container">
   <div class="slider" id="slider">
-    <div class="slide active"><img src="../img/Mobiliarida.jpeg" alt="Imagen 1"></div>
-    <div class="slide"><img src="../img/eletrodomestico.jpeg" alt="Imagen 2"></div>
-    <div class="slide"><img src="../img/Cocina.jpg" alt="Imagen 3"></div>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img src="../img/Tienda.jpg" alt="Imagen 1" />
+      <div class="image-data">
+       
+        <h2>Nuestra Variedades <br />de platos</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="../img/Electo.jpg" alt="Imagen 2" />
+      <div class="image-data">
+     
+        <h2>Nuestra Variedades<br />Electrónicos</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="../img/Cocina.jpg" alt="Imagen 3" />
+      <div class="image-data">
+        <span class="text"></span>
+        <h2>Nuestra Variedades<br />para la Cocina</h2>
+        <a href="#" class="button">Más información</a>
+      </div>
+    </div>
+
   </div>
 
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
 </div>
+
 
 <!--cartas productos -->
 

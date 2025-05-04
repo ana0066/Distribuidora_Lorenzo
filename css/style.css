@@ -62,6 +62,74 @@ header {
     background-color: #513831;
 }
 
+
+
+
+
+/*inicio incono letras slider*/  
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    position: relative;
+    min-width: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    display: block;
+  }
+  
+  .image-data {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: white;
+    text-shadow: 1px 1px 5px #302420;
+    max-width: 80%;
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .image-data .text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;;
+  }
+  
+  .image-data h2 {
+    font-size: 32px;
+    margin: 10px 0;
+  }
+  
+  .image-data .button {
+    background-color: #513831;;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+  }
+  
+  .image-data .button:hover {
+    background-color: #381c0a;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+/*final incono letras slider*/  
+
 .nav {
     flex: 1;
     left: 0;
