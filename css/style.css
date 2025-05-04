@@ -493,11 +493,11 @@ header {
     }
 }
 
-/*comentarios/footer*/
+/*footer*/
 .pie-pagina {
     width: 100%;
     background-color: #ffffff;
-    border-top: 4px solid black;
+    border-top: 4px solid rgb(119, 108, 108);
 }
 
 .pie-pagina .grupo-1 {
@@ -573,22 +573,6 @@ header {
     background-color: #a67c52;
 }
 
-.estrellas-footer input[type="radio"] {
-    display: none;
-}
-
-.estrellas-footer label {
-    font-size: 20px;
-    color: gray;
-    cursor: pointer;
-}
-
-.estrellas-footer input[type="radio"]:checked ~ label,
-.estrellas-footer label:hover,
-.estrellas-footer label:hover ~ label {
-    color: gold;
-}
-
 .pie-pagina .grupo-2 {
     background-color: #513831;
     padding: 15px 10px;
@@ -600,12 +584,14 @@ header {
     font-size: 15px;
 }
 
+
+
+/* RESPONSIVE */
 @media screen and (max-width: 768px) {
     .pie-pagina .grupo-1 {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
     }
 }
-
 
 /*final*/
 
@@ -857,7 +843,7 @@ header {
 }
 
 .pie-pagina .grupo-1 .red-social a:hover{
-    color: aqua;
+    color: #8b665b;
 }
 .pie-pagina .grupo-2{
     background-color: #513831;;

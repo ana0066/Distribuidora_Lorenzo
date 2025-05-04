@@ -312,24 +312,7 @@ session_start();
             <h2>Ubicación</h2>
             <iframe src="https://www.google.com/maps/embed?pb=..." width="250" height="240" style="border:0;" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="box comentarios-footer">
-            <h2>Comentarios</h2>
-            <form action="https://formsubmit.co/distribuidoralorenzo19@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Nuevo Comentario de Estrellas">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <div class="estrellas-footer">
-                    <input type="radio" name="rate" id="footer-rate-5"><label for="footer-rate-5" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="footer-rate-4"><label for="footer-rate-4" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="footer-rate-3"><label for="footer-rate-3" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="footer-rate-2"><label for="footer-rate-2" class="fas fa-star"></label>
-                    <input type="radio" name="rate" id="footer-rate-1"><label for="footer-rate-1" class="fas fa-star"></label>
-                    <input type="hidden" name="puntuacion" id="puntuacion-footer">
-                </div>
-                <textarea name="comentario" cols="25" rows="3" placeholder="Describe tu experiencia..." required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
+       
     </div>
     <div class="grupo-2">
         <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
