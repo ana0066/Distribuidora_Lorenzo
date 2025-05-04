@@ -108,7 +108,7 @@ session_start();
     
     <div class="contenedor">
         <div class="categoria">
-            <img src="../img/cama.png" alt="Mobiliaria">
+            <img src="../img/Mobiliarida.jpeg" alt="Mobiliaria">
             <p>MOBILIARIA</p>
         </div>
         <div class="categoria">
@@ -116,7 +116,7 @@ session_start();
             <p>HERRAMIENTAS</p>
         </div>
         <div class="categoria">
-            <img src="../img/eletrodomestico.jpeg" alt="Decoraciones para el hogar">
+            <img src="../img/Decoracion de hogar.jpeg" alt="Decoraciones para el hogar">
             <p>DECORACIONES PARA EL HOGAR</p>
         </div>
         <div class="categoria">
@@ -124,7 +124,7 @@ session_start();
             <p>ELECTRODOMÉSTICOS</p>
         </div>
         <div class="categoria">
-            <img src="../img/Mobiliarida.jpeg" alt="Vajillas">
+            <img src="../img/vaji.jpeg" alt="Vajillas">
             <p>VAJILLAS</p>
         </div>
     </div>
@@ -229,6 +229,7 @@ session_start();
 	}
 	// ]]>
 </script>
+
 
 <!--::::Pie de Pagina::::::-->
 <footer class="pie-pagina">
