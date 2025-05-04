@@ -244,7 +244,7 @@ session_start();
                 <h2>SIGUENOS</h2>
                 <div class="red-social">
                     <a href="https://www.facebook.com/distribuidoralorenzo00/" ><i class='fas fa-facebook' style='color:#ece0e0' ></i></a>
-                    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" ><i class='fas fa-instagram' style='color:#ece0e0'  ></i></a>
+                    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" ><i class='fas fa--instagram' style='color:#ece0e0'  ></i></a>
                     <a href="#"><i class='fas fa-twitter'></i></a>
                 
                 </div>
