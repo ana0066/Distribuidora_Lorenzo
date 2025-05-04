@@ -16,15 +16,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc();
 
         if (password_verify($password, $user['contraseña'])) { 
+            if (!$user['verificado']) {
+                echo "<p style='color: red;'>Debes verificar tu correo antes de iniciar sesión. Revisa tu bandeja de entrada.</p>";
+                exit();
+            }
+        
             $_SESSION['usuario'] = $user['nombre'];
             $_SESSION['rol'] = $user['rol'];
-            $id_usuario = $user['id_usuario']; // ID del usuario obtenido de la base de datos
-            $_SESSION['id_usuario'] = $id_usuario; // Guardar el ID del usuario en la sesión
-
+            $_SESSION['id_usuario'] = $user['id_usuario'];
+        
             header("Location: ../html/index.php");
             exit();
-        } else {
-            echo "<p style='color: red;'>Contraseña incorrecta</p>";
+        }else {
+            echo "<p style='color: red;'>Correo o contraseña incorrecta</p>";
         }
     } else {
         echo "<p style='color: red;'>Usuario no encontrado</p>";
@@ -58,6 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Iniciar Sesión</button>
         </form>
         <a href="register.php">¿No tienes cuenta? Regístrate</a>
+        <br>
+        <a href="reenviar_verificacion.php">¿No recibiste el correo de verificación?</a>
     </div>
 
 </div>

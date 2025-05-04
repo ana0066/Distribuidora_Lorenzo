@@ -1,31 +1,55 @@
+/*lOGIN - REGISTER - VERIFICAR*/
 
+/*REGISTRO*/
 
-/* Estilo del circulo */
+/* General Styles */
 body {
     display: flex;
     height: 100vh;
-    background: linear-gradient(to right,  #72554d, #422d27);
+    background: linear-gradient(to right, #513831, #6b5048); /* Fondo más claro */
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
-/* Contenedor principal */
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 900px;
+    width: 90%;
 }
 
-/* Presentación a la izquierda */
-.presentacion {
+.registro-presentacion {
     flex: 1;
     text-align: center;
-    color: white;
-    padding: 40px;
-    animation: fadeIn 1s ease-in-out;
+    padding: 20px;
 }
 
-/* Animación de entrada */
+.img-registro {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.registro-nombre {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.registro-slogan {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Animaciones */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -37,58 +61,53 @@ body {
     }
 }
 
-.presentacion h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.presentacion p {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    font-weight: 300;
-}
-
-/* Contenedor del formulario */
+/* Formulario */
 .form-container {
     flex: 1;
     max-width: 400px;
-    padding: 40px;
-    background-color: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
     text-align: center;
-    animation: fadeIn 1s ease-in-out;
 }
 
-/* Logo más grande */
-.logo {
-    width: 250px;
+.form-container img {
+    max-width: 100px; /* Ajusta el tamaño de la imagen */
+    height: auto;
     margin-bottom: 20px;
 }
 
-/* Inputs */
+.form-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .form-container input {
-    width: 100%;
+    width: 90%;
+    max-width: 350px;
     padding: 15px;
     margin: 10px 0;
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 16px;
-    transition: 0.3s;
     background-color: #f7f7f7;
+    transition: 0.3s;
 }
 
-/* Efecto al enfocar los inputs */
 .form-container input:focus {
     border-color: #3498DB;
     outline: none;
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
 }
 
-/* Botón estilizado */
 button {
-    width: 100%;
+    width: 90%;
+    max-width: 350px;
     padding: 15px;
     margin-top: 15px;
     border: none;
@@ -105,7 +124,6 @@ button:hover {
     background: #2980B9;
 }
 
-/* Enlace */
 .form-container a {
     display: block;
     margin-top: 15px;
@@ -118,7 +136,7 @@ button:hover {
     text-decoration: underline;
 }
 
-/* Mensaje de éxito */
+/* Mensajes */
 .success-message {
     color: #28a745;
     background-color: #d4edda;
@@ -130,7 +148,6 @@ button:hover {
     font-size: 1rem;
 }
 
-/* Mensaje de error */
 .error-message {
     color: #dc3545;
     background-color: #f8d7da;
@@ -142,13 +159,49 @@ button:hover {
     font-size: 1rem;
 }
 
-/* Ajuste responsivo */
+/* Verificación del correo */
+.card {
+    background: #fff7f0;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+}
+
+.card h1 {
+    margin-bottom: 20px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #6d4c41;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.card a:hover {
+    background-color: #5d4037;
+}
+
+.success {
+    color: #2e7d32;
+}
+
+.error {
+    color: #c62828;
+}
+
+/* Responsividad */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
         justify-content: center;
     }
-    
+
     .container {
         flex-direction: column;
         width: 90%;
@@ -163,3 +216,26 @@ button:hover {
         max-width: 100%;
     }
 }
+
+
+/* Presentación login*/
+.presentacion {
+    flex: 1;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 40px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.presentacion h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.presentacion p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
