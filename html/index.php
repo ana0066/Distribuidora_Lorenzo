@@ -67,8 +67,6 @@ session_start();
     </div>
     </div>
 </header>
-
-
  
 <script>
     const toggle = document.getElementById('menu-toggle');
@@ -245,9 +243,9 @@ session_start();
             <div class="box">
                 <h2>Siguenos</h2>
                 <div class="red-social">
-                    <a href="https://www.facebook.com/distribuidoralorenzo00/" class="fa fa-facebook"><i class='bx bxl-facebook-circle' style='color:#ece0e0' ></i></a>
-                    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="fa fa-instagram"><i class='bx bxl-instagram' style='color:#ece0e0'  ></i></a>
-                    <a href="#" class="fa fa-twitter"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.facebook.com/distribuidoralorenzo00/" ><i class='fas fa-facebook' style='color:#ece0e0' ></i></a>
+                    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" ><i class='fas fa-instagram' style='color:#ece0e0'  ></i></a>
+                    <a href="#"><i class='fas fa-twitter'></i></a>
                 
                 </div>
                  </div>
