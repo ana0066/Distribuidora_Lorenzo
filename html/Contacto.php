@@ -48,14 +48,16 @@ include "../menu.php";
           </div>
 
           <div class="social-media">
-            <p>Conecta con nosotros:</p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/distribuidoralorenzo00/"><i class='bx bxl-facebook-circle'></i></a>
-                <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class='bx bxl-instagram'></i></a>
-              
-            </div>
-            
-          </div>
+  <p>Conecta con nosotros:</p>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+      <img src="../img/instagram.png" alt="Instagram" width="35" />
+    </a>
+    <a href="https://www.facebook.com/distribuidoralorenzo00/" target="_blank">
+      <img src="../img/facebook.png" alt="Facebook" width="35" />
+    </a>
+  </div>
+</div>
         </div>
         
 
@@ -115,7 +117,7 @@ include "../menu.php";
             <h2>Siguenos</h2>
             <div class="red-social">
                 <a href="https://www.facebook.com/distribuidoralorenzo00/"><i class='bx bxl-facebook-circle'></i></a>
-                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class='bx bxl-instagram'></i></a>
                 
             </div>
         </div>
