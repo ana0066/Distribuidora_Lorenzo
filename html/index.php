@@ -246,7 +246,7 @@ include "../menu.php";
                 <div class="red-social">
                     <a href="https://www.facebook.com/distribuidoralorenzo00/" ><i class='fas fa-facebook' style='color:#ece0e0' ></i></a>
                     <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" ><i class='fas fa--instagram' style='color:#ece0e0'  ></i></a>
-                    <a href="#"><i class='fas fa-twitter'></i></a>
+                   
                 
                 </div>
                  </div>
@@ -256,10 +256,13 @@ include "../menu.php";
             </div>
         </div>
         
-        <div class="grupo-2">
-            <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
-        </div>
-    </footer>
+       
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
+    </div>
+</footer>
+
 
     <script src="../js/productos.js"></script>
     <script src="../js/script.js"></script>
