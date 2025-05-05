@@ -237,7 +237,7 @@ include "../menu.php";
             </figure>
         </div>
         <div class="box">
-            <h2>Mnu inferior</h2>
+            <h2>Menu inferior</h2>
             <p><a href="../index.php">Inicio</a></p>
             <p><a href="#">Contactos</a></p>
             <p><a href="#">Nosotros</a></p>
