@@ -1,64 +1,74 @@
 <?php
+session_start();
 include 'db.php';
+include 'enviar_correo.php'; // Función personalizada que envía el correo con cURL o Brevo
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $token = bin2hex(random_bytes(16));
+    $nombre = trim($_POST['nombre']);
+    $email = trim($_POST['email']);
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $token = bin2hex(random_bytes(16)); // Token de 32 caracteres
+    $rol = 'usuario';
 
-    // Verificar si el correo ya existe
-    $sql = "SELECT * FROM usuarios WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Validación básica
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<p style='color: red;'>Correo no válido.</p>";
+        exit;
+    }
 
-    if ($result->num_rows > 0) {
-        $message = "<p class='error-message'>Este correo electrónico ya está registrado.</p>";
+    // Verificar si ya existe
+    $check = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $check->store_result();
+
+    if ($check->num_rows > 0) {
+        echo "<p style='color: red;'>⚠️ Ya existe una cuenta con ese correo.</p>";
     } else {
-        // Si el correo no existe, insertar el nuevo registro
-        $query = "INSERT INTO usuarios (nombre, email, contraseña, token) VALUES (?, ?, ?, ?)";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("ssss", $nombre, $email, $password, $token);
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, contraseña, rol, token, verificado) VALUES (?, ?, ?, ?, ?, 0)");
+        $stmt->bind_param("sssss", $nombre, $email, $password, $rol, $token);
 
         if ($stmt->execute()) {
-            $message = "<p class='success-message'>Registro exitoso. ¡Bienvenido a nuestra familia!</p>";
+            if (enviarCorreoVerificacion($email, $nombre, $token)) {
+                echo "<p style='color: green;'>✅ Registro exitoso. Revisa tu correo para verificar tu cuenta.</p>";
+            } else {
+                echo "<p style='color: orange;'>⚠️ Registro exitoso, pero falló el envío del correo. Contacta soporte.</p>";
+            }
         } else {
-            $message = "<p class='error-message'>Error en el registro. Por favor, inténtalo de nuevo.</p>";
+            echo "<p style='color: red;'>❌ Error al registrar el usuario.</p>";
         }
     }
 }
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate</title>
+    <title>Registro</title>
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-
-<div class="container">
     
-    <div class="presentacion">
-            <h1>Distribuidora Lorenzo</h1>
-            <p>Se parte de nuestra familia y compra nuestros productos</p>
+    <div class="container">
+
+        <div class="registro-presentacion">
+            <div class="registro-nombre">Distribuidora Lorenzo</div>
+            <div class="registro-slogan">Únete a nuestra comunidad, distribuyendo calidad y confianza</div>
+        </div>
+
+        <div class="form-container">
+            <form method="POST" action="register.php">
+                <img src="../img/LOGO.png" alt="Registro" class="img-registro">
+                <h2>Registro</h2>
+                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="email" name="email" placeholder="Correo electrónico" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="login.php">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
     </div>
-
-<div class="form-container">
-    <?php if (isset($message)) echo $message; ?>
-    <form action="register.php" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Registrarse</button>
-    </form>
-    <a href="login.php">¿Ya tienes cuenta? Inicia sesión</a>
-</div>
-</div>
-
 </body>
 </html>

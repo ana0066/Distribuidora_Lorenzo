@@ -1,0 +1,108 @@
+/* admin_usuarios.css */
+
+/* Contenedor principal */
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #fff7f0;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  /* Mensajes de éxito y error */
+  .message {
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+  .message.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+  }
+  .message.error {
+    background-color: #ffebee;
+    color: #c62828;
+  }
+  
+  /* Pestañas */
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    background-color: #eee;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .tab-btn.active {
+    background-color: #ddd;
+  }
+  
+  /* Contenido de pestañas */
+  .tab-content {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0 8px 8px 8px;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  
+  /* Formularios */
+  form {
+    display: grid;
+    grid-gap: 15px;
+  }
+  form label {
+    font-weight: 600;
+  }
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+  }
+  form button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6d4c41;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  form button:hover {
+    background-color: #5d4037;
+  }
+  
+  /* Tabla de usuarios */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  table th,
+  table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  .actions a {
+    margin-right: 10px;
+    color: #6d4c41;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .actions a:hover {
+    text-decoration: underline;
+  }
+  
