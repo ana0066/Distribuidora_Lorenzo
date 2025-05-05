@@ -9,23 +9,21 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'superadmin') {
 }
 
 // Variables de estado
-$errors = [];$success = '';
+$errors = [];
+$success = '';
 
 // Manejo de acciones: Create, Update, Delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Datos comunes
     $nombre = trim($_POST['nombre']);
     $email = trim($_POST['email']);
     $rol = $_POST['rol'];
 
     if ($_POST['form_type'] === 'create') {
-        // Crear nuevo usuario
         if (empty($nombre) || empty($email) || empty($_POST['password'])) {
             $errors[] = "Todos los campos son requeridos.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Email no válido.";
         } else {
-            // Validar existencia
             $check = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
             $check->bind_param("s", $email);
             $check->execute();
@@ -46,14 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
     } elseif ($_POST['form_type'] === 'update') {
-        // Actualizar usuario existente
         $id = intval($_POST['user_id']);
         if (empty($nombre) || empty($email)) {
             $errors[] = "Nombre y email son requeridos.";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Email no válido.";
         } else {
-            // Construir query según si cambió contraseña
             if (!empty($_POST['password'])) {
                 $passwordHash = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $stmt = $conn->prepare("UPDATE usuarios SET nombre=?, email=?, contraseña=?, rol=? WHERE id=?");
@@ -70,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 } elseif (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
-    // Eliminar usuario
     $id = intval($_GET['id']);
     $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
     $stmt->bind_param("i", $id);
@@ -108,31 +103,42 @@ if ($result) {
     <meta charset="UTF-8">
     <title>Administrar Usuarios</title>
     <link rel="stylesheet" href="../css/admin_usuarios.css">
-
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
 <?php include '../menu.php';?>
 
+<?php
+// Generar alertas emergentes
+if ($success) {
+    echo "<script>alert('" . addslashes($success) . "');</script>";
+}
+if (!empty($errors)) {
+    foreach ($errors as $error) {
+        echo "<script>alert('" . addslashes($error) . "');</script>";
+    }
+}
+?>
+
 <div class="container">
     <h1>Administrar Usuarios</h1>
 
-    <?php if ($success): ?>
-        <p style="color: green;"><?php echo $success; ?></p>
-    <?php endif; ?>
-    <?php if ($errors): ?>
-        <?php foreach ($errors as $error): ?>
-            <p style="color: red;"><?php echo $error; ?></p>
-        <?php endforeach; ?>
-    <?php endif; ?>
-
     <div class="tabs">
-        <button id="tab-create" class="<?php echo $editMode ? '' : 'active'; ?>">Crear Usuario</button>
-        <button id="tab-manage" class="<?php echo $editMode ? 'active' : ''; ?>">Gestionar Usuarios</button>
+        <button id="tab-create" class="tab-btn active">Crear / Editar Usuario</button>
+        <button id="tab-manage" class="tab-btn">Gestionar Usuarios</button>
+    </div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="user-search"
+            placeholder="Buscar usuarios por cualquier campo..."
+            class="user-search-input" /> 
     </div>
 
     <!-- Crear / Editar Usuario -->
-    <div id="content-create" class="tab-content <?php echo $editMode ? '' : 'active'; ?>">
+    <div id="content-create" class="tab-content active">
         <form method="POST" action="admin_usuarios.php">
             <input type="hidden" name="form_type" value="<?php echo $editMode ? 'update' : 'create'; ?>">
             <?php if ($editMode): ?>
@@ -144,7 +150,7 @@ if ($result) {
             <input type="email" name="email" value="<?php echo $editMode ? htmlspecialchars($editUser['email']) : ''; ?>" required>
             <label>Rol:</label>
             <select name="rol">
-                <?php foreach (['cliente','admin','superadmin'] as $roleOption): ?>
+                <?php foreach (['usuario','admin','superadmin'] as $roleOption): ?>
                     <option value="<?php echo $roleOption; ?>" <?php echo ($editMode && $editUser['rol']==$roleOption) ? 'selected' : ''; ?>><?php echo ucfirst($roleOption); ?></option>
                 <?php endforeach; ?>
             </select>
@@ -155,7 +161,7 @@ if ($result) {
     </div>
 
     <!-- Gestionar Usuarios -->
-    <div id="content-manage" class="tab-content <?php echo $editMode ? 'active' : ''; ?>">
+    <div id="content-manage" class="tab-content">
         <table>
             <thead>
                 <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Rol</th><th>Acciones</th></tr>
@@ -178,25 +184,6 @@ if ($result) {
     </div>
 </div>
 
-<script>
-    const tabCreate = document.getElementById('tab-create');
-    const tabManage = document.getElementById('tab-manage');
-    const contentCreate = document.getElementById('content-create');
-    const contentManage = document.getElementById('content-manage');
-
-    tabCreate.addEventListener('click', () => {
-        tabCreate.classList.add('active');
-        tabManage.classList.remove('active');
-        contentCreate.classList.add('active');
-        contentManage.classList.remove('active');
-    });
-    tabManage.addEventListener('click', () => {
-        tabManage.classList.add('active');
-        tabCreate.classList.remove('active');
-        contentManage.classList.add('active');
-        contentCreate.classList.remove('active');
-    });
-</script>
-
+<script src="../js/admin_usuarios.js"></script>
 </body>
 </html>

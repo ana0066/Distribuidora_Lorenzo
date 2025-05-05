@@ -19,9 +19,9 @@ include '../menu.php';
     <main>
         <!-- Products Section -->
       <section class="contenedorProductos">
-        <h2>Productos</h2>
+      <h2>Productos</h2>
 
-        <div class="filtro-productos">
+      <div class="filtro-productos">
         <label for="filtroCategoria">Filtrar por categoría:</label>
         <select id="filtroCategoria">
           <option value="">Todas</option>
@@ -31,11 +31,12 @@ include '../menu.php';
           <option value="herramientas">Herramientas</option>
           <option value="electrodomesticos">Electrodomésticos</option>
         </select>
-        </div>
+      </div>
 
-        <div id="productosContainer" class="mostrarProductos">
-          <!-- aQUI SE VAN A CARGAR LOS PRODUCT -->
-        </div>
+      <div id="productosContainer" class="grid-productos">
+        <!-- JS inyecta aquí .card-producto -->
+      </div>
+
       </section>
     </main>
 

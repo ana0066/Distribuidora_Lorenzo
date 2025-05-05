@@ -1,139 +1,127 @@
-console.log('🍀 carrito.js v2 cargado');
+console.log('🍀 carrito.js cargado');
 
-function toggleCart() {
-  console.log('🔔 toggleCart disparado');
-  const modal = document.getElementById('cartModal');
-  console.log('   modal =', modal);
-  if (!modal) {
-    console.error('toggleCart: elemento #cartModal no existe');
-    return;
-  }
-  modal.classList.toggle('visible');
-  if (modal.classList.contains('visible')) renderCart();
-}
+// Array para almacenar los productos en el carrito
+let cart = getCart(); // Cargar el carrito desde localStorage al iniciar
 
 // Clave en localStorage
 const CART_KEY = 'cart';
 
 // ── LOCALSTORAGE ───────────────────────────────────────────────────────────────
 function getCart() {
-  return JSON.parse(localStorage.getItem(CART_KEY)) || {};
+    return JSON.parse(localStorage.getItem(CART_KEY)) || []; // Devuelve un array vacío si no hay carrito
 }
 
 function saveCart(cart) {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    localStorage.setItem(CART_KEY, JSON.stringify(cart)); // Guarda el carrito en localStorage
 }
 
 // ── CONTADOR ──────────────────────────────────────────────────────────────────
 function updateCartCount() {
-  const countEl = document.getElementById('cart-count');
-  if (!countEl) return;
-  const cart = getCart();
-  const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
-  countEl.textContent = totalItems;
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((sum, product) => sum + product.quantity, 0);
+    document.getElementById('cart-count').textContent = totalItems;
 }
 
 // ── AGREGAR, CAMBIAR, ELIMINAR ────────────────────────────────────────────────
-function addToCart(id) {
-  const cart = getCart();
-  cart[id] = (cart[id] || 0) + 1;
-  saveCart(cart);
-  updateCartCount();
+function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Obtén el carrito del localStorage
+    const existingProduct = cart.find(item => item.id === product.id);
+
+    if (existingProduct) {
+        existingProduct.quantity += 1; // Incrementa la cantidad si el producto ya existe
+    } else {
+        cart.push({ ...product, quantity: 1 }); // Agrega el producto al carrito
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart)); // Guarda el carrito actualizado en localStorage
+    renderCart(); // Actualiza la vista del carrito
+    updateCartCount(); // Actualiza el contador del carrito
 }
 
-function changeQuantity(id, qty) {
-  const cart = getCart();
-  if (qty <= 0) {
-    delete cart[id];
-  } else {
-    cart[id] = qty;
-  }
-  saveCart(cart);
-  updateCartCount();
+function changeQuantity(productId, qty) {
+    const product = cart.find(item => item.id === productId);
+    if (product) {
+        if (qty <= 0) {
+            removeFromCart(productId); // Eliminar si la cantidad es 0 o menor
+        } else {
+            product.quantity = qty; // Actualizar la cantidad
+        }
+        saveCart(cart); // Guardar los cambios en localStorage
+        renderCart(); // Actualizar la vista del carrito
+        updateCartCount(); // Actualizar el contador
+    }
 }
 
-function removeFromCart(id) {
-  const cart = getCart();
-  delete cart[id];
-  saveCart(cart);
-  updateCartCount();
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId); // Eliminar el producto del carrito
+    saveCart(cart); // Guardar los cambios en localStorage
+    renderCart(); // Actualizar la vista del carrito
+    updateCartCount(); // Actualizar el contador
 }
 
 // ── RENDERIZAR CARRITO ───────────────────────────────────────────────────────
 function renderCart() {
-  const cart = getCart();
-  const container = document.getElementById('cartItems');
-  container.innerHTML = '';
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartItemsContainer.innerHTML = '';
 
-  const ids = Object.keys(cart);
-  if (ids.length === 0) {
-    container.innerHTML = '<p>El carrito está vacío.</p>';
-    return;
-  }
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>El carrito está vacío.</p>';
+        return;
+    }
 
-  // Cargo todos los productos y filtro
-  fetch('../php/fetchProducts.php')
-    .then(res => res.json())
-    .then(productsList => {
-      ids.forEach(id => {
-        const prod = productsList.find(p => p.id == id);
-        if (!prod) return;
-        const qty = cart[id];
-        const item = document.createElement('div');
-        item.className = 'cart-item';
-        item.innerHTML = `
-          <img src="${prod.urlImagen}" alt="${prod.nombre}">
-          <div class="cart-info">
-            <p>${prod.nombre}</p>
-            <input type="number" min="1" value="${qty}" data-id="${id}" class="cart-qty">
-            <p>$${(prod.valor * qty).toFixed(2)}</p>
-          </div>
-          <button class="remove-item" data-id="${id}">×</button>
+    cart.forEach(product => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px;">
+            <div>
+                <p>${product.name}</p>
+                <p>Cantidad: ${product.quantity}</p>
+                <p>Precio: $${(product.price * product.quantity).toFixed(2)}</p>
+            </div>
+            <button onclick="removeFromCart(${product.id})">Eliminar</button>
         `;
-        container.appendChild(item);
-      });
 
-      // Listeners para cambiar cantidad
-      container.querySelectorAll('.cart-qty').forEach(input => {
-        input.addEventListener('change', e => {
-          const id = e.target.dataset.id;
-          const newQty = parseInt(e.target.value);
-          if (isNaN(newQty) || newQty <= 0) {
-            removeFromCart(id);
-          } else {
-            changeQuantity(id, newQty);
-          }
-          renderCart();
-        });
-      });
-
-      // Listeners para eliminar producto
-      container.querySelectorAll('.remove-item').forEach(btn => {
-        btn.addEventListener('click', e => {
-          removeFromCart(e.target.dataset.id);
-          renderCart();
-        });
-      });
-    })
-    .catch(err => console.error('Error al cargar productos:', err));
+        cartItemsContainer.appendChild(cartItem);
+    });
 }
 
 // ── MOSTRAR / OCULTAR ─────────────────────────────────────────────────────────
 function toggleCart() {
-  const modal = document.getElementById('cartModal');
-  if (!modal) {
-    console.error('toggleCart: elemento #cartModal no existe');
-    return;
-  }
-  modal.classList.toggle('visible');
-  if (modal.classList.contains('visible')) {
-    renderCart();
-  }
+    const modal = document.getElementById('cartModal');
+    if (!modal) {
+        console.error('toggleCart: elemento #cartModal no existe');
+        return;
+    }
+    modal.classList.toggle('visible');
+    if (modal.classList.contains('visible')) {
+        renderCart(); // Renderizar el carrito al abrirlo
+    }
+}
+
+// ── TOTAL DEL CARRITO ────────────────────────────────────────────────────────
+function updateCartTotal() {
+    const total = cart.reduce((sum, product) => sum + product.price * product.quantity, 0);
+    document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+}
+
+// ── CHECKOUT ─────────────────────────────────────────────────────────────────
+function checkout() {
+    if (cart.length === 0) {
+        alert('El carrito está vacío.');
+        return;
+    }
+    alert('Redirigiendo al checkout...');
+    // Aquí puedes redirigir al usuario a la página de checkout
+    window.location.href = 'checkout.php';
 }
 
 // ── INICIALIZACIÓN ───────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  updateCartCount();
+    renderCart(); // Renderiza el carrito al cargar la página
+    updateCartCount(); // Actualiza el contador del carrito
 });
 
 document.addEventListener("DOMContentLoaded", () => {
