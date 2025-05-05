@@ -22,6 +22,23 @@ session_start();
     <div class="info-nombre"><h1>Distribuidora Lorenzo</h1></div>
     <div class="info-telefono"><p><i class="fas fa-phone"></i> (809) 906-3559</p></div>
   </div>
+    <div class="principal-info">
+
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <div class="info-logo">
+            <img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo">
+        </div>
+        <div class="info-nombre">
+            <h1>Distribuidora Lorenzo</h1>
+        </div>
+        <div class="info-telefono">
+            <p><i class="fas fa-phone"></i> (809) 506-3559</p>
+        </div>
+
+    </div>
 
   <div class="navegador-info">
     <nav class="nav" id="nav">

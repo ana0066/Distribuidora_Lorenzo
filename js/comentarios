@@ -1,0 +1,86 @@
+const allStar = document.querySelectorAll('.rating .star');
+const ratingValue = document.querySelector('.rating input');
+const form = document.getElementById('review-form');
+const commentsContainer = document.getElementById('comments-container');
+
+// Activar estrellas
+allStar.forEach((item, idx) => {
+	item.addEventListener('click', function () {
+		ratingValue.value = idx + 1;
+		allStar.forEach(i => {
+			i.classList.replace('bxs-star', 'bx-star');
+			i.classList.remove('active');
+		});
+		for (let i = 0; i <= idx; i++) {
+			allStar[i].classList.replace('bx-star', 'bxs-star');
+			allStar[i].classList.add('active');
+		}
+	});
+});
+
+// Enviar comentario
+form.addEventListener('submit', function (e) {
+	e.preventDefault();
+	const username = form.username.value.trim();
+	const opinion = form.opinion.value.trim();
+	const rating = ratingValue.value;
+
+	if (!username || !opinion || !rating) return;
+
+	const now = new Date();
+	const options = { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+	const date = now.toLocaleString('es-ES', options);
+
+	const comment = { username, opinion, rating, date };
+	const comments = JSON.parse(localStorage.getItem('comments')) || [];
+	comments.push(comment);
+	localStorage.setItem('comments', JSON.stringify(comments));
+
+	clearForm();
+	displayComments();
+});
+
+// Cancelar
+function clearForm() {
+	form.reset();
+	ratingValue.value = 0;
+	allStar.forEach(i => {
+		i.classList.replace('bxs-star', 'bx-star');
+		i.classList.remove('active');
+	});
+}
+
+// Eliminar con animación
+function deleteComment(index) {
+	const comments = JSON.parse(localStorage.getItem('comments')) || [];
+	const reversedIndex = comments.length - 1 - index;
+	comments.splice(reversedIndex, 1);
+	localStorage.setItem('comments', JSON.stringify(comments));
+
+	const commentDiv = commentsContainer.children[index];
+	commentDiv.classList.add('removing');
+	setTimeout(() => {
+		displayComments();
+	}, 300);
+}
+
+// Mostrar comentarios con fecha/hora
+function displayComments() {
+	commentsContainer.innerHTML = '';
+	const comments = (JSON.parse(localStorage.getItem('comments')) || []).slice().reverse();
+
+	comments.forEach(({ username, opinion, rating, date }, index) => {
+		const div = document.createElement('div');
+		div.className = 'comment';
+		div.innerHTML = `
+			<h4>${username}</h4>
+			<small style="color:#777;">${date}</small>
+			<div class="stars">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+			<p>${opinion}</p>
+			<button onclick="deleteComment(${index})"><i class='bx bx-x'></i></button>
+		`;
+		commentsContainer.appendChild(div);
+	});
+}
+
+document.addEventListener('DOMContentLoaded', displayComments);

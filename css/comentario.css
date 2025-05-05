@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+:root {
+	--yellow: #FFBD13;
+	--blue: #4383FF;
+	--blue-d-1: #3278FF;
+	--light: #F5F5F5;
+	--grey: #AAA;
+	--white: #FFF;
+	--shadow: 8px 8px 30px rgba(0,0,0,.05);
+}
+
+body {
+	background: var(--light);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	padding: 2rem;
+}
+
+.wrapper {
+	background: var(--white);
+	padding: 2rem;
+	max-width: 576px;
+	width: 100%;
+	border-radius: .75rem;
+	box-shadow: var(--shadow);
+	text-align: center;
+	margin-bottom: 2rem;
+}
+.wrapper h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+.rating {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-gap: .5rem;
+	font-size: 2rem;
+	color: var(--yellow);
+	margin-bottom: 1rem;
+}
+.rating .star {
+	cursor: pointer;
+}
+.rating .star.active {
+	opacity: 0;
+	animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+	0% {
+		opacity: 0;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.rating .star:hover {
+	transform: scale(1.1);
+}
+
+textarea, input[type="text"] {
+	width: 100%;
+	background: var(--light);
+	padding: 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	resize: none;
+	margin-bottom: .5rem;
+}
+
+.btn-group {
+	display: flex;
+	grid-gap: .5rem;
+	align-items: center;
+}
+.btn-group .btn {
+	padding: .75rem 1rem;
+	border-radius: .5rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: .875rem;
+	font-weight: 500;
+}
+.btn-group .btn.submit {
+	background: var(--blue);
+	color: var(--white);
+}
+.btn-group .btn.submit:hover {
+	background: var(--blue-d-1);
+}
+.btn-group .btn.cancel {
+	background: var(--white);
+	color: var(--blue);
+}
+.btn-group .btn.cancel:hover {
+	background: var(--light);
+}
+
+
+
+.comments-section {
+    width: 100%;
+    max-width: 1000px;  /* Puedes ajustar este valor según tu diseño */
+    display: flex;
+    flex-wrap: wrap;  /* Esto permite que los comentarios se ajusten al contenedor */
+    gap: 1rem;  /* Espacio entre los comentarios */
+    justify-content: flex-start;  /* Alineación de los comentarios al principio */
+    margin-top: 2rem;  /* Agregar algo de espacio superior */
+  }
+  
+  #comments-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-start;
+    width: 100%; /* Asegura que el contenedor ocupe todo el espacio disponible */
+  }
+  
+  .comment {
+    background: #fff;
+    padding: 1rem;
+    border-radius: .5rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    width: calc(33.33% - 1rem);  /* Ocupa un 33% del ancho en pantallas grandes */
+    transition: all 0.3s ease;
+  }
+  
+  /* Ajustes responsivos para pantallas más pequeñas */
+  @media (max-width: 900px) {
+    .comment {
+      width: calc(50% - 1rem);  /* Los comentarios ocupan el 50% del ancho en pantallas medianas */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .comment {
+      width: 100%;  /* Los comentarios ocupan el 100% del ancho en pantallas pequeñas */
+    }
+  }
+  
+  /* Asegurar que el texto del comentario no se desborde */
+  .comment h4, .comment p {
+    word-wrap: break-word; /* Rompe palabras largas para que no se desborden */
+  }
+  
+  .comment button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    transition: color .3s ease;
+  }
+  
+  .comment button:hover {
+    color: red;
+  }
+  
+  .comment.removing {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  
