@@ -62,6 +62,8 @@
     background-color: #6d4c41;
     color: white;
   }
+
+
   
   /* Contenido de pestañas */
   .tab-content {
@@ -100,9 +102,35 @@
     font-size: 16px;
     cursor: pointer;
   }
+
   form button:hover {
     background-color: #5d4037;
   }
+
+  .extra-actions {
+    margin-top: 10px;
+}
+
+.btn-extra {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6d4c41;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.btn-extra:hover {
+  background-color: #5d4037;
+}
+
+
   
   /* Tabla de usuarios */
   table {
@@ -124,4 +152,5 @@
   .actions a:hover {
     text-decoration: underline;
   }
-  
+
+/* Botón de estilo compartido */

@@ -1,118 +1,126 @@
-/* Modal del carrito */
-.cart-modal {
+/* =========== ASIDE CARRITO =========== */
+/* Estado oculto */
+.aside-carrito {
     position: fixed;
     top: 0;
-    right: -100%; /* Oculto inicialmente */
-    width: 400px;
+    right: -380px;        /* empuja fuera de la pantalla */
+    width: 350px;
     height: 100%;
-    background-color: #f9f9f9;
-    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+    overflow-y: auto;
     transition: right 0.3s ease;
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-}
-
-.cart-modal.visible {
-    right: 0; /* Mostrar el carrito */
-}
-
-.cart-header {
+  }
+  
+  /* Estado visible */
+  .aside-carrito.mostrar {
+    right: 0;
+  }
+  
+  /* header */
+  .carrito-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-.cart-header h2 {
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.close-cart {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-    transition: color 0.3s ease;
-}
-
-.close-cart:hover {
-    color: #ff0000;
-}
-
-.cart-items {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-top: 20px;
-}
-
-.cart-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.cart-item img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.cart-item-details {
-    flex-grow: 1;
-    margin-left: 10px;
-}
-
-.cart-item-details p {
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .carrito-header h3 {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     color: #333;
-}
-
-.cart-item .remove-item {
+  }
+  #btnCerrarCarrito {
     background: none;
     border: none;
-    font-size: 1.2rem;
-    color: #ff4d4d;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.cart-item .remove-item:hover {
-    color: #ff0000;
-}
-
-.cart-footer {
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    text-align: center;
-}
-
-.cart-footer p {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.checkout-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 15px;
+  }
+  
+  /* lista de items */
+  .carrito-items {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+  .item-carrito {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .item-carrito img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 0.75rem;
+  }
+  .item-info {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+  .item-info h4 {
+    margin: 0 0 0.25rem;
     font-size: 1rem;
+    color: #222;
+  }
+  .item-info .precio,
+  .item-info .subtotal {
+    margin: 0.1rem 0;
+    color: #555;
+  }
+  .item-info input {
+    width: 50px;
+    padding: 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }
+  .item-carrito .eliminar {
+    background: none;
+    border: none;
+    color: #e63946;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
     cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease;
-}
-
-.checkout-button:hover {
-    background-color: #2980b9;
-}
+  }
+  
+  /* footer */
+  .carrito-footer {
+    padding: 1rem;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+  }
+  .carrito-footer p {
+    margin: 0 0 0.75rem;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .btn-checkout {
+    display: inline-block;
+    background: #2a9d8f;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  .btn-checkout:hover {
+    background: #21867a;
+  }
+  
+  /* responsive móvil */
+  @media (max-width: 480px) {
+    .aside-carrito {
+      width: 100%;
+      right: -100%;
+    }
+    .aside-carrito.mostrar {
+      right: 0;
+    }
+  }
+  

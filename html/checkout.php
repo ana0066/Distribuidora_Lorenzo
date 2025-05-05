@@ -1,92 +1,169 @@
-<?php session_start(); 
-include "../menu.php"
+<?php
+include "../menu.php";
+require_once '../php/db.php';
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: ../php/login.php");
+    exit;
+}
+$id_usuario = $_SESSION['usuario_id'];
 
+
+// Traer ítems del carrito
+$stmt = $conn->prepare("
+  SELECT c.id AS id_carrito, p.nombre, p.valor, p.urlImagen, c.cantidad,
+         (p.valor * c.cantidad) AS subtotal
+  FROM carrito c
+  JOIN products p ON c.id_producto = p.id
+  WHERE c.id_usuario = ?
+");
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$res    = $stmt->get_result();
+$items  = [];
+while ($row = $res->fetch_assoc()) {
+    $items[] = $row;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout – Distribuidora Lorenzo</title>
+  <title>Checkout | Distribuidora Lorenzo</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/checkout.css">
-  <link rel="stylesheet" href="../css/productos.css">
-  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-  <script src="https://www.paypal.com/sdk/js?client-id=AXUAVkqwfkvaeRrSB0AqHxi3aD8bVMnS6oOBucZteoPKfrSJ0FIKDuFlBGygkfqnNA5DRLl9ZBS902eo&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"></script>
 </head>
 <body>
 
+<main class="contenedor-checkout">
+  <h2>Resumen de Compra</h2>
 
-  
-<main class="checkout-container">
-    <h2>Resumen de tu pedido</h2>
-    <div class="checkoutContainer" id="checkoutContainer"></div>
+  <?php if (count($items) > 0): ?>
+    <table class="tabla-checkout">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Imagen</th>
+          <th>Precio U.</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody id="checkout-body">
+        <?php foreach ($items as $it): ?>
+        <tr data-id="<?= $it['id_carrito'] ?>">
+          <td><?= htmlspecialchars($it['nombre']) ?></td>
+          <td><img src="<?= htmlspecialchars($it['urlImagen']) ?>" alt="" ></td>
+          <td class="unitario"><?= $it['valor'] ?></td>
+          <td>
+            <input type="number"
+                   class="qty"
+                   min="1"
+                   value="<?= $it['cantidad'] ?>">
+          </td>
+          <td class="subtotal-cell"><?= $it['subtotal'] ?></td>
+          <td>
+            <button class="btn-eliminar">×</button>
+          </td>
+        </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
 
-    <!-- Contenedor para el botón de PayPal -->
-    <div id="paypal-button-container"></div>
-</main>
-
-<div id="cartModal" class="cart-modal">
-        <h2>Tu carrito</h2>
-        <div id="cartItems"></div>
-        <div class="cart-footer">
-            <p>Total artículos: <span id="cart-count">0</span></p>
-            <a href="checkout.php" class="button">Ir a Checkout</a>
-        </div>
+    <div class="resumen">
+      <p>Subtotal: <strong id="res-sub">$0.00</strong></p>
+      <p>ITBIS (18%): <strong id="res-itbis">$0.00</strong></p>
+      <p>Total: <strong id="res-total">$0.00</strong></p>
     </div>
 
+    <div id="paypal-button-container"></div>
+  <?php else: ?>
+    <p>Tu carrito está vacío. <a href="productos.php">Ver productos</a></p>
+  <?php endif; ?>
+</main>
 
-  <footer class="pie-pagina">
-      <div class="grupo-1">
-        <div class="box">
-          <figure>
-            <a href="#">
-              <img src="../img/LOGO.png" alt="Distribuidora Lorenzo" />
-            </a>
-          </figure>
-        </div>
-        <div class="box">
-          <h2>MENÚ INFERIOR</h2>
-          <p><a href="../index.php">Inicio</a></p>
-          <p><a href="../html/contacto.php">Contactos</a></p>
-          <p><a href="../html/nosotros.php">Nosotros</a></p>
-          <p>Políticas de la empresa</p>
-          <p>Políticas de devolución</p>
-        </div>
-        <div class="box">
-          <h2>SÍGUENOS</h2>
-          <div class="red-social">
-            <a href="https://www.facebook.com/distribuidoralorenzo00/" class="fa fa-facebook">
-              <i class="bx bxl-facebook-circle" style="color:#ece0e0"></i>
-            </a>
-            <a href="#" class="fa fa-instagram">
-              <i class="bx bxl-instagram" style="color:#ece0e0"></i>
-            </a>
-            <a href="#" class="fa fa-twitter">
-              <i class="bx bxl-twitter"></i>
-            </a>
-          </div>
-        </div>
-        <div class="mapa">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d940.7775665097614!2d-70.6877119476317!3d19.4076411519626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf63e9c85b9b%3A0x7a4fbe5dc63a2545!2sDistribuidora%20Lorenzo!5e0!3m2!1ses!2sdo!4v1741976829787!5m2!1ses!2sdo"
-            width="250"
-            height="240"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-      </div>
-      <div class="grupo-2">
-        <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
-      </div>
-    </footer>
-  
-  <script src="../carrito.js"></script>   
-  <script src="../js/checkout.js"></script>
-  <script src="../carrito.js?v=2"></script>
-    <script src="../productos.js?v=2"></script>
+<!-- SDK de PayPal: reemplaza YOUR_CLIENT_ID por tu client-id -->
+<script src="https://www.paypal.com/sdk/js?client-id=AXUAVkqwfkvaeRrSB0AqHxi3aD8bVMnS6oOBucZteoPKfrSJ0FIKDuFlBGygkfqnNA5DRLl9ZBS902eo&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"></script>
+<script>
+// Variables globales
+const rows = document.querySelectorAll('#checkout-body tr');
+const resSub   = document.getElementById('res-sub');
+const resItbis = document.getElementById('res-itbis');
+const resTotal = document.getElementById('res-total');
+
+// Función para recalcular totales
+function recalcular() {
+  let subtotal = 0;
+  rows.forEach(row => {
+    const unit   = parseFloat(row.querySelector('.unitario').textContent);
+    const qtyInp = row.querySelector('.qty');
+    const qty    = parseInt(qtyInp.value, 10);
+    const sub    = unit * qty;
+    row.querySelector('.subtotal-cell').textContent = sub.toFixed(2);
+    subtotal += sub;
+  });
+  const itbis = subtotal * 0.18;
+  const total = subtotal + itbis;
+  resSub.textContent   = '$' + subtotal.toFixed(2);
+  resItbis.textContent = '$' + itbis.toFixed(2);
+  resTotal.textContent = '$' + total.toFixed(2);
+}
+
+// Llamar al cargar
+recalcular();
+
+// Bind evento cambio cantidad
+rows.forEach(row => {
+  const qty = row.querySelector('.qty');
+  qty.addEventListener('change', e => {
+    const newQty = parseInt(e.target.value, 10);
+    const idc    = row.dataset.id;
+    // AJAX para actualizar en BD
+    fetch('../carrito/actualizar_carrito.php', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ id_carrito: idc, cantidad: newQty })
+    }).then(r => r.json())
+      .then(resp => {
+        if (resp.ok) recalcular();
+      });
+  });
+
+  // Botón eliminar
+  row.querySelector('.btn-eliminar').addEventListener('click', () => {
+    const idc = row.dataset.id;
+    fetch('../carrito/eliminar_carrito.php?id=' + idc)
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.ok) {
+          row.remove();
+          recalcular();
+        }
+      });
+  });
+});
+
+// Configurar PayPal
+paypal.Buttons({
+  style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+  createOrder: (data, actions) => {
+    // Usamos el total ya calculado
+    const monto = parseFloat(resTotal.textContent.replace('$',''));
+    return actions.order.create({
+      purchase_units: [{ amount: { value: monto.toFixed(2) } }]
+    });
+  },
+  onApprove: (data, actions) => {
+    return actions.order.capture().then(details => {
+      // Una vez pagado, redirigimos a tu endpoint para registrar
+      window.location.href = "../carrito/pago.php";
+    });
+  },
+  onError: err => {
+    alert('Error con PayPal: ' + err);
+  }
+}).render('#paypal-button-container');
+</script>
+
 </body>
 </html>

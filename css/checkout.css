@@ -1,89 +1,109 @@
-
-.checkout-container {
-    max-width: 800px;
-    margin: 120px auto;
-    padding: 20px;
-    background: #fafafa;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-}
-
-.checkout-container h2 {
-    font-size: 2rem;
+/* Contenedor principal */
+.contenedor-checkout {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Título */
+  .contenedor-checkout h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4B2E1E;
+  }
+  
+  /* Tabla de ítems */
+  .tabla-checkout {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+  .tabla-checkout th,
+  .tabla-checkout td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: center;
+  }
+  .tabla-checkout th {
+    background-color: #f5f5f5;
     color: #333;
-    margin: 40px auto;
-    width: 80%;
-}
-
-.checkoutContainer {
-    margin: 50px auto;
-    width: 80%;
-}
-
-.checkout-item {
+    font-weight: 600;
+  }
+  .tabla-checkout img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  /* Inputs de cantidad */
+  .tabla-checkout input[type="number"] {
+    width: 60px;
+    padding: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Botón eliminar */
+  .tabla-checkout .btn-eliminar {
+    background: none;
+    border: none;
+    color: #e63946;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /* Resumen de totales */
+  .resumen {
+    max-width: 400px;
+    margin-left: auto;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+  .resumen p {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    width: 100%; 
-    padding: 12px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.checkout-item:last-child {
-    border-bottom: none;
-}
-
-/* Styling for the summary section */
-.checkout-summary {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 1.1rem;
-    width: 100%; 
-}
-
-.checkout-summary p {
-    margin: 6px 0;
-}
-
-.button{
-    display: inline-block;
-    padding: 5px 10px;
-    background: #332b26;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: background 0.3s;
-}
-
-.button:hover{
-    background: #492d22;
-}
-
-#paypal-button-container {
-    margin: 30px auto;
+    margin: 0.5rem 0;
+  }
+  .resumen p strong {
+    font-weight: 600;
+  }
+  
+  /* Botón de confirmar */
+  .form-checkout {
     text-align: center;
-    width: 100%; 
-    z-index: 10;
-}
-
-
-.button-pay {
-    display: inline-block;
-    padding: 12px 24px;
-    background: #0070ba;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 6px;
+    margin-bottom: 2rem;
+  }
+  .boton-confirmar {
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
     font-size: 1rem;
-    transition: background 0.3s;
-    margin-top: 20px;
-}
-
-.button-pay:hover {
-    background: #005c9c;
-}
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .boton-confirmar:hover {
+    background-color: #5d2f0d;
+  }
+  
+  /* Contenedor PayPal */
+  #paypal-button-container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .resumen {
+      margin: 1rem 0;
+    }
+    .tabla-checkout th,
+    .tabla-checkout td {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+  }
+  

@@ -75,3 +75,19 @@ function toggleCart() {
     const modal = document.getElementById('cartModal');
     modal.classList.toggle('visible'); // Asegúrate de tener clase .visible en CSS
 }
+
+fetch('../carrito/carrito.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'accion=obtener'
+})
+    .then(response => response.json())
+    .then(data => {
+        if (data.error) {
+            alert(data.error); // Mostrar el error al usuario
+            window.location.href = '../php/login.php'; // Redirigir al inicio de sesión
+        } else {
+            console.log('Carrito cargado:', data);
+        }
+    })
+    .catch(error => console.error('Error al cargar el carrito:', error));
