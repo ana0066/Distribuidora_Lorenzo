@@ -35,7 +35,7 @@
                 <?php 
                 // Mostrar "Panel Admin" si el rol es admin o superadmin
                 if (isset($_SESSION['rol']) && ($_SESSION['rol'] === 'admin' || $_SESSION['rol'] === 'superadmin')) {
-                    echo "<li><a href='../admin/admin.php'>Panel Admin</a></li>";
+                    echo "<li><a href='../admin/admin.php'>Administrar productos</a></li>";
                 }
 
                 // Mostrar "Administrar Usuarios" solo si el rol es superadmin
@@ -100,5 +100,5 @@
 </script>
 
 <script src="../js/script.js"></script>
-    <script src="../js/carrito.js"></script>
+    <script src="../carrito/carrito.js"></script>
     <script src="../js/productos.js"></script>

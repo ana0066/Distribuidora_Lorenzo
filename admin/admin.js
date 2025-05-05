@@ -1,157 +1,217 @@
 document.addEventListener("DOMContentLoaded", () => {
-  cargarProductos(); 
-  mostrarProductos();
+  const formAdd = document.getElementById("form-add");
+  const formEdit = document.getElementById("form-edit");
+  const formDelete = document.getElementById("form-delete");
+  const contenedorProductos = document.getElementById("product-list");
+  const inputBusqueda = document.getElementById("searchProduct");
+  const btnCargar = document.getElementById("btn-cargar-productos");
 
-  // 🔹 Añadir Producto
-  document.getElementById("botonAñadir").addEventListener("click", function () {
-      const data = {
-          nombre: document.getElementById("productoAñadir").value,
-          valor: parseFloat(document.getElementById("valorAñadir").value),
-          existencia: parseInt(document.getElementById("existenciaAñadir").value),
-          urlImagen: document.getElementById("ImagenAñadir").value,
-          categoria: document.getElementById("categoriaAñadir").value, // Nuevo campo para categorías
-      };
+  let productosCargados = [];
 
-      fetch("../php/addProduct.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-      })
-      .then(response => response.json())
-      .then(result => {
-          alert(result.message || result.error);
-          if (result.message) {
-              cargarProductos();
-              mostrarProductos();
-          }
-      })
-      .then(result => {
-        alert(result.message || result.error);
-        if (result.message) {
-            cargarProductos();
-            mostrarProductos();
-    
-            // 🔹 Vaciar campos después de agregar exitosamente
-            document.getElementById("productoAñadir").value = "";
-            document.getElementById("valorAñadir").value = "";
-            document.getElementById("existenciaAñadir").value = "";
-            document.getElementById("ImagenAñadir").value = "";
-            document.getElementById("categoriaAñadir").value = "";
-        }
-    })
-      .catch(error => console.error("Error:", error));
-  });
+  // ==========================
+  // FUNCIONES DE PRODUCTOS
+  // ==========================
 
-  // 🔹 Editar Producto
-  document.getElementById("botonEditar").addEventListener("click", function () {
-      const idProducto = document.getElementById("productoEditar").value;
-      const atributo = document.getElementById("atributoEditar").value;
-      const nuevoValor = document.getElementById("nuevoAtributo").value;
+  // Cargar productos para selects (editar/eliminar)
+  async function cargarProductosSelects() {
+    const selects = [
+      document.querySelector("#form-edit select[name='id']"),
+      document.querySelector("#form-delete select[name='id']")
+    ];
 
-      if (!idProducto || !atributo || !nuevoValor) {
-          alert("Por favor, completa todos los campos para editar.");
-          return;
+    try {
+      const res = await fetch("../php/listProducts.php");
+      const productos = await res.json();
+
+      selects.forEach(select => {
+        select.innerHTML = `<option value="">Selecciona un producto…</option>`;
+        productos.forEach(p => {
+          select.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
+        });
+      });
+    } catch (err) {
+      console.error("Error cargando productos para selects:", err);
+    }
+  }
+
+  // Renderizar tarjetas en listado
+  function renderProductos(productos) {
+    contenedorProductos.innerHTML = "";
+
+    if (productos.length === 0) {
+      contenedorProductos.innerHTML = "<p>No se encontraron productos.</p>";
+      return;
+    }
+
+    productos.forEach(prod => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+        <img src="${prod.urlImagen}" alt="${prod.nombre}" class="product-img" />
+        <h3>${prod.nombre}</h3>
+        <p><strong>Precio:</strong> RD$ ${parseFloat(prod.valor).toFixed(2)}</p>
+        <p><strong>Existencia:</strong> ${prod.existencia}</p>
+        <p><strong>Categoría:</strong> ${prod.categoria}</p>
+      `;
+      contenedorProductos.appendChild(card);
+    });
+  }
+
+  // Cargar productos y mostrarlos
+  async function cargarYMostrarProductos() {
+    contenedorProductos.innerHTML = `
+      <div class="loading-container">
+        <div class="loader"></div>
+        <p>Cargando productos…</p>
+      </div>
+    `;
+  
+    try {
+      const res = await fetch("../php/listProducts.php");
+      productosCargados = await res.json();
+      renderProductos(productosCargados);
+    } catch (error) {
+      console.error("Error al cargar productos:", error);
+      contenedorProductos.innerHTML = "<p style='color:red;'>Error al cargar productos.</p>";
+    }
+  }
+  
+
+  // ==========================
+  // EVENTOS
+  // ==========================
+
+  // Añadir producto
+  formAdd.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formAdd);
+
+    try {
+      const response = await fetch("../php/addProduct.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Producto añadido exitosamente.");
+        formAdd.reset();
+        cargarProductosSelects(); // actualiza selects
+      } else {
+        alert("Error al añadir producto.");
       }
-
-      const data = { id: idProducto, atributo, nuevoValor };
-
-      fetch("../php/editProduct.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-      })
-      .then(response => response.json())
-      .then(result => {
-          alert(result.message || result.error);
-          if (result.message) {
-              cargarProductos();
-              mostrarProductos();
-          }
-      })
-      .catch(error => console.error("Error:", error));
+    } catch (error) {
+      console.error("Error en la petición:", error);
+      alert("Error al procesar la solicitud.");
+    }
   });
 
-  // 🔹 Eliminar Producto
-  document.getElementById("botonEliminar").addEventListener("click", function () {
-      const idProducto = document.getElementById("productoEliminar").value;
+  // Editar producto
+  formEdit.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formEdit);
 
-      if (!idProducto) {
-          alert("Selecciona un producto para eliminar.");
-          return;
+    try {
+      const res = await fetch("../php/editProduct.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("Producto editado correctamente.");
+        formEdit.reset();
+        cargarProductosSelects();
+      } else {
+        alert("Error al editar el producto.");
       }
-
-      fetch("../php/deleteProduct.php", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ id: idProducto }),
-      })
-      .then(response => response.json())
-      .then(result => {
-          alert(result.message || result.error);
-          if (result.message) {
-              cargarProductos();
-              mostrarProductos();
-          }
-      })
-      .catch(error => console.error("Error:", error));
+    } catch (error) {
+      console.error("Error al editar:", error);
+      alert("Hubo un problema al editar el producto.");
+    }
   });
+
+  // Eliminar producto
+  formDelete.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(formDelete);
+    const confirmacion = confirm("¿Estás seguro de que deseas eliminar este producto?");
+    if (!confirmacion) return;
+
+    try {
+      const res = await fetch("../php/deleteProduct.php", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        alert("Producto eliminado correctamente.");
+        formDelete.reset();
+        cargarProductosSelects();
+      } else {
+        alert("Error al eliminar el producto.");
+      }
+    } catch (error) {
+      console.error("Error al eliminar:", error);
+      alert("Ocurrió un error al intentar eliminar el producto.");
+    }
+  });
+
+  // Buscar productos
+  inputBusqueda.addEventListener("input", () => {
+    const texto = inputBusqueda.value.toLowerCase();
+    const filtrados = productosCargados.filter(p =>
+      p.nombre.toLowerCase().includes(texto) ||
+      p.categoria.toLowerCase().includes(texto)
+    );
+    renderProductos(filtrados);
+  });
+
+  // Botón de cargar productos
+  btnCargar.addEventListener("click", () => {
+    cargarYMostrarProductos();
+  });
+
+  // ==========================
+  // MANEJO DE TABS
+  // ==========================
+
+  const tabs = document.querySelectorAll(".tabs button");
+  const panels = document.querySelectorAll(".panel");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      panels.forEach(p => p.classList.remove("active"));
+  
+      tab.classList.add("active");
+      const panelId = tab.id.replace("tab", "panel");
+      document.getElementById(panelId).classList.add("active");
+  
+      if (panelId === "panel-list") {
+        cargarYMostrarProductos(); // carga automática al abrir "Listar"
+      }
+    });
+  });
+
+  // Inicializar selects
+  cargarProductosSelects();
 });
 
-// Función para cargar productos en los selects
-function cargarProductos() {
-  fetch("../php/fetchProducts.php")
-      .then(response => response.json())
-      .then(data => {
-          let selectEditar = document.getElementById("productoEditar");
-          let selectEliminar = document.getElementById("productoEliminar");
+const inputBuscar = document.getElementById("searchProduct");
 
-          // Limpiar selects antes de agregar opciones
-          selectEditar.innerHTML = '<option value="">---</option>';
-          selectEliminar.innerHTML = '<option value="">---</option>';
+inputBuscar.addEventListener("input", () => {
+  const texto = inputBuscar.value.toLowerCase().trim();
 
-          data.forEach(producto => {
-              let option = document.createElement("option");
-              option.value = producto.id;
-              option.textContent = producto.nombre;
-              selectEditar.appendChild(option);
-              selectEliminar.appendChild(option.cloneNode(true));
-          });
+  const filtrados = productosCargados.filter(p =>
+    p.nombre.toLowerCase().includes(texto) ||
+    p.categoria.toLowerCase().includes(texto)
+  );
 
-          // Llenar el select de atributos
-          let selectAtributo = document.getElementById("atributoEditar");
-          selectAtributo.innerHTML = `
-              <option value="">---</option>
-              <option value="nombre">Nombre</option>
-              <option value="valor">Valor</option>
-              <option value="existencia">Existencia</option>
-              <option value="urlImagen">Imagen</option>
-              <option value="categoria">Categoría</option>
-          `;
-      })
-      .catch(error => console.error("Error cargando productos:", error));
-}
+  renderProductos(filtrados);
+});
 
-
-// 🔹 Mostrar productos en la interfaz
-function mostrarProductos() {
-  fetch("../php/fetchProducts.php")
-      .then(response => response.json())
-      .then(data => {
-          let contenedor = document.getElementById("mostrarProductos");
-          contenedor.innerHTML = ""; // Limpiar antes de actualizar
-
-          data.forEach(producto => {
-              let productoHTML = `
-                  <div class="producto-card">
-                      <img src="${producto.urlImagen}" alt="${producto.nombre}" class="producto-imagen">
-                      <h3>${producto.nombre}</h3>
-                      <p>Valor: $${producto.valor}</p>
-                      <p>Existencia: ${producto.existencia}</p>
-                      <p>Categoría: ${producto.categoria}</p> <!-- Mostrar categoría -->
-                  </div>
-              `;
-              contenedor.innerHTML += productoHTML;
-          });
-      })
-      .catch(error => console.error("Error mostrando productos:", error));
-}

@@ -1,43 +1,25 @@
 <?php
-header('Content-Type: application/json');
+include "../php/db.php";
 
-// Conexión a la base de datos
-$conn = new mysqli('localhost', 'root', '', 'distribuidoral');
+$nombre = $_POST['nombre'] ?? '';
+$valor = $_POST['valor'] ?? 0;
+$existencia = $_POST['existencia'] ?? 0;
+$categoria = $_POST['categoria'] ?? '';
+$urlImagen = '';
 
-if ($conn->connect_error) {
-    echo json_encode(['error' => 'Error de conexión: ' . $conn->connect_error]);
-    exit;
+if (isset($_FILES['imagenFile']) && $_FILES['imagenFile']['error'] === 0) {
+    $nombreArchivo = time() . "_" . $_FILES['imagenFile']['name'];
+    $rutaDestino = "../uploads/" . $nombreArchivo;
+    move_uploaded_file($_FILES['imagenFile']['tmp_name'], $rutaDestino);
+    $urlImagen = $rutaDestino;
+} elseif (!empty($_POST['imagenURL'])) {
+    $urlImagen = $_POST['imagenURL'];
 }
 
-// Leer el JSON del body
-$data = json_decode(file_get_contents("php://input"), true);
+$sql = "INSERT INTO products (nombre, valor, existencia, urlImagen, categoria) VALUES (?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sddss", $nombre, $valor, $existencia, $urlImagen, $categoria);
+$success = $stmt->execute();
 
-// Verificar si se recibió todo
-if (
-    isset($data['nombre']) && isset($data['valor']) &&
-    isset($data['existencia']) && isset($data['urlImagen']) &&
-    isset($data['categoria'])
-) {
-    $nombre = $data['nombre'];
-    $valor = $data['valor'];
-    $existencia = $data['existencia'];
-    $urlImagen = $data['urlImagen'];
-    $categoria = $data['categoria'];
-
-    // Preparar y ejecutar el insert
-    $stmt = $conn->prepare("INSERT INTO products (nombre, valor, existencia, urlImagen, categoria) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("siiss", $nombre, $valor, $existencia, $urlImagen, $categoria);
-
-    if ($stmt->execute()) {
-        echo json_encode(['message' => 'Producto agregado correctamente']);
-    } else {
-        echo json_encode(['error' => 'Error al agregar producto: ' . $stmt->error]);
-    }
-
-    $stmt->close();
-} else {
-    echo json_encode(['error' => 'Datos incompletos']);
-}
-
-$conn->close();
+echo json_encode(["success" => $success]);
 ?>

@@ -1,6 +1,8 @@
 <?php 
 session_start(); 
 include '../menu.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +52,5 @@ include '../menu.php';
     </div>
     </main>
 
-    <!-- Scripts -->
-     <script src="../js/script.js"></script>
-    <script src="../js/carrito.js"></script>
-    <script src="../js/productos.js"></script>
 </body>
 </html>

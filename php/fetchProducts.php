@@ -1,6 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 0);  
 header('Content-Type: application/json; charset=UTF-8');
-// Conexión a la base de datos
 $mysqli = new mysqli('localhost','root','','distribuidoral');
 if ($mysqli->connect_errno) {
   echo json_encode(['error' => 'Error de conexión: '.$mysqli->connect_error]);

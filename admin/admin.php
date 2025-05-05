@@ -1,175 +1,112 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+include "../menu.php";
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito</title>
-
-    <link rel="stylesheet" href="../admin/style.css">
-    <link rel="stylesheet" href="../style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-        <script src="https://kit.fontawesome.com/f6cb57d338.js" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Panel Admin — Productos</title>
+  <link rel="stylesheet" href="../admin/style.css">
+</head>
 <body>
-    <header>
-        <div class="logo">Distribuidora Lorenzo</div>
-        <nav>
-        <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen' ></i>
-            <span class="logo navLogo"><a href="#">Distribuidora Lorenzo</a></span>
+  <main class="admin-container">
+    <h1>Administración de Productos</h1>
+    <div class="tabs">
+      <button id="tab-add" class="active">Añadir</button>
+      <button id="tab-edit">Editar</button>
+      <button id="tab-delete">Eliminar</button>
+      <button id="tab-list">Listar</button>
+    </div>
 
-            <div class="menu">
-                <div class="logo-toggle">
-                    <span class="logo"><a href="#">Distribuidora Lorenzo</a></span>
-                    <i class='bx bx-x siderbarClose'></i>
-                </div>
-                
+    <!-- AÑADIR -->
+    <section id="panel-add" class="panel active">
+      <h2>Añadir Producto</h2>
+      <form id="form-add" enctype="multipart/form-data">
+        <input name="nombre" type="text" placeholder="Nombre del producto" required>
+        <input name="valor" type="number" step="0.01" placeholder="Valor (DOP)" required>
+        <input name="existencia" type="number" placeholder="Existencia" required>
 
-                <ul class="nav-links">
-                    <li><a href="../index.php">Inicio</a></li>
-                    <li><a href="../html/nosotros.php">Nosotros</a></li>
-                    <li><a href="../html/productos.php">Productos</a></li>
-                    <li><a href="../html/contacto.php">Contacto</a></li>
-                    
-                    
-                </ul>
-            </div>
+        <!-- Imagen: upload *o* URL -->
+        <label>Subir imagen:</label>
+        <input name="imagenFile" type="file" accept="image/*">
+        <label>O URL de imagen:</label>
+        <input name="imagenURL" type="url" placeholder="https://...">
 
-            <div class="darkLight-searchBox">
-                <div class="dark-light">
-                    <i class='bx bx-moon moon'></i>
-                    <i class='bx bx-sun sun'></i>
-                </div>
+        <select name="categoria" required>
+          <option value="">Selecciona categoría…</option>
+          <option value="mobiliaria">Mobiliaria</option>
+          <option value="vajilla">Vajilla</option>
+          <option value="decoraciones">Decoraciones</option>
+          <option value="herramientas">Herramientas</option>
+          <option value="electrodomesticos">Electrodomésticos</option>
+        </select>
 
-                <div class="searchBox">
-                   <div class="searchToggle">
-                    <i class='bx bx-x cancel'></i>
-                    <i class='bx bx-search search'></i>
-                   </div>
+        <button type="submit" class="btn">Añadir</button>
+      </form>
+    </section>
 
-                    <div class="search-field">
-                        <input type="text" placeholder="Buscar...">
-                        <i class='bx bx-search'></i>
-                    </div>
-                </div>
-                <div class="cart-icon">
-                <i class="bx bxs-cart"  onclick="toggleCart()"></i>
-                <span id="cart-count">0</span>
-            </div>
-            </div>
-            <div class="account-shopping">
+    <!-- EDITAR -->
+    <section id="panel-edit" class="panel">
+      <h2>Editar Producto</h2>
+      <form id="form-edit">
+        <select name="id" required>
+          <option value="">Selecciona un producto…</option>
+        </select>
+        <select name="atributo" required>
+          <option value="">Qué editar…</option>
+          <option value="nombre">Nombre</option>
+          <option value="valor">Valor</option>
+          <option value="existencia">Existencia</option>
+          <option value="urlImagen">URL Imagen</option>
+          <option value="categoria">Categoría</option>
+        </select>
+        <input name="nuevoValor" type="text" placeholder="Nuevo valor" required>
+        <button type="submit" class="btn">Guardar cambios</button>
+      </form>
+    </section>
 
-            <div class="user">
-                    <?php 
-                        if (isset($_SESSION['usuario'])) {
-                            echo "<a class='searchToggle logoutBtn' id='logoutBtn' href='../php/logout.php'><i class='bx bx-log-out'></i></a>";
-                            echo "<span class='username'>" . $_SESSION['usuario'] . "</span>";
-                        } else {
-                            echo "<a class='searchToggle' href='../php/login.php'><i class='bx bx-user'></i></a>";
-                        }
-                    ?>
-                </div>
-            </div>
-        </div>
-        
-    </nav>
-    </header>
+    <!-- ELIMINAR -->
+    <section id="panel-delete" class="panel">
+      <h2>Eliminar Producto</h2>
+      <form id="form-delete">
+        <select name="id" required>
+          <option value="">Selecciona un producto…</option>
+        </select>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+      </form>
+    </section>
 
-    <main>
-        <div class="contenedor-cambios">
-            <!-- Añadir -->
-            <div class="añadir cambios">
-                <h2>Añadir</h2>
-                <form action="../php/addProduct.php" method="POST">
-                    <label>Nombre del producto</label>
-                    <input type="text" id="productoAñadir" name="nombreDelProducto">
+    <!-- LISTAR -->
+    <section id="panel-list" class="panel">
+      <h2>Listado de Productos</h2>
 
-                    <label>Valor del producto</label>
-                    <input type="number" id="valorAñadir">
+      <!-- BUSCADOR -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchProduct"
+          placeholder="Buscar productos por nombre, categoría…"
+          class="search-input"
+        />
+      </div>
 
-                    <label>Existencia</label>
-                    <input type="number" id="existenciaAñadir">
+      <button id="btn-cargar-productos" class="btn">Actualizar listado</button>
 
-                    <label>Url Imagen</label>
-                    <input type="text" id="ImagenAñadir">
 
-                    <label>Categoría</label>
-                    <select name="..." id="categoriaAñadir">
-                        <option value="mobiliaria">Mobiliaria</option>
-                        <option value="vajilla">Vajillas</option>
-                        <option value="decoraciones">Decoraciones para el hogar</option>
-                        <option value="herramientas">Herramientas</option>
-                        <option value="electrodomesticos">Electrodomésticos</option>
-                    </select>
+      <div id="product-list" class="grid-products">
+        <!-- se inyectan tarjetas aquí -->
+      </div>
+    </section>
+  </main>
 
-                    <input class="button" type="button" id="botonAñadir" value="Añadir">
-                </form>
-            </div>
-            <!-- Editar -->
-            <div class="editar cambios">
-                <h2>Editar</h2>
-                <form>
-                    <label>Nombre del producto</label>
-                    <select id="productoEditar">
-                        <option value="">---</option>
-                    </select>
-
-                    <label>Atributo</label>
-                    <select id="atributoEditar">
-                        <option value="">---</option>
-                    </select>
-
-                    <label>Nuevo valor</label>
-                    <input type="text" id="nuevoAtributo">
-
-                    <input class="button" type="button" id="botonEditar" value="Editar">
-                </form>
-            </div>
-
-            <!-- Eliminar -->
-            <div class="eliminar cambios">
-                <h2>Eliminar</h2>
-
-                <form>
-                    <label>Nombre del producto</label>
-                    <select id="productoEliminar">
-                        <option value="">---</option>
-                    </select>
-                    <input class="button" type="button" id="botonEliminar" value="Eliminar">
-                </form>
-            </div>
-        </div>
-
-        <!-- Mostrar el mensaje -->
-        <div class="contenedorMensaje">
-            <div id="mensaje"></div>
-        </div>
-
-        <!-- Productos -->
-        <div class="contenedorProductos">
-            <h2>Productos</h2>
-            <div class="mostrarProductos" id="mostrarProductos">
-                
-            </div>
-        </div>
-        </div>
-    </main>
-
-    <script src="admin.js"></script>
-    <script src="../script.js"></script>
-    <script src="../carrito.js"></script>
+  <script src="../admin/admin.js"></script>
 </body>
-
 </html>

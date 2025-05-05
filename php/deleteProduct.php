@@ -1,22 +1,11 @@
 <?php
-header("Content-Type: application/json");
-include 'db.php';
+include "../php/db.php";
 
-$data = json_decode(file_get_contents("php://input"), true);
-$conn = conectarDB();
-
-$id = $data["id"];
-
-$query = "DELETE FROM products WHERE id = ?";
-$stmt = $conn->prepare($query);
+$id = $_POST['id'] ?? 0;
+$sql = "DELETE FROM products WHERE id = ?";
+$stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
+$success = $stmt->execute();
 
-if ($stmt->execute()) {
-    echo json_encode(["message" => "Producto eliminado con éxito"]);
-} else {
-    echo json_encode(["error" => "Error al eliminar producto"]);
-}
-
-$stmt->close();
-$conn->close();
+echo json_encode(["success" => $success]);
 ?>
