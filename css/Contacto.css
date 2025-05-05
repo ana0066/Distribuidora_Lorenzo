@@ -222,7 +222,7 @@ textarea.input {
 }
 
 .icon {
-  width: 28px;
+  width: 8px;
   margin-right: 0.7rem;
 }
 
@@ -381,5 +381,123 @@ textarea.input {
 
   .btn {
     padding: 0.45rem 1.2rem;
+  }
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.pie-pagina {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.pie-pagina .grupo-1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+  padding: 45px 0px;
+}
+
+.pie-pagina .grupo-1 .box figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img{
+  width: 350px;
+}
+
+.pie-pagina .grupo-1 .box figure img:hover {
+  transform: scale(1.05);
+}
+
+.pie-pagina .grupo-1 .box h2 {
+  color: #000;
+  margin-bottom: 15px;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.pie-pagina .grupo-1 .box p a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.pie-pagina .grupo-1 .box p a:hover {
+  color: #513831;
+}
+
+.pie-pagina .grupo-1 .box p {
+  margin-bottom: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  background-color: #513831;
+  border-radius: 50%;
+  font-size: 24px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+  background-color: #513831;
+  transform: scale(1.2) rotate(5deg);
+}
+
+.pie-pagina .grupo-2 {
+  background-color: #513831;
+  padding: 15px 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+  font-size: 15px;
+}
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+  .pie-pagina .grupo-1 {
+      width: 90%;
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+      padding: 35px 0px;
+      text-align: center;
+  }
+
+  .pie-pagina .grupo-1 .red-social {
+      justify-content: center;
+  }
+
+  .pie-pagina .grupo-1 .box figure img {
+      max-width: 300px;
+  }
+
+  .pie-pagina .grupo-1 .box p {
+      font-size: 16px;
   }
 }

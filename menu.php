@@ -20,7 +20,7 @@
             <h1>Distribuidora Lorenzo</h1>
         </div>
         <div class="info-telefono">
-            <p><i class="fas fa-phone"></i> (809) 906-3559</p>
+            <p><i class="fas fa-phone"></i> (809) 506-3559</p>
         </div>
 
     </div>
