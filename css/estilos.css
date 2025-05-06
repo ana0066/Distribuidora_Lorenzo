@@ -64,13 +64,14 @@ body {
 /* Formulario */
 .form-container {
     flex: 1;
-    max-width: 400px;
+    width: 90%;
     padding: 20px;
     text-align: center;
+    justify-content: center;
 }
 
 .form-container img {
-    max-width: 100px; /* Ajusta el tamaño de la imagen */
+    max-width: 200px; /* Ajusta el tamaño de la imagen */
     height: auto;
     margin-bottom: 20px;
 }

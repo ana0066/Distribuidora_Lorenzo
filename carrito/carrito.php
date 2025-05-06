@@ -1,124 +1,81 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-include '../php/db.php';
+require_once '../php/db.php';
 
-header('Content-Type: application/json'); // Asegura que la respuesta sea JSON
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
-
-    // Verificar si el usuario existe
-    $stmt = $conn->prepare("SELECT id, nombre, email, contraseña, verificado FROM usuarios WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        // Verificar contraseña
-        if (password_verify($password, $user['contraseña'])) {
-            if ($user['verificado'] == 1) {
-                // Guardar el ID del usuario en la sesión
-                $_SESSION['id'] = $user['id'];
-                $_SESSION['nombre'] = $user['nombre'];
-                echo json_encode(['success' => true, 'message' => 'Inicio de sesión exitoso']);
-                exit;
-            } else {
-                echo json_encode(['error' => 'Tu cuenta no ha sido verificada.']);
-                exit;
-            }
-        } else {
-            echo json_encode(['error' => 'Contraseña incorrecta.']);
-            exit;
-        }
-    } else {
-        echo json_encode(['error' => 'No se encontró una cuenta con ese correo.']);
-        exit;
-    }
-}
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['id'])) {
-    echo json_encode(['error' => 'No autenticado. Por favor, inicia sesión.']);
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: ../php/login.php");
     exit;
 }
 
-$usuario_id = $_SESSION['id'];
+$id_usuario = $_SESSION['usuario_id'];
 
-// Validar entrada
-$accion = $_POST['accion'] ?? '';
-$id_producto = isset($_POST['id_producto']) ? (int)$_POST['id_producto'] : null;
-$cantidad = isset($_POST['cantidad']) ? (int)$_POST['cantidad'] : 1;
-
-if (!in_array($accion, ['agregar', 'eliminar', 'obtener'])) {
-    echo json_encode(['error' => 'Acción no válida']);
-    exit;
-}
-
-if ($accion !== 'obtener' && (!$id_producto || $cantidad < 1)) {
-    echo json_encode(['error' => 'Datos inválidos']);
-    exit;
-}
-
-// Manejar acciones
-switch ($accion) {
-    case 'agregar':
-        $stmt = $conn->prepare("SELECT id FROM carrito WHERE id_usuario = ? AND id_producto = ?");
-        $stmt->bind_param("ii", $usuario_id, $id_producto);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $stmt = $conn->prepare("UPDATE carrito SET cantidad = cantidad + ? WHERE id_usuario = ? AND id_producto = ?");
-            $stmt->bind_param("iii", $cantidad, $usuario_id, $id_producto);
-        } else {
-            $stmt = $conn->prepare("INSERT INTO carrito (id_usuario, id_producto, cantidad) VALUES (?, ?, ?)");
-            $stmt->bind_param("iii", $usuario_id, $id_producto, $cantidad);
-        }
-
-        if (!$stmt->execute()) {
-            echo json_encode(['error' => 'Error al agregar al carrito', 'detalle' => $stmt->error]);
-            exit;
-        }
-
-        echo json_encode(['success' => true, 'message' => 'Producto agregado al carrito']);
-        break;
-
-    case 'eliminar':
-        $stmt = $conn->prepare("DELETE FROM carrito WHERE id_usuario = ? AND id_producto = ?");
-        $stmt->bind_param("ii", $usuario_id, $id_producto);
-
-        if (!$stmt->execute()) {
-            echo json_encode(['error' => 'Error al eliminar del carrito', 'detalle' => $stmt->error]);
-            exit;
-        }
-
-        echo json_encode(['success' => true, 'message' => 'Producto eliminado del carrito']);
-        break;
-
-    case 'obtener':
-        $stmt = $conn->prepare("SELECT c.id AS carrito_id, c.cantidad, p.id AS producto_id, p.nombre, p.valor, p.urlImagen 
-                                FROM carrito c 
-                                JOIN products p ON c.id_producto = p.id 
-                                WHERE c.id_usuario = ?");
-        $stmt->bind_param("i", $usuario_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $carrito = [];
-
-        while ($row = $result->fetch_assoc()) {
-            $carrito[] = $row;
-        }
-
-        echo json_encode(['success' => true, 'data' => $carrito]);
-        break;
-
-    default:
-        echo json_encode(['error' => 'Acción no reconocida']);
-        break;
-}
+// Obtener productos del carrito del usuario
+$query = "SELECT c.id, p.nombre, p.valor, p.urlImagen, c.cantidad, (p.valor * c.cantidad) AS total
+          FROM carrito c
+          JOIN products p ON c.id_producto = p.id
+          WHERE c.id_usuario = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $id_usuario);
+$stmt->execute();
+$resultado = $stmt->get_result();
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Carrito</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+
+<main class="contenedor-carrito">
+  <h2>Mi Carrito</h2>
+
+  <?php if ($resultado->num_rows > 0): ?>
+    <form method="POST" action="actualizar_carrito.php">
+      <table class="tabla-carrito">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Imagen</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+            <th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $gran_total = 0;
+          while ($row = $resultado->fetch_assoc()):
+            $gran_total += $row['total'];
+          ?>
+          <tr>
+            <td><?= htmlspecialchars($row['nombre']) ?></td>
+            <td><img src="<?= htmlspecialchars($row['urlImagen']) ?>" width="50"></td>
+            <td>$<?= number_format($row['valor'], 2) ?></td>
+            <td>
+              <input type="number" name="cantidades[<?= $row['id'] ?>]" value="<?= $row['cantidad'] ?>" min="1">
+            </td>
+            <td>$<?= number_format($row['total'], 2) ?></td>
+            <td><a href="eliminar_carrito.php?id=<?= $row['id'] ?>">❌</a></td>
+          </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+
+      <div class="acciones-carrito">
+        <p><strong>Total a pagar: $<?= number_format($gran_total, 2) ?></strong></p>
+        <button type="submit">Actualizar cantidades</button>
+        <a href="../html/checkout.php" class="boton-pagar">Proceder al pago</a>
+      </div>
+    </form>
+  <?php else: ?>
+    <p>Tu carrito está vacío.</p>
+  <?php endif; ?>
+</main>
+
+</body>
+</html>

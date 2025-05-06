@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "../menu.php";
 ?>
 
@@ -263,9 +262,7 @@ include "../menu.php";
 </footer>
 
 
-    <script src="../js/productos.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/slider.js"></script>
-    <script src="../js/carrito.js"></script>
 </body>
 </html>
