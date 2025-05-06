@@ -95,6 +95,5 @@ include "../menu.php";
   filtro.addEventListener('change', filtrarProductos);
 </script>
 
-
 </body>
 </html>

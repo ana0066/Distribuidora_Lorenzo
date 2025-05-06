@@ -848,3 +848,23 @@ header {
     }
 }
 
+.carrito-aside {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%); /* Oculto fuera de la pantalla */
+}
+
+.carrito-aside.mostrar {
+    display: block; /* Mostrar el aside */
+    transform: translateX(0); /* Moverlo dentro de la pantalla */
+}
+
