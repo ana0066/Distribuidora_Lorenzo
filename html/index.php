@@ -31,7 +31,7 @@ include "../menu.php";
       <div class="image-data">
        
         <h2>Nuestra Variedades <br />de platos</h2>
-        <a href="#" class="button">Más información</a>
+        <a href="../html/productos.php" class="button">Más información</a>
       </div>
     </div>
 
@@ -41,7 +41,7 @@ include "../menu.php";
       <div class="image-data">
      
         <h2>Nuestra Variedades<br /> de Electródomesticos</h2>
-        <a href="#" class="button">Más información</a>
+        <a href="../html/productos.php" class="button">Más información</a>
       </div>
     </div>
 
@@ -51,7 +51,7 @@ include "../menu.php";
       <div class="image-data">
         <span class="text"></span>
         <h2>Nuestra Variedades<br />para la Cocina</h2>
-        <a href="#" class="button">Más información</a>
+        <a href="../html/productos.php" class="button">Más información</a>
       </div>
     </div>
 

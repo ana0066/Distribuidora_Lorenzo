@@ -17,6 +17,7 @@ include "../menu.php";
   <link rel="stylesheet" href="../css/productos.css">
 </head>
 <body>
+  
 
 <main>
   <section class="contenedorProductos">
@@ -33,53 +34,52 @@ include "../menu.php";
         <option value="electrodomesticos">Electrodomésticos</option>
       </select>
     </div>
+    <div class="buscador-productos">
+  <label for="inputBuscar">Buscar producto:</label>
+  <input type="text" id="inputBuscar" placeholder="Ej. cama, vajilla... 🔍">
+</div>
 
     <div id="productosContainer" class="grid-productos">
-  <?php while ($producto = $resultado->fetch_assoc()): ?>
-    <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
-      <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
-      <div class="info-producto">
-  <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
-  <p class="precio">RD$<?= number_format($producto['valor'], 2) ?></p>
-  <p class="stock">Stock: <?= $producto['existencia'] ?></p>
+<?php while ($producto = $resultado->fetch_assoc()): ?>
+  <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
+    <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
+    <div class="info-producto">
+      <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
+      <p class="precio">$<?= number_format($producto['valor'], 2) ?></p>
+      <p class="stock">Stock: <?= $producto['existencia'] ?></p>
+      <form method="POST" action="../carrito/agregar_carrito.php">
+      <input type="hidden" name="id_producto" value="<?= $producto['id'] ?>">
+      <button type="submit">Agregar al carrito</button>
+    </form>
 
-  <input type="number" class="cantidad-producto" min="1" max="<?= $producto['existencia'] ?>" value="1">
-
-  <div class="acciones-producto">
-  <input type="number" class="cantidad" min="1" max="<?= $producto['existencia'] ?>" value="1">
-  <button type="button" class="btn-agregar-carrito" 
-          data-id="<?= $producto['id'] ?>" 
-          data-stock="<?= $producto['existencia'] ?>">
-    Agregar al carrito
-  </button>
-</div>
-
-</div>
     </div>
-  <?php endwhile; ?>
-</div>
+  </div>
+<?php endwhile; ?>
+    </div>
 
     <p id="mensajeVacio" style="display:none; text-align:center; margin-top: 2rem;">No hay productos en esta categoría.</p>
   </section>
 </main>
 
 <script>
-  function agregarAlCarrito(idProducto) {
-    console.log('Producto agregado al carrito:', idProducto);
-  }
-
+  const inputBuscar = document.getElementById('inputBuscar');
   const filtro = document.getElementById('filtroCategoria');
   const productos = document.querySelectorAll('.card-producto');
   const mensaje = document.getElementById('mensajeVacio');
 
-  filtro.addEventListener('change', () => {
+  function filtrarProductos() {
+    const termino = inputBuscar.value.toLowerCase();
     const categoria = filtro.value;
     let visibles = 0;
 
     productos.forEach(prod => {
-      const coincide = !categoria || prod.dataset.categoria === categoria;
+      const nombre = prod.querySelector('h3').textContent.toLowerCase();
+      const cat = prod.dataset.categoria;
 
-      if (coincide) {
+      const coincideNombre = nombre.includes(termino);
+      const coincideCategoria = !categoria || cat === categoria;
+
+      if (coincideNombre && coincideCategoria) {
         prod.classList.remove("oculto");
         visibles++;
       } else {
@@ -88,10 +88,12 @@ include "../menu.php";
     });
 
     mensaje.style.display = visibles === 0 ? "block" : "none";
-  });
-</script>
+  }
 
-<script src="../carrito/carrito.js"></script>
+  // Ejecutar la función cuando se escribe o cambia la categoría
+  inputBuscar.addEventListener('input', filtrarProductos);
+  filtro.addEventListener('change', filtrarProductos);
+</script>
 
 
 
