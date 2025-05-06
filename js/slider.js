@@ -1,13 +1,44 @@
+document.addEventListener('DOMContentLoaded', () => {
+    function show(index) {
+        const slides = document.querySelectorAll('.slide');
+        console.log('Índice:', index);
+        console.log('Slides:', slides);
+
+        if (slides.length === 0) {
+            console.error('No se encontraron elementos con la clase .slide');
+            return;
+        }
+        if (index >= 0 && index < slides.length) {
+            slides[index].classList.add('active');
+        } else {
+            console.error('Índice fuera de rango:', index);
+        }
+    }
+
+    window.moveSlide = function(index) {
+        show(index);
+    };
+});
+
 (() => {
   let current = 0;
   const slides = document.querySelectorAll('.slide');
   const total  = slides.length;
 
-  function show(n){
-    slides.forEach(s=>s.classList.remove('active'));
-    slides[n].classList.add('active');
-    document.getElementById('slider')
-      .style.transform = `translateX(-${n*100}%)`;
+  function show(index) {
+    const slides = document.querySelectorAll('.slide');
+    console.log('Índice:', index);
+    console.log('Slides:', slides);
+
+    if (slides.length === 0) {
+        console.error('No se encontraron elementos con la clase .slide');
+        return;
+    }
+    if (index >= 0 && index < slides.length) {
+        slides[index].classList.add('active');
+    } else {
+        console.error('Índice fuera de rango:', index);
+    }
   }
 
   window.moveSlide = dir => {

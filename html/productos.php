@@ -42,7 +42,7 @@ include "../menu.php";
         <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
         <p class="precio">RD$<?= number_format($producto['valor'], 2) ?></p>
         <p class="stock">Stock: <?= $producto['existencia'] ?></p>
-        <button type="button" class="btn-agregar-carrito" data-id="<?= $producto['id'] ?>">Agregar al carrito</button>
+        <button type="button"  class="btn-agregar-carrito" data-id="<?= $producto['id'] ?>">Agregar al carrito</button>
       </div>
     </div>
   <?php endwhile; ?>
@@ -79,6 +79,8 @@ include "../menu.php";
     mensaje.style.display = visibles === 0 ? "block" : "none";
   });
 </script>
+
+<script src="../carrito/carrito.js"></script>
 
 </body>
 </html>

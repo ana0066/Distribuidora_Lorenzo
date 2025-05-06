@@ -1,129 +1,101 @@
-// js/carrito.js
-(function () {
+document.addEventListener('DOMContentLoaded', () => {
+    const botonesAgregar = document.querySelectorAll('.btn-agregar-carrito');
+    const cartCount = document.getElementById('cart-count');
     const cartIcon = document.getElementById('cartIcon');
     const aside = document.getElementById('asideCarrito');
-    const btnClose = document.getElementById('btnCerrarCarrito');
-    const list = document.getElementById('carritoItems');
-    const countEl = document.getElementById('cart-count');
-    const totalEl = document.getElementById('totalCarrito');
-  
-    // Mostrar el carrito
-    cartIcon.addEventListener('click', () => {
-      aside.classList.add('mostrar');
-      loadCart();
-    });
-  
-    // Cerrar el carrito
-    btnClose.addEventListener('click', () => aside.classList.remove('mostrar'));
-  
-    // Cargar el carrito
-    function loadCart() {
-      fetch('../carrito/obtener_carrito.php')
-        .then((r) => r.json())
-        .then((data) => {
-          list.innerHTML = '';
-          let total = 0,
-            cnt = 0;
-          data.items.forEach((it) => {
-            const valor = parseFloat(it.valor);
-            const sub = parseFloat(it.subtotal);
-            total += sub;
-            cnt += parseInt(it.cantidad);
-            const div = document.createElement('div');
-            div.className = 'item-carrito';
-            div.innerHTML = `
-              <img src="${it.urlImagen}" alt="${it.nombre}">
-              <div class="item-info">
-                <h4>${it.nombre}</h4>
-                <p class="precio">RD$${valor.toFixed(2)}</p>
-                <p class="subtotal">Sub: RD$${sub.toFixed(2)}</p>
-                <input type="number" min="1" value="${it.cantidad}" data-id="${it.id_carrito}">
-              </div>
-              <button class="eliminar" data-id="${it.id_carrito}">×</button>
-            `;
-            list.appendChild(div);
-          });
-          countEl.textContent = cnt;
-          totalEl.textContent = 'RD$' + total.toFixed(2);
-  
-          // Eventos para actualizar cantidad
-          list.querySelectorAll('input[type="number"]').forEach((input) => {
-            input.addEventListener('change', (e) => {
-              updateItem(e.target.dataset.id, parseInt(e.target.value, 10));
-            });
-          });
-  
-          // Eventos para eliminar producto
-          list.querySelectorAll('.eliminar').forEach((btn) => {
-            btn.addEventListener('click', (e) => {
-              removeItem(e.target.dataset.id);
-            });
-          });
-        });
-    }
-  
-    // Actualizar un ítem del carrito
-    function updateItem(id, qty) {
-      fetch('../carrito/actualizar_carrito.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_carrito: id, cantidad: qty }),
-      })
-        .then((r) => r.json())
-        .then((resp) => {
-          if (resp.ok) {
-            loadCart();
-            actualizarContadorCarrito();
-          }
-        });
-    }
-  
-    // Eliminar un ítem del carrito
-    function removeItem(id) {
-      fetch('../carrito/eliminar_carrito.php?id=' + id)
-        .then((r) => r.json())
-        .then((resp) => {
-          if (resp.ok) {
-            loadCart();
-            actualizarContadorCarrito();
-          }
-        });
-    }
-  
-    // Actualizar el contador del carrito
-    function actualizarContadorCarrito() {
-      fetch('../carrito/carrito_total.php')
-        .then((response) => response.json())
-        .then((data) => {
-          countEl.textContent = data.total || 0;
-        });
-    }
-  
-    // Inicializar contador al cargar la página
-    document.addEventListener('DOMContentLoaded', actualizarContadorCarrito);
-  })();
-  
-  // Manejo de agregar producto sin recargar
-  document.addEventListener('DOMContentLoaded', () => {
-    const botonesAgregar = document.querySelectorAll('.btn-agregar-carrito');
+    const btnClose = document.getElementById('btnCerrarCarrito'); // Botón para cerrar el carrito
+    const carritoItems = document.querySelector('.carrito-items'); // Contenedor de los ítems del carrito
 
     // Función para actualizar el contador del carrito
     function actualizarContadorCarrito() {
         fetch('../carrito/carrito_total.php')
             .then(res => res.json())
             .then(data => {
-                const cartCount = document.getElementById('cart-count');
                 if (cartCount) cartCount.textContent = data.total || 0;
-            });
+            })
+            .catch(err => console.error('Error actualizando contador:', err));
     }
 
-    // Agregar evento a los botones de "Agregar al carrito"
-    botonesAgregar.forEach(boton => {
-        boton.addEventListener('click', (e) => {
-            e.preventDefault(); // Evita recargar la página
-            const idProducto = boton.dataset.id;
+    // Función para cargar los ítems del carrito
+    function loadCart() {
+        console.log("Cargando carrito...");
+        fetch('../carrito/obtener_carrito.php')
+            .then(res => res.json())
+            .then(data => {
+                console.log('Ítems del carrito:', data);
 
-            // Enviar solicitud para agregar al carrito
+                // Limpiar el contenedor antes de agregar nuevos ítems
+                carritoItems.innerHTML = '';
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(item => {
+                        const itemHTML = `
+                            <div class="item-carrito">
+                                <img src="${item.urlImagen}" alt="${item.nombre}" class="carrito-item-img">
+                                <div class="item-info">
+                                    <h4>${item.nombre}</h4>
+                                    <p>Cantidad: ${item.cantidad}</p>
+                                    <p>Precio: ${item.valor} DOP</p>
+                                    <p>Subtotal: ${item.subtotal} DOP</p>
+                                </div>
+                                <button class="btn-eliminar-item" data-id="${item.id}">✕</button>
+                            </div>
+                        `;
+                        carritoItems.insertAdjacentHTML('beforeend', itemHTML);
+                    });
+
+                    // Agregar eventos a los botones de eliminar
+                    const botonesEliminar = document.querySelectorAll('.btn-eliminar-item');
+                    botonesEliminar.forEach(boton => {
+                        boton.addEventListener('click', (e) => {
+                            const idProducto = boton.dataset.id;
+                            eliminarItemCarrito(idProducto);
+                        });
+                    });
+                } else {
+                    carritoItems.innerHTML = '<p>Tu carrito está vacío.</p>';
+                }
+            })
+            .catch(err => console.error('Error cargando el carrito:', err));
+    }
+
+    // Función para eliminar un ítem del carrito
+    function eliminarItemCarrito(idProducto) {
+        fetch(`../carrito/eliminar_carrito.php?id=${idProducto}`, {
+            method: 'GET',
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Ítem eliminado:', data);
+                if (data.success) {
+                    loadCart(); // Recargar el carrito
+                    actualizarContadorCarrito(); // Actualizar el contador
+                } else {
+                    alert('Error al eliminar el ítem del carrito');
+                }
+            })
+            .catch(err => console.error('Error eliminando ítem:', err));
+    }
+
+    // Evento para abrir el carrito
+    cartIcon.addEventListener('click', () => {
+        aside.classList.add('mostrar'); // Abre el menú
+        loadCart(); // Carga los ítems
+    });
+
+    // Evento para cerrar el carrito
+    btnClose.addEventListener('click', () => {
+        aside.classList.remove('mostrar'); // Cierra el menú
+    });
+
+    // Agregar evento a los botones de "Agregar al carrito"
+    botonesAgregar.forEach((boton) => {
+        boton.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevenir cualquier comportamiento inesperado
+
+            const idProducto = boton.dataset.id;
+            console.log('Clic en botón. ID producto:', idProducto);
+
             fetch('../carrito/agregar_carrito.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -131,12 +103,14 @@
             })
                 .then(res => res.json())
                 .then(data => {
+                    console.log('Respuesta del servidor:', data);
                     if (data.success) {
-                        actualizarContadorCarrito(); // Actualiza el contador dinámicamente
+                        actualizarContadorCarrito(); // Actualizar el contador
                     } else {
-                        alert('No se pudo agregar al carrito');
+                        alert('Error al agregar al carrito');
                     }
-                });
+                })
+                .catch(err => console.error('Error en fetch:', err));
         });
     });
 

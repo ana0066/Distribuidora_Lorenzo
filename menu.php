@@ -65,18 +65,18 @@ session_start();
 </header>
 
 <!-- Aside Carrito -->
-<aside id="asideCarrito" class="aside-carrito">
-  <div class="carrito-header">
-    <h3>Mi Carrito</h3>
-    <button id="btnCerrarCarrito">×</button>
-  </div>
-  <div id="carritoItems" class="carrito-items">
-    <!-- Productos vía AJAX -->
-  </div>
-  <div class="carrito-footer">
-    <p>Total: <span id="totalCarrito">$0.00</span></p>
-    <a href="../html/checkout.php" class="btn-checkout">Checkout</a>
-  </div>
+<aside id="asideCarrito" class="carrito-aside">
+    <div class="carrito-header">
+        <button id="btnCerrarCarrito" class="btn-cerrar">✕</button>
+        <h2>Tu Carrito</h2>
+    </div>
+    <div class="carrito-items">
+        <!-- Aquí se cargarán los ítems del carrito -->
+    </div>
+    <div class="carrito-footer">
+        <p><strong>Total:</strong> <span id="carrito-total">0 DOP</span></p>
+        <a href="../html/checkout.php" class="btn-checkout">Ir al Checkout</a>
+    </div>
 </aside>
 
 <script>
@@ -99,7 +99,6 @@ session_start();
 </script>
 
 <script src="../js/script.js"></script>
-<script src="../js/slider.js"></script>
 <script src="../carrito/carrito.js"></script>
 </body>
 </html>

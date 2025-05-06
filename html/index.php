@@ -25,35 +25,9 @@ include "../menu.php";
 <div class="slider-container">
   <div class="slider" id="slider">
 
-    <!-- Slide 1 -->
-    <div class="slide active">
-      <img src="../img/Tienda.jpg" alt="Imagen 1" />
-      <div class="image-data">
-       
-        <h2>Nuestra Variedades <br />de platos</h2>
-        <a href="#" class="button">Más información</a>
-      </div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="slide">
-      <img src="../img/Electo.jpg" alt="Imagen 2" />
-      <div class="image-data">
-     
-        <h2>Nuestra Variedades<br /> De Electródomesticos</h2>
-        <a href="#" class="button">Más información</a>
-      </div>
-    </div>
-
-    <!-- Slide 3 -->
-    <div class="slide">
-      <img src="../img/Cocina.jpg" alt="Imagen 3" />
-      <div class="image-data">
-        <span class="text"></span>
-        <h2>Nuestra Variedades<br />para la Cocina</h2>
-        <a href="#" class="button">Más información</a>
-      </div>
-    </div>
+    <div class="slide active">Slide 1</div>
+    <div class="slide">Slide 2</div>
+    <div class="slide">Slide 3</div>
 
   </div>
 
