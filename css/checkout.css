@@ -1,81 +1,95 @@
-/* Contenedor principal */
 .contenedor-checkout {
     max-width: 900px;
     margin: 2rem auto;
     padding: 1rem;
     font-family: 'Segoe UI', sans-serif;
-  }
-  
-  /* Título */
-  .contenedor-checkout h2 {
+}
+
+.contenedor-checkout h2 {
     text-align: center;
     margin-bottom: 1.5rem;
     color: #4B2E1E;
-  }
-  
-  /* Tabla de ítems */
-  .tabla-checkout {
+}
+
+.tabla-checkout {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 1.5rem;
-  }
-  .tabla-checkout th,
-  .tabla-checkout td {
+}
+
+.tabla-checkout th,
+.tabla-checkout td {
     border: 1px solid #ddd;
     padding: 0.75rem;
     text-align: center;
-  }
-  .tabla-checkout th {
+}
+
+.tabla-checkout th {
     background-color: #f5f5f5;
     color: #333;
     font-weight: 600;
-  }
-  .tabla-checkout img {
+}
+
+.tabla-checkout img {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 6px;
-  }
-  
-  /* Inputs de cantidad */
-  .tabla-checkout input[type="number"] {
+}
+
+.tabla-checkout input[type="number"] {
     width: 60px;
     padding: 0.3rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  /* Botón eliminar */
-  .tabla-checkout .btn-eliminar {
-    background: none;
+}
+
+/* Botón eliminar */
+.tabla-checkout .btn-eliminar {
+    color: rgb(0, 0, 0);
     border: none;
-    color: #e63946;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
-  }
-  
-  /* Resumen de totales */
-  .resumen {
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.tabla-checkout .btn-eliminar:hover {
+    color:#a11d1d;
+    transform: scale(1.05); 
+}
+
+.tabla-checkout .btn-eliminar:active {
+    transform: scale(0.95); 
+}
+
+.resumen {
     max-width: 400px;
     margin-left: auto;
     margin-bottom: 2rem;
     font-size: 1rem;
-  }
-  .resumen p {
+}
+
+.resumen p {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 0;
-  }
-  .resumen p strong {
+}
+
+.resumen p strong {
     font-weight: 600;
-  }
-  
-  /* Botón de confirmar */
-  .form-checkout {
+}
+
+.form-checkout {
     text-align: center;
+    margin-top: 20px;
     margin-bottom: 2rem;
-  }
-  .boton-confirmar {
+}
+
+.boton-confirmar {
     background-color: #8B4513;
     color: white;
     border: none;
@@ -84,26 +98,51 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  .boton-confirmar:hover {
+}
+
+.boton-confirmar:hover {
     background-color: #5d2f0d;
-  }
-  
-  /* Contenedor PayPal */
-  #paypal-button-container {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  /* Responsive */
-  @media (max-width: 600px) {
+}
+
+.total-checkout {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.total-checkout p {
+  margin: 5px 0;
+}
+
+.total-checkout p strong {
+  font-size: 16px;
+  color: #333;
+}
+
+.paypal-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#paypal-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    width: 90%; 
+}
+
+@media (max-width: 600px) {
     .resumen {
-      margin: 1rem 0;
+        margin: 1rem 0;
     }
+
     .tabla-checkout th,
     .tabla-checkout td {
-      font-size: 0.9rem;
-      padding: 0.5rem;
+        font-size: 0.9rem;
+        padding: 0.5rem;
     }
-  }
-  
+}

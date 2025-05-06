@@ -35,22 +35,18 @@ include "../menu.php";
     </div>
 
     <div id="productosContainer" class="grid-productos">
-      <?php while ($producto = $resultado->fetch_assoc()): ?>
-        <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
-          <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
-          <div class="info-producto">
-            <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
-            <p class="precio">$<?= number_format($producto['valor'], 2) ?></p>
-            <p class="stock">Stock: <?= $producto['existencia'] ?></p>
-            <form method="POST" action="../carrito/agregar_carrito.php">
-            <input type="hidden" name="id_producto" value="<?= $producto['id'] ?>">
-            <button type="submit">Agregar al carrito</button>
-          </form>
-
-          </div>
-        </div>
-      <?php endwhile; ?>
+  <?php while ($producto = $resultado->fetch_assoc()): ?>
+    <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
+      <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
+      <div class="info-producto">
+        <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
+        <p class="precio">RD$<?= number_format($producto['valor'], 2) ?></p>
+        <p class="stock">Stock: <?= $producto['existencia'] ?></p>
+        <button type="button" class="btn-agregar-carrito" data-id="<?= $producto['id'] ?>">Agregar al carrito</button>
+      </div>
     </div>
+  <?php endwhile; ?>
+</div>
 
     <p id="mensajeVacio" style="display:none; text-align:center; margin-top: 2rem;">No hay productos en esta categoría.</p>
   </section>

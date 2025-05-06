@@ -22,23 +22,6 @@ session_start();
     <div class="info-nombre"><h1>Distribuidora Lorenzo</h1></div>
     <div class="info-telefono"><p><i class="fas fa-phone"></i> (809) 906-3559</p></div>
   </div>
-    <div class="principal-info">
-
-        <div class="menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-
-        <div class="info-logo">
-            <img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo">
-        </div>
-        <div class="info-nombre">
-            <h1>Distribuidora Lorenzo</h1>
-        </div>
-        <div class="info-telefono">
-            <p><i class="fas fa-phone"></i> (809) 506-3559</p>
-        </div>
-
-    </div>
 
   <div class="navegador-info">
     <nav class="nav" id="nav">
@@ -112,81 +95,11 @@ session_start();
     }
   }
 
-  // Carrito AJAX
-  (function(){
-    const cartIcon = document.getElementById('cartIcon');
-    const aside    = document.getElementById('asideCarrito');
-    const btnClose = document.getElementById('btnCerrarCarrito');
-    const list     = document.getElementById('carritoItems');
-    const countEl  = document.getElementById('cart-count');
-    const totalEl  = document.getElementById('totalCarrito');
-
-    cartIcon.addEventListener('click', ()=>{
-      aside.classList.add('mostrar');
-      loadCart();
-    });
-    btnClose.addEventListener('click', ()=> aside.classList.remove('mostrar'));
-
-    function loadCart(){
-      fetch('../carrito/obtener_carrito.php')
-        .then(r => r.json())
-        .then(data => {
-          list.innerHTML = '';
-          let total = 0, cnt = 0;
-          data.items.forEach(it => {
-            const valor = parseFloat(it.valor);
-            const sub   = parseFloat(it.subtotal);
-            total += sub; cnt++;
-            const div = document.createElement('div');
-            div.className = 'item-carrito';
-            div.innerHTML = `
-              <img src="${it.urlImagen}" alt="${it.nombre}">
-              <div class="item-info">
-                <h4>${it.nombre}</h4>
-                <p class="precio">RD$${valor.toFixed(2)}</p>
-                <p class="subtotal">Sub: RD$${sub.toFixed(2)}</p>
-                <input type="number" min="1" value="${it.cantidad}" data-id="${it.id_carrito}">
-              </div>
-              <button class="eliminar" data-id="${it.id_carrito}">×</button>
-            `;
-            list.appendChild(div);
-          });
-          countEl.textContent = cnt;
-          totalEl.textContent = 'RD$' + total.toFixed(2);
-
-          // Bind eventos
-          list.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('change', e => {
-              updateItem(e.target.dataset.id, parseInt(e.target.value, 10));
-            });
-          });
-          list.querySelectorAll('.eliminar').forEach(btn => {
-            btn.addEventListener('click', e => {
-              removeItem(e.target.dataset.id);
-            });
-          });
-        });
-    }
-
-    function updateItem(id, qty){
-      fetch('../carrito/actualizar_carrito.php', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ id_carrito: id, cantidad: qty })
-      })
-      .then(r => r.json())
-      .then(resp => { if (resp.ok) loadCart(); });
-    }
-
-    function removeItem(id){
-      fetch('../carrito/eliminar_carrito.php?id=' + id)
-        .then(r => r.json())
-        .then(resp => { if (resp.ok) loadCart(); });
-    }
-  })();
+  
 </script>
 
 <script src="../js/script.js"></script>
 <script src="../js/slider.js"></script>
+<script src="../carrito/carrito.js"></script>
 </body>
 </html>
