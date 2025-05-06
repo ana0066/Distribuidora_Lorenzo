@@ -14,14 +14,22 @@ include "../menu.php";
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
-    />
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+      
 
     <!-- CSS -->
+     <br>
+     <br>
     <link rel="stylesheet" href="../Contacto.css" />
-    
+    <section class="gallery-section">
+  <center><h2 class="gallery-title">¿Cuáles categorías te gustaron? <span>¡Contáctanos!</span></h2></center>
 
+    
+    
+  </div>
     <div class="container">
+      
     
       <img src="img/shape.png" class="square" alt="" />
       <div class="form">
@@ -93,7 +101,7 @@ include "../menu.php";
     </div>
 
     <!--::::Pie de Pagina::::::-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+   
 
 <footer class="pie-pagina">
     <div class="grupo-1">

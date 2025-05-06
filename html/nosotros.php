@@ -10,6 +10,8 @@ include "../menu.php";
   <title>Nosotros – Distribuidora Lorenzo</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/nosotros.css">
+  
+
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://www.paypal.com/sdk/js?client-id=AXUAVkqwfkvaeRrSB0AqHxi3aD8bVMnS6oOBucZteoPKfrSJ0FIKDuFlBGygkfqnNA5DRLl9ZBS902eo&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"></script>
 </head>
@@ -72,15 +74,17 @@ include "../menu.php";
         <div class="areas-grid">
           <div class="area-card">
             <h4>Residencial</h4>
-            <p>Soluciones pensadas para el hogar y bienestar familiar.</p>
+            <p>Ofrecemos productos para el hogar como colchas, sábanas, cortinas, 
+              alfombras, vajillas y más, con excelente calidad y precios accesibles.</p>
           </div>
           <div class="area-card">
             <h4>Casas de Exhibición</h4>
-            <p>Modelos que reflejan diseño, funcionalidad y estilo.</p>
+            <p>Visita La Casa del Rutero, nuestra tienda al detalle, y conoce de cerca nuestros productos en un espacio pensado para ti.</p>
           </div>
           <div class="area-card">
             <h4>Comercial</h4>
-            <p>Espacios adaptados a la eficiencia y productividad de negocios.</p>
+            <p>Nos especializamos en venta al por mayor, brindando atención a negocios con una 
+              distribución rápida, eficiente y a nivel nacional.</p>
           </div>
         </div>
       </section>
@@ -89,14 +93,55 @@ include "../menu.php";
         <div class="more-info">
           <div class="text-block">
             <h3>¿Qué hacemos?</h3>
-            <p>Diseñamos, desarrollamos y acompañamos cada etapa del proyecto con pasión, detalle y excelencia.</p>
+            <p>DComercializamos artículos para el hogar y cocina, tanto al por mayor como al detalle, 
+              con atención personalizada y productos de alta rotación.</p>
           </div>
           <div class="text-block">
             <h3>¿Quiénes somos?</h3>
-            <p>Una organización que trabaja con enfoque humano, compromiso social y visión de futuro.</p>
+            <p>Somos Distribuidora Lorenzo, una empresa nacional fundada en 2019, 
+              reconocida por su calidad, precios competitivos y excelente atención.</p>
           </div>
         </div>
       </section>
+      <footer class="pie-pagina">
+    <div class="grupo-1">
+        <div class="box">
+            <figure>
+                <a href="#">
+                    <img src="../img/LOGO.png" alt="Distribuidora Lorenzo">
+                </a>
+            </figure>
+        </div>
+        <div class="box">
+            <h2>Mnu inferior</h2>
+            <p><a href="../index.php">Inicio</a></p>
+            <p><a href="#">Contactos</a></p>
+            <p><a href="#">Nosotros</a></p>
+            <p><a href="#">Políticas de la empresa</a></p>
+            <p><a href="#">Políticas de devolución</a></p>
+        </div>
+        <div class="box">
+            <h2>Siguenos</h2>
+            <div class="red-social">
+                <a href="https://www.facebook.com/distribuidoralorenzo00/"><i class='bx bxl-facebook-circle'></i></a>
+                <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class='bx bxl-instagram'></i></a>
+                
+            </div>
+        </div>
+        <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d940.7775665097614!2d-70.6877119476317!3d19.4076411519626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1cf63e9c85b9b%3A0x7a4fbe5dc63a2545!2sDistribuidora%20Lorenzo!5e0!3m2!1ses!2sdo!4v1741976829787!5m2!1ses!2sdo" width="250" height="240" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+           
+            </div>
+    </div>
+    <div class="grupo-2">
+        <small>&copy; 2025 <b>Distribuidora Lorenzo</b> - Todos los Derechos Reservados.</small>
+    </div>
+</footer>
+
+
+      
+ 
+      
 </body>
 
 </html>

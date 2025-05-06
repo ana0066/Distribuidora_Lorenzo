@@ -21,3 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
         searchIcon.click(); // Simula el clic en el icono de búsqueda
     }
   });
+
+
+
+
+
+
+  
