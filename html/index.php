@@ -27,7 +27,7 @@ include "../menu.php";
 
     <!-- Slide 1 -->
     <div class="slide active">
-      <img src="../img/Tienda.jpg" alt="Imagen 1" />
+      <img src="../img/platoss.jpg" alt="Imagen 1" />
       <div class="image-data">
        
         <h2>Nuestra Variedades <br />de platos</h2>
@@ -37,17 +37,17 @@ include "../menu.php";
 
     <!-- Slide 2 -->
     <div class="slide">
-      <img src="../img/Electo.jpg" alt="Imagen 2" />
+      <img src="../img/Completa cocina.jpg" alt="Imagen 2" />
       <div class="image-data">
      
-        <h2>Nuestra Variedades<br /> De Electródomesticos</h2>
+        <h2>Nuestra Variedades<br /> de Electródomesticos</h2>
         <a href="#" class="button">Más información</a>
       </div>
     </div>
 
     <!-- Slide 3 -->
     <div class="slide">
-      <img src="../img/Cocina.jpg" alt="Imagen 3" />
+      <img src="../img/Pailas.jpg" alt="Imagen 3" />
       <div class="image-data">
         <span class="text"></span>
         <h2>Nuestra Variedades<br />para la Cocina</h2>
@@ -94,7 +94,7 @@ include "../menu.php";
 <!--cartas productos -->
 
 <section class="cards-productos">
-<h2 class="titulo-productos">DISFRUTA DE TODAS NUESTRAS VARIEDADES</h2>
+<h2 class="titulo-productos">Disfruta de nuestras mejores variedades al mejor precio. ¡Lo que buscas, lo tenemos!</h2>
     
     <div class="contenedor">
         <div class="categoria">
@@ -236,7 +236,7 @@ include "../menu.php";
             </figure>
         </div>
         <div class="box">
-            <h2>Menu inferior</h2>
+            <h2>Menú inferior</h2>
             <p><a href="../index.php">Inicio</a></p>
             <p><a href="#">Contactos</a></p>
             <p><a href="#">Nosotros</a></p>
@@ -244,7 +244,7 @@ include "../menu.php";
             <p><a href="#">Políticas de devolución</a></p>
         </div>
         <div class="box">
-            <h2>Siguenos</h2>
+            <h2>Síguenos</h2>
             <div class="red-social">
                 <a href="https://www.facebook.com/distribuidoralorenzo00/"><i class='bx bxl-facebook-circle'></i></a>
                 <a href="https://www.instagram.com/distribuidoralorenzo00?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class='bx bxl-instagram'></i></a>
