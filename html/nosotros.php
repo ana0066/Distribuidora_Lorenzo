@@ -11,6 +11,8 @@ include "../menu.php";
   <title>Nosotros – Distribuidora Lorenzo</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/nosotros.css">
+  
+
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://www.paypal.com/sdk/js?client-id=AXUAVkqwfkvaeRrSB0AqHxi3aD8bVMnS6oOBucZteoPKfrSJ0FIKDuFlBGygkfqnNA5DRLl9ZBS902eo&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"></script>
 </head>
@@ -73,15 +75,17 @@ include "../menu.php";
         <div class="areas-grid">
           <div class="area-card">
             <h4>Residencial</h4>
-            <p>Soluciones pensadas para el hogar y bienestar familiar.</p>
+            <p>Ofrecemos productos para el hogar como colchas, sábanas, cortinas, 
+              alfombras, vajillas y más, con excelente calidad y precios accesibles.</p>
           </div>
           <div class="area-card">
             <h4>Casas de Exhibición</h4>
-            <p>Modelos que reflejan diseño, funcionalidad y estilo.</p>
+            <p>Visita La Casa del Rutero, nuestra tienda al detalle, y conoce de cerca nuestros productos en un espacio pensado para ti.</p>
           </div>
           <div class="area-card">
             <h4>Comercial</h4>
-            <p>Espacios adaptados a la eficiencia y productividad de negocios.</p>
+            <p>Nos especializamos en venta al por mayor, brindando atención a negocios con una 
+              distribución rápida, eficiente y a nivel nacional.</p>
           </div>
         </div>
       </section>
@@ -90,14 +94,20 @@ include "../menu.php";
         <div class="more-info">
           <div class="text-block">
             <h3>¿Qué hacemos?</h3>
-            <p>Diseñamos, desarrollamos y acompañamos cada etapa del proyecto con pasión, detalle y excelencia.</p>
+            <p>DComercializamos artículos para el hogar y cocina, tanto al por mayor como al detalle, 
+              con atención personalizada y productos de alta rotación.</p>
           </div>
           <div class="text-block">
             <h3>¿Quiénes somos?</h3>
-            <p>Una organización que trabaja con enfoque humano, compromiso social y visión de futuro.</p>
+            <p>Somos Distribuidora Lorenzo, una empresa nacional fundada en 2019, 
+              reconocida por su calidad, precios competitivos y excelente atención.</p>
           </div>
         </div>
       </section>
+
+      
+ 
+      
 </body>
 
 </html>

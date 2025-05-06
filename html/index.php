@@ -133,7 +133,7 @@ include "../menu.php";
         <h3>Greca</h3>
         <p class="sub">Informacion</p>
         <p class="price">$600</p>
-        <button class="add-btn">Ver más</button>
+        <a href="../html/productos.php" class="add-btn">Ver más</a>
       </div>
 
       <!-- Tarjeta 2 -->
@@ -142,7 +142,7 @@ include "../menu.php";
         <h3>Vajillas</h3>
         <p class="sub"></p>
         <p class="price">$300</p>
-        <button class="add-btn">Ver más</button>
+        <a href="../html/productos.php" class="add-btn">Ver más</a>
       </div>
 
       <!-- Promocional -->
@@ -150,7 +150,7 @@ include "../menu.php";
         <div class="overlay">
           <h2></h2>
           <p>PRODUCTOS</p>
-          <button class="info-btn">Informacion</button>
+          <a href="../html/nosotros.php" class="add-btn">Informacion</a>
         </div>
       </div>
 
@@ -159,8 +159,8 @@ include "../menu.php";
         <div class="overlay">
           <h2></h2>
           <p>PRODUCTOS</p>
-          <button class="info-btn">Informacion</button>
-        </div>
+          <a href="../html/nosotros.php" class="add-btn">Informacion</a>
+          </div>
       </div>
 
       <!-- Tarjeta 3 -->
@@ -169,7 +169,7 @@ include "../menu.php";
         <h3>Estufa</h3>
         <p class="sub">calidad premium</p>
         <p class="price">$15,000</p>
-        <button class="add-btn">Ver más</button>
+        <a href="../html/productos.php" class="add-btn">Ver más</a>
       </div>
 
       <!-- Tarjeta 4 -->
@@ -178,8 +178,8 @@ include "../menu.php";
         <h3>Cama</h3>
         <p class="sub">calidad premium</p>
         <p class="price">$20,000</p>
-        <button class="add-btn">Ver más</button>
-      </div>
+        <a href="../html/productos.php" class="add-btn">Ver más</a>
+        </div>
     </div>
   </section>
 <!-- Code injected by live-server -->
