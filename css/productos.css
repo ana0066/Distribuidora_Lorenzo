@@ -139,3 +139,35 @@
     font-size: 1.5rem;
   }
 }
+
+
+
+.filtro-productos, .buscador-productos {
+  display: inline-block;
+  margin: 0 1rem 1rem 0;
+  vertical-align: top;
+}
+
+.filtro-productos label,
+.buscador-productos label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.filtro-productos select,
+.buscador-productos input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-width: 200px;
+}
+
+@media (max-width: 600px) {
+  .filtro-productos, .buscador-productos {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+

@@ -17,7 +17,9 @@ session_start();
 
 <header>
   <div class="principal-info">
-    <div class="menu-toggle" id="menu-toggle"><i class="fas fa-bars"></i></div>
+  <div class="menu-toggle" id="menu-toggle">
+  <i class="fas fa-bars"></i>
+</div>
     <div class="info-logo"><img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo"></div>
     <div class="info-nombre"><h1>Distribuidora Lorenzo</h1></div>
     <div class="info-telefono"><p><i class="fas fa-phone"></i> (809) 906-3559</p></div>
@@ -44,7 +46,9 @@ session_start();
     <div class="icons">
       <div class="buscador-container">
         <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
+        
         <i class="fas fa-search"></i>
+        
         <ul id="sugerencias" class="sugerencias"></ul>
       </div>
 
@@ -94,10 +98,7 @@ session_start();
       window.location.href = '../php/logout.php';
     }
   }
-
   
-</script>
-
 <script src="../js/script.js"></script>
 <script src="../js/slider.js"></script>
 <script src="../carrito/carrito.js"></script>
