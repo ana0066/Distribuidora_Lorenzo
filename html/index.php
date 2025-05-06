@@ -63,14 +63,11 @@ include "../menu.php";
   <script>
   let currentIndex = 0;
   const slides = document.querySelectorAll('.slide');
+  const slider = document.getElementById('slider');
   const totalSlides = slides.length;
 
   function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-    });
-    slides[index].classList.add('active');
-    document.getElementById('slider').style.transform = `translateX(-${index * 100}%)`;
+    slider.style.transform = `translateX(-${index * 100}%)`;
   }
 
   function moveSlide(n) {
@@ -78,13 +75,15 @@ include "../menu.php";
     showSlide(currentIndex);
   }
 
-  // Cambio automático cada 5 segundos
+  // Automático cada 5 segundos
   setInterval(() => {
     moveSlide(1);
-  }, 5000);
+  }, 2000);
 
   // Mostrar la primera slide al cargar
   showSlide(currentIndex);
+</script>
+
 </script>
 <!--Codigo para que las fotos salgan en automatico final -->
 
