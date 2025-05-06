@@ -180,9 +180,8 @@ include "../menu.php";
         </div>
     </div>
   </section>
-<!-- Code injected by live-server -->
+
 <script>
-	// <![CDATA[  <-- For SVG support
 	if ('WebSocket' in window) {
 		(function () {
 			function refreshCSS() {

@@ -39,11 +39,22 @@ include "../menu.php";
     <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
       <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
       <div class="info-producto">
-        <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
-        <p class="precio">RD$<?= number_format($producto['valor'], 2) ?></p>
-        <p class="stock">Stock: <?= $producto['existencia'] ?></p>
-        <button type="button"  class="btn-agregar-carrito" data-id="<?= $producto['id'] ?>">Agregar al carrito</button>
-      </div>
+  <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
+  <p class="precio">RD$<?= number_format($producto['valor'], 2) ?></p>
+  <p class="stock">Stock: <?= $producto['existencia'] ?></p>
+
+  <input type="number" class="cantidad-producto" min="1" max="<?= $producto['existencia'] ?>" value="1">
+
+  <div class="acciones-producto">
+  <input type="number" class="cantidad" min="1" max="<?= $producto['existencia'] ?>" value="1">
+  <button type="button" class="btn-agregar-carrito" 
+          data-id="<?= $producto['id'] ?>" 
+          data-stock="<?= $producto['existencia'] ?>">
+    Agregar al carrito
+  </button>
+</div>
+
+</div>
     </div>
   <?php endwhile; ?>
 </div>
@@ -81,6 +92,8 @@ include "../menu.php";
 </script>
 
 <script src="../carrito/carrito.js"></script>
+
+
 
 </body>
 </html>

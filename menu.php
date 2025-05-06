@@ -66,17 +66,17 @@ session_start();
 
 <!-- Aside Carrito -->
 <aside id="asideCarrito" class="carrito-aside">
-    <div class="carrito-header">
-        <button id="btnCerrarCarrito" class="btn-cerrar">✕</button>
-        <h2>Tu Carrito</h2>
-    </div>
-    <div class="carrito-items">
-        <!-- Aquí se cargarán los ítems del carrito -->
-    </div>
-    <div class="carrito-footer">
-        <p><strong>Total:</strong> <span id="carrito-total">0 DOP</span></p>
-        <a href="../html/checkout.php" class="btn-checkout">Ir al Checkout</a>
-    </div>
+  <div class="carrito-header">
+    <button id="btnCerrarCarrito" class="btn-cerrar">✕</button>
+    <h2>Tu Carrito</h2>
+  </div>
+  <div class="carrito-items">
+    <!-- Aquí se cargarán los ítems del carrito -->
+  </div>
+  <div class="carrito-footer">
+    <p><strong>Total:</strong> <span id="carrito-total">0 DOP</span></p>
+    <a href="../html/checkout.php" class="btn-checkout">Ir al Checkout</a>
+  </div>
 </aside>
 
 <script>
