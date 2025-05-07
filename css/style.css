@@ -203,7 +203,7 @@ header {
     width: 100%; 
     max-height: 250px; 
     overflow-y: auto; 
-    background-color: rgba(128, 97, 62, 0.596); 
+    background-color: rgb(168, 144, 116); 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 10; 
     list-style: none;
@@ -222,14 +222,66 @@ header {
     color: #000000; /* Color negro para el texto */
     text-transform: capitalize; /* Capitaliza el texto */
   }
-  
+
   .sugerencias li:hover {
     background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+  }
+
+  .sugerencias a{
+    text-decoration: none;
+    text-transform: uppercase;
+    justify-content: center;
+    text-align: center;
+    margin: 10px auto;
+    color: #513831;
+  }
+
+  .sugerencias p{
+    padding-top: 5px;
   }
   
   /* Resaltar la palabra clave */
   .highlight {
-    background-color: yellow;
+    background-color: rgb(109, 79, 60);
+    font-weight: bold;
+}
+
+/* Lista de sugerencias */
+.sugerencias {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilo para cada sugerencia */
+.sugerencias li {
+    padding: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000000;
+    text-transform: capitalize;
+}
+
+.sugerencias li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Resaltar la palabra clave */
+.highlight {
+    background-color: rgb(168, 143, 88);
+    font-weight: bold;
 }
 
 #cart-count {
@@ -389,6 +441,31 @@ header {
     height: 100%; /* Ajusta la altura de la imagen al 100% del contenedor */
     object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin deformarse */
     display: block;
+}
+
+.slide {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+.slide.active {
+    display: block;
+}
+
+/* Ajuste para las imágenes del slider */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Oculta las imágenes por defecto */
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+    z-index: 0;
+}
+
+.slide.active {
+    opacity: 1; /* Muestra la imagen activa */
+    z-index: 1;
 }
 
 .prev, .next {
