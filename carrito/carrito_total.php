@@ -2,12 +2,12 @@
 session_start();
 include '../php/db.php';
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['usuario_id'])) {
     echo json_encode(['total' => 0]);
     exit;
 }
 
-$id_usuario = $_SESSION['id'];
+$id_usuario = $_SESSION['usuario_id'];
 
 $stmt = $conn->prepare("SELECT SUM(cantidad) AS total FROM carrito WHERE id_usuario = ?");
 $stmt->bind_param("i", $id_usuario);

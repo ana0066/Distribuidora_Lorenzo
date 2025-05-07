@@ -21,47 +21,33 @@ include "../menu.php";
 
 <main>
   <section class="contenedorProductos">
-    <h2>Catálogo de Productos</h2>
-
-    <div class="filtro-productos">
-      <label for="filtroCategoria">Filtrar por categoría:</label>
-      <select id="filtroCategoria">
-        <option value="">Todas</option>
-        <option value="mobiliaria">Mobiliaria</option>
-        <option value="vajilla">Vajilla</option>
-        <option value="decoraciones">Decoraciones</option>
-        <option value="herramientas">Herramientas</option>
-        <option value="electrodomesticos">Electrodomésticos</option>
-      </select>
+  <h2>Productos</h2>
+    <div id="productos">
+        <?php while ($p = $resultado->fetch_assoc()): ?>
+            <div>
+                <img src="<?= $p['urlImagen'] ?>" width="100">
+                <h4><?= $p['nombre'] ?></h4>
+                <p>RD$ <?= $p['valor'] ?></p>
+                <button onclick="agregarCarrito(<?= $p['id'] ?>)">Agregar al carrito</button>
+            </div>
+        <?php endwhile; ?>
     </div>
-    <div class="buscador-productos">
-  <label for="inputBuscar">Buscar producto:</label>
-  <input type="text" id="inputBuscar" placeholder="Ej. cama, vajilla... 🔍">
-</div>
-
-    <div id="productosContainer" class="grid-productos">
-<?php while ($producto = $resultado->fetch_assoc()): ?>
-  <div class="card-producto" data-categoria="<?= htmlspecialchars($producto['categoria']) ?>">
-    <img src="<?= htmlspecialchars($producto['urlImagen']) ?>" alt="<?= htmlspecialchars($producto['nombre']) ?>">
-    <div class="info-producto">
-      <h3><?= htmlspecialchars($producto['nombre']) ?></h3>
-      <p class="precio">$<?= number_format($producto['valor'], 2) ?></p>
-      <p class="stock">Stock: <?= $producto['existencia'] ?></p>
-      <form method="POST" action="../carrito/agregar_carrito.php">
-      <input type="hidden" name="id_producto" value="<?= $producto['id'] ?>">
-      <button type="submit">Agregar al carrito</button>
-    </form>
-
-    </div>
-  </div>
-<?php endwhile; ?>
-    </div>
-
-    <p id="mensajeVacio" style="display:none; text-align:center; margin-top: 2rem;">No hay productos en esta categoría.</p>
-  </section>
+        </section>
+    
 </main>
 
 <script>
+
+  function agregarCarrito(idProducto) {
+      fetch('../carrito/agregar.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: 'id_producto=' + idProducto
+      })
+      .then(res => res.text())
+      .then(data => alert(data));
+  }
+
   const inputBuscar = document.getElementById('inputBuscar');
   const filtro = document.getElementById('filtroCategoria');
   const productos = document.querySelectorAll('.card-producto');

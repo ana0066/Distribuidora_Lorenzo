@@ -1,0 +1,51 @@
+    .gracias-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #f9f9f9;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .gracias-container h1 {
+      color: #4CAF50;
+    }
+    .gracias-container a {
+      text-decoration: none;
+      color: #007BFF;
+    }
+    .recibo {
+      margin-top: 20px;
+      text-align: left;
+      font-size: 14px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .recibo table {
+      width: 100%;
+      margin-bottom: 10px;
+      border-collapse: collapse;
+    }
+    .recibo th, .recibo td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .recibo th {
+      background-color: #f4f4f4;
+    }
+
+    @media print {
+        .gracias-container {
+          max-width: 100%;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+        }
+        button {
+          display: none; /* Ocultar el botón de imprimir al momento de la impresión */
+        }
+      }
+      

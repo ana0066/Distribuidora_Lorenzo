@@ -195,6 +195,8 @@ header {
 }
 
 
+
+
 /* Lista de sugerencias */
 .sugerencias {
     position: absolute; 
@@ -867,4 +869,11 @@ header {
     display: block; /* Mostrar el aside */
     transform: translateX(0); /* Moverlo dentro de la pantalla */
 }
+
+
+
+
+
+
+
 
