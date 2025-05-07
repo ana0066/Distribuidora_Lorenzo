@@ -20,13 +20,12 @@ if (!isset($_SESSION['usuario_id'])) {
 
 <header>
   <div class="principal-info">
-  <div class="menu-toggle" id="menu-toggle">
-  <i class="fas fa-bars"></i>
-</div>
+    
     <div class="info-logo"><img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo"></div>
     <div class="info-nombre"><h1>Distribuidora Lorenzo</h1></div>
     <div class="info-telefono"><p><i class="fas fa-phone"></i> (809) 906-3559</p></div>
-  </div>
+</div>
+
 
   <div class="navegador-info">
     <nav class="nav" id="nav">
@@ -50,6 +49,9 @@ if (!isset($_SESSION['usuario_id'])) {
     </nav>
 
     <div class="icons">
+    <div class="menu-toggle" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+  </div>
       <div class="buscador-container">
         <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
         
@@ -61,7 +63,7 @@ if (!isset($_SESSION['usuario_id'])) {
       <?php 
         if (isset($_SESSION['usuario'])) {
           echo "<a class='logoutBtn' href='#' onclick='confirmLogout(event)'><i class='fas fa-sign-out-alt'></i></a>";
-          echo "<span class='username'>" . htmlspecialchars($_SESSION['usuario']) . "</span>";
+          echo "<span class='username'>" . htmlspecialchars(string: $_SESSION['usuario']) . "</span>";
         } else {
           echo "<a href='../php/login.php'><i class='fas fa-user'></i></a>";
         }
