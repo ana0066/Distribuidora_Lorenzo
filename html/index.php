@@ -60,31 +60,8 @@ include "../menu.php";
   <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
   <button class="next" onclick="moveSlide(1)">&#10095;</button>
   <!--Codigo para que las fotos salgan en automatico Inicio -->
-  <script>
-  let currentIndex = 0;
-  const slides = document.querySelectorAll('.slide');
-  const slider = document.getElementById('slider');
-  const totalSlides = slides.length;
 
-  function showSlide(index) {
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }
 
-  function moveSlide(n) {
-    currentIndex = (currentIndex + n + totalSlides) % totalSlides;
-    showSlide(currentIndex);
-  }
-
-  // Automático cada 5 segundos
-  setInterval(() => {
-    moveSlide(1);
-  }, 2000);
-
-  // Mostrar la primera slide al cargar
-  showSlide(currentIndex);
-</script>
-
-</script>
 <!--Codigo para que las fotos salgan en automatico final -->
 
 </div>

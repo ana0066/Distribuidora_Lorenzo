@@ -115,10 +115,9 @@ if (!isset($_SESSION['usuario_id'])) {
             })
             .catch(err => alert("Hubo un problema con la desconexión."));
     }
-}
-
+  }
+</script>
   
-  </script>
 <script src="../js/script.js"></script>
 <script src="../carrito/carrito.js"></script>
 </body>
