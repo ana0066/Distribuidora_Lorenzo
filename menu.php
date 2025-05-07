@@ -30,6 +30,9 @@ if (!isset($_SESSION['usuario_id'])) {
 
   <div class="navegador-info">
     <nav class="nav" id="nav">
+    <div class="nav-bar">
+            <span class="logo navLogo"><a href="#"></a></span>
+
       <ul class="nav-links">
         <li><a href="../html/index.php">Inicio</a></li>
         <li><a href="../html/nosotros.php">Nosotros</a></li>

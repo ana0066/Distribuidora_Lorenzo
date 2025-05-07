@@ -34,13 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             header("Location: ../html/index.php");
             exit();
-        } else {
-            echo "<p style='color: red;'>Correo o contraseña incorrecta</p>";
+          } else {
+            $error = "Correo o contraseña incorrecta";
         }
     } else {
-        echo "<p style='color: red;'>Usuario no encontrado</p>";
+        $error = "Usuario no encontrado";
     }
-}
+  }
 ?>
 
 <!DOCTYPE html>
@@ -58,15 +58,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 
   <div class="form-container">
-    <img src="../img/LOGO.png" class="logo">
-    <form action="login.php" method="POST">
-      <input type="email" name="email" placeholder="Correo electrónico" required>
-      <input type="password" name="password" placeholder="Contraseña" required>
-      <button type="submit">Iniciar Sesión</button>
-    </form>
-    <a href="register.php">¿No tienes cuenta? Regístrate</a><br>
-    <a href="reenviar_verificacion.php">¿No recibiste el correo de verificación?</a>
-  </div>
+  <img src="../img/LOGO.png" class="logo">
+
+  <?php if (isset($error)) : ?>
+    <div class="error-message"><?= htmlspecialchars($error) ?></div>
+  <?php endif; ?>
+
+  <form action="login.php" method="POST">
+    <input type="email" name="email" placeholder="Correo electrónico" required>
+    <input type="password" name="password" placeholder="Contraseña" required>
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+  <a href="register.php">¿No tienes cuenta? Regístrate</a><br>
+  <a href="reenviar_verificacion.php">¿No recibiste el correo de verificación?</a>
+</div>
+
+  
 </div>
 </body>
 </html>
