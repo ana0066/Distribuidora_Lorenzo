@@ -102,3 +102,31 @@ function initializePayPalButtons(total) {
     }
   }).render('#paypal-button-container');
 }
+
+
+
+
+
+document.getElementById('pago-ficticio').addEventListener('click', () => {
+  // Validar existencia antes de proceder
+  fetch('', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'action=pagar'
+  })
+  .then(res => res.text())
+  .then(response => {
+    if (response === 'ok') {
+      // Vaciar el carrito
+      fetch('', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'action=vaciar'
+      }).then(() => {
+        window.location.href = '../html/gracias.php';
+      });
+    } else {
+      alert('Hubo un problema al procesar el pago. Verifica el stock.');
+    }
+  });
+});
