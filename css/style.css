@@ -35,8 +35,7 @@ header {
     align-items: center;
     flex-wrap: wrap;
     z-index: 1000;
-  /*  background-color: #dad2d0;*/
-    color: #513831;
+     color: #513831;
 }
 
 .info-logo img {
@@ -302,117 +301,6 @@ header {
     text-transform: capitalize;
 }
 
-/* Menu Toggle */
-.menu-toggle {
-    display: none;
-    font-size: 26px;
-    cursor: pointer;
-    color: #513831;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px;
-    }
-
-    .info-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .info-logo img {
-        max-width: 100px;
-        height: auto;
-    }
-
-    .menu-toggle {
-        display: block;
-        font-size: 26px;
-        cursor: pointer;
-        color: #513831;
-        margin-left: 10px;
-
-    }
-
-    .principal-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    .info-nombre {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex: 1;
-        padding: 0 10px;
-    }
-
-    .info-nombre h1 {
-        font-size: 24px;
-        margin: 0;
-        text-align: center;
-    }
-
-    .info-telefono {
-        margin: 10px auto;
-    }
-
-    .icons {
-        width: 100%;
-        justify-content: space-between;
-        margin: 10px 20px;
-        order: 1;
-    }
-
-    .navegador-info {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        margin: 10px auto 10px 20px;
-    }
-
-    .nav {
-        display: none;
-        width: 100%;
-        order: 2;
-    }
-
-    .nav.active {
-        display: block;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-        align-items: flex-start;
-    }
-
-    #cart-count {
-        background: red;
-        border-radius: 50%;
-        padding: 3px 6px;
-        font-size: 12px;
-        color: white;
-        position: relative;
-        right: 10%;
-    }
-}
-
-
-
-
-
 
 /* SLIDER */
 .slider-container {
@@ -547,40 +435,6 @@ header {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos Responsive */
-@media (max-width: 768px) {
-    .contenedor {
-        gap: 20px;
-        padding: 20px;
-    }
-    .categoria {
-        width: 45%;
-    }
-    h2 {
-        font-size: 24px;
-    }
-}
-
-@media (max-width: 480px) {
-    .categoria {
-        width: 100%;
-    }
-    .categoria img {
-        max-width: 160px; /* Reducir un poco en móviles */
-    }
-    h2 {
-        font-size: 20px;
-    }
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-}
-
 .pie-pagina {
     width: 100%;
     background-color: #ffffff;
@@ -667,28 +521,6 @@ header {
     font-size: 15px;
 }
 
-/* Responsive */
-@media screen and (max-width: 800px) {
-    .pie-pagina .grupo-1 {
-        width: 90%;
-        grid-template-columns: 1fr;
-        grid-gap: 30px;
-        padding: 35px 0px;
-        text-align: center;
-    }
-
-    .pie-pagina .grupo-1 .red-social {
-        justify-content: center;
-    }
-
-    .pie-pagina .grupo-1 .box figure img {
-        max-width: 300px;
-    }
-
-    .pie-pagina .grupo-1 .box p {
-        font-size: 16px;
-    }
-}
 
 .menu-toggle {
     display: none; /* Oculto por defecto */
@@ -880,14 +712,9 @@ header {
     body {
       padding: 1rem;
     }
-  }
-
-.menu-toggle {
-    display: none; /* Oculto por defecto */
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
 }
+
+
 
 .nav-links {
     display: flex;
@@ -927,6 +754,40 @@ header {
     }
 }
 
+@media (max-width: 1160px){
+    .menu-toggle {
+        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+        margin-left: 20px;
+        background-color: #513831;
+        color: #fff;
+    }
+
+    .nav-links.active {
+        transform: translateX(0); 
+        
+    }
+
+    .nav{
+        display: none;
+    }
+
+    .icons{
+        width: 100%;
+    }
+
+    .buscador-container{
+        width: 50vw;
+        margin: 10px auto;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .sugerencias{
+        margin: 10px;
+        width: 30vw;
+    }
+}
+
 .carrito-aside {
     display: none; /* Oculto por defecto */
     position: fixed;
@@ -946,11 +807,3 @@ header {
     display: block; /* Mostrar el aside */
     transform: translateX(0); /* Moverlo dentro de la pantalla */
 }
-
-
-
-
-
-
-
-

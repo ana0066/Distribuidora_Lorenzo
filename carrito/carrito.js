@@ -33,9 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para actualizar el contador del carrito
     function actualizarContadorCarrito() {
         fetch('../carrito/obtener.php')
-            .then(res => res.json())
+            .then(res => res.text()) // Cambia a .text() temporalmente
             .then(data => {
-                cartCount.textContent = data.cantidad || 0; // Actualiza el contador
+                console.log('Respuesta del servidor:', data); // Verifica la respuesta completa
+                const jsonData = JSON.parse(data); // Intenta convertir a JSON
+                cartCount.textContent = jsonData.cantidad || 0; // Actualiza el contador
             })
             .catch(err => console.error('Error actualizando el contador del carrito:', err));
     }

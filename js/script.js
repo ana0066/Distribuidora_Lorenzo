@@ -70,10 +70,11 @@
 })();
 
 // ===== Menu =====
-(() => {
-  const btn = document.getElementById('menu-toggle');
-  const nav = document.getElementById('nav');
-  btn.addEventListener('click', ()=>nav.classList.toggle('active'));
+(function(){
+  const btnMenu = document.getElementById('menu-toggle');
+  const nav     = document.getElementById('nav');
+  btnMenu.addEventListener('click', ()=> {
+    nav.classList.toggle('active');
+  });
 })();
-
 

@@ -4,7 +4,7 @@ include '../php/enviar_correo.php'; // Asegúrate de tener esta función
 
 // Verificar que sea superadmin
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'superadmin') {
-    header('Location: ../html/index.php');
+    header('Location: ../html/admin_usuarios.php');
     exit;
 }
 
