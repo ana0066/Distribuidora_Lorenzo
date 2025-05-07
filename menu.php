@@ -98,6 +98,7 @@ session_start();
       window.location.href = '../php/logout.php';
     }
   }
+</script>
   
 <script src="../js/script.js"></script>
 <script src="../carrito/carrito.js"></script>
