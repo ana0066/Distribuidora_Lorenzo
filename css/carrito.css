@@ -1,164 +1,264 @@
-/* =========== ASIDE CARRITO =========== */
-.aside-carrito {
+/* Contenedor principal del carrito */
+.carrito-aside {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
     position: fixed;
     top: 0;
-    right: -320px;
-    width: 320px;
+    right: -100%;
     height: 100%;
-    background: #f9f9f9;
-    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    transition: right 0.3s ease;
     z-index: 1000;
-    display: flex;
-    flex-direction: column;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: right 0.3s ease;
+    padding: 1.5rem;
+    border-left: 2px solid #f0f0f0;
 }
 
-.aside-carrito.mostrar {
+.carrito-aside.mostrar {
     right: 0;
 }
 
-/* Header */
+/* Encabezado del carrito */
 .carrito-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5rem;
 }
 
 .carrito-header h2 {
-    margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: #333;
+    font-weight: bold;
 }
 
-#btnCerrarCarrito {
+.btn-cerrar {
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #e63946;
+    color: #b00020;
+    transition: color 0.3s ease;
 }
 
-/* Items container */
-.carrito-items {
-    flex-grow: 1;
-    padding: 1rem;
+.btn-cerrar:hover {
+    color: #ff4d4d;
 }
 
-/* Item individual */
-.carrito-item {
+/* Lista de ítems del carrito */
+.carrito-items .carrito-item {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
 }
 
-.carrito-item-img {
-    width: 70px;
-    height: 70px;
+.carrito-items .carrito-item img {
+    width: 50px; /* Imagen más pequeña */
+    height: 50px;
     object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    border: 1px solid #ddd;
 }
 
-.carrito-item-info {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+.carrito-items .carrito-item p {
+    margin: 0;
     font-size: 0.9rem;
+    color: #333; /* Letras negras */
 }
 
-.carrito-item-info h4 {
-    margin: 0;
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.carrito-item-info p {
-    margin: 0;
-    color: #555;
-}
-
-.carrito-item-info .btn-eliminar {
-    align-self: flex-start;
+/* Controles de cantidad */
+.carrito-items .item-info .cantidad-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-top: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    background-color: #e63946;
-    color: #fff;
+}
+
+.carrito-items .item-info .cantidad-control button {
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
     cursor: pointer;
-    font-size: 0.85rem;
     transition: background-color 0.3s ease;
 }
 
-.carrito-item-info .btn-eliminar:hover {
-    background-color: #c53030;
+.carrito-items .item-info .cantidad-control button:hover {
+    background-color: #0056b3;
 }
 
-/* Footer */
-.carrito-footer {
-    padding: 1rem;
-    border-top: 1px solid #ddd;
+.carrito-items .item-info .cantidad-control input {
+    width: 50px; /* Ajusta el ancho para que no se salga del contenedor */
+    height: 30px; /* Altura adecuada para las flechitas */
+    text-align: center; /* Centra el texto dentro del input */
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0; /* Elimina el padding adicional */
+    box-sizing: border-box; /* Asegura que el tamaño incluya el borde */
+    appearance: textfield; /* Elimina estilos personalizados en navegadores */
+}
+
+.carrito-items .item-info .cantidad-control input::-webkit-inner-spin-button,
+.carrito-items .item-info .cantidad-control input::-webkit-outer-spin-button {
+    appearance: auto; /* Habilita las flechitas en navegadores basados en WebKit */
+}
+
+/* Botón de eliminar */
+.carrito-items .btn-eliminar {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #b00020;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.carrito-items .btn-eliminar:hover {
+    color: #ff4d4d;
+}
+
+/* Total del carrito */
+.carrito-total {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
     text-align: center;
-    background: #fff;
+}
+
+.carrito-total p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+.carrito-total .btn-finalizar {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.carrito-total .btn-finalizar:hover {
+    background-color: #218838;
+}
+
+/* Footer del carrito */
+.carrito-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .carrito-footer p {
-    margin: 0 0 0.75rem;
-    font-size: 1rem;
-    color: #333;
+    font-size: 1rem; /* Tamaño más pequeño */
+    color: #333; /* Letras negras */
+    margin: 0.5rem 0;
+    font-weight: bold;
 }
 
 .btn-checkout {
     display: inline-block;
-    background: #513831;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
     font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.2s;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn-checkout:hover {
-    background: #3e2a24;
+    background-color: #0056b3;
 }
 
-/* Responsive móvil */
+/* Responsividad */
 @media (max-width: 480px) {
-    .aside-carrito {
-        width: 100%;
-        right: -100%;
+    .carrito-items .item {
+        flex-direction: row;
+        align-items: flex-start;
     }
 
-    .aside-carrito.mostrar {
-        right: 0;
+    .carrito-items .item img {
+        width: 50px;
+        height: 50px;
     }
 
-    .carrito-item-img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .carrito-item-info h4 {
+    .carrito-items .item-info h4 {
         font-size: 0.9rem;
     }
 
-    .carrito-item-info p {
+    .carrito-items .item-info p {
         font-size: 0.8rem;
     }
 
-    .btn-checkout {
-        width: 100%;
+    .carrito-items .item-info .cantidad-control input {
+        width: 40px;
     }
+
+    .carrito-items .item-info .cantidad-control button {
+        font-size: 0.8rem;
+    }
+
+    .carrito-total p {
+        font-size: 1rem;
+    }
+
+    .carrito-total .btn-finalizar {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+#carrito-total {
+    font-size: 1.2rem; /* Tamaño más pequeño */
+    color: #333; /* Letras negras */
+    font-weight: bold;
+}
+
+/* Botón de ir al checkout */
+.carrito-footer .btn-checkout {
+    display: inline-block;
+    background-color: #513831; /* Color solicitado */
+    color: white; /* Letras blancas */
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carrito-footer .btn-checkout:hover {
+    background-color: #3e2c28; /* Color más oscuro al pasar el mouse */
 }

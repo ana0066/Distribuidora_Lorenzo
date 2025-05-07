@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario_id'])) {
+} else {
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -70,17 +73,17 @@ session_start();
 
 <!-- Aside Carrito -->
 <aside id="asideCarrito" class="carrito-aside">
-  <div class="carrito-header">
-    <button id="btnCerrarCarrito" class="btn-cerrar">✕</button>
-    <h2>Tu Carrito</h2>
-  </div>
-  <div class="carrito-items">
-    <!-- Aquí se cargarán los ítems del carrito -->
-  </div>
-  <div class="carrito-footer">
-    <p><strong>Total:</strong> <span id="carrito-total">0 DOP</span></p>
-    <a href="../html/checkout.php" class="btn-checkout">Ir al Checkout</a>
-  </div>
+    <div class="carrito-header">
+        <button id="btnCerrarCarrito" class="btn-cerrar">✕</button>
+        <h2>Tu Carrito</h2>
+    </div>
+    <div class="carrito-items">
+        <!-- Aquí se cargarán los ítems del carrito -->
+    </div>
+    <div class="carrito-footer">
+        <p><strong>Total:</strong> <span id="carrito-total">0 DOP</span></p>
+        <a href="../html/checkout.php" class="btn-checkout">Ir al Checkout</a>
+    </div>
 </aside>
 
 <script>
@@ -91,11 +94,23 @@ session_start();
     btnMenu.addEventListener('click', ()=> nav.classList.toggle('active'));
   })();
 
-  // Confirmar logout
-  function confirmLogout(e){
-    e.preventDefault();
-    if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-      window.location.href = '../php/logout.php';
+  function confirmLogout(event) {
+    event.preventDefault(); // Evita que el enlace realice la acción por defecto
+
+    const confirmation = confirm("¿Estás seguro de que quieres cerrar sesión?");
+    if (confirmation) {
+        // Enviar petición AJAX para cerrar sesión
+        fetch('../php/logout.php')
+            .then(res => res.text())
+            .then(data => {
+                if (data === 'logout') {
+                    // Redirigir al inicio o login
+                    window.location.href = '../html/'; 
+                } else {
+                    alert("Error al cerrar sesión.");
+                }
+            })
+            .catch(err => alert("Hubo un problema con la desconexión."));
     }
   }
 </script>

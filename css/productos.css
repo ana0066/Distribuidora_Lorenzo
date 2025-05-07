@@ -1,177 +1,169 @@
 /* Contenedor principal */
 .contenedorProductos {
   max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
-}
-
-/* Título */
-.contenedorProductos h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  margin: 0 auto;
+  padding: 40px 20px;
   text-align: center;
-  color: #5c4434;
 }
 
-/* Filtro */
-.filtro-productos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-  gap: 0.5rem;
-}
-
-.filtro-productos label {
-  font-weight: 600;
-  color: #4a3b2b;
-}
-
-.filtro-productos select {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  font-size: 1rem;
-  background-color: #f5f5f5;
-  transition: border 0.3s;
-}
-
-.filtro-productos select:hover {
-  border-color: #c8a97e;
+.contenedorProductos h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #333;
 }
 
 /* Grid de productos */
-.grid-productos {
+#productos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-  gap: 1rem; 
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, 250px); /* Cada tarjeta tendrá un ancho fijo de 250px */
+  gap: 25px;
+  justify-content: center; /* Centra las tarjetas horizontalmente */
+  justify-items: center; /* Centra las tarjetas dentro de sus celdas */
 }
 
 /* Tarjeta de producto */
-.card-producto {
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  overflow: hidden;
+#productos > div {
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más ligera */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 350px; /* Altura mínima ajustada */
+  width: 250px; /* Ancho fijo para evitar cambios de tamaño */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  margin: 10px;
 }
 
-.card-producto:hover {
-  transform: scale(1.03); /* Zoom más sutil */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Sombra más intensa */
+#productos > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
-.card-producto img {
+#productos img {
   width: 100%;
-  height: 180px; /* Altura ajustada para pantallas pequeñas */
+  height: 180px;
   object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-.card-producto .info-producto {
-  padding: 1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+#productos h4 {
+  font-size: 1.2em;
+  color: #444;
+  margin: 10px 0;
 }
 
-.card-producto h3 {
-  font-size: 1rem; /* Tamaño de fuente ajustado */
-  color: #333;
-  margin: 0 0 0.5rem;
-  text-align: center; /* Centrado del texto */
+#productos h3{
+  text-transform: capitalize;
 }
 
-.card-producto .precio {
-  font-weight: bold;
-  color: #6b3e26;
-  font-size: 1rem; /* Tamaño de fuente ajustado */
-  text-align: center;
+#productos p {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 15px;
 }
 
-.card-producto .stock {
-  color: #666;
-  margin: 0.5rem 0;
-  font-size: 0.9rem; /* Tamaño de fuente ajustado */
-  text-align: center;
-}
-
-.card-producto button {
-  background-color: #8c5e3c;
+/* Botón de agregar */
+#productos button {
+  padding: 10px 20px;
+  background: #75574e;
   color: white;
   border: none;
-  padding: 0.5rem;
-  border-radius: 8px;
+  border-radius: 25px;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 0.9rem; /* Tamaño de fuente ajustado */
+  transition: background 0.3s;
 }
 
-.card-producto button:hover {
-  background-color: #6d4a2f;
+#productos button:hover {
+  background: #2c1d19;
 }
 
-/* Animaciones */
-.card-producto.oculto {
-  opacity: 0;
-  transform: scale(0.95);
-  pointer-events: none;
-  height: 0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+/* Filtros */
+.filtro-productos,
+.buscador-productos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-/* Responsive para móvil */
-@media (max-width: 600px) {
-  .filtro-productos {
-    flex-direction: column;
-    align-items: stretch;
-    text-align: center;
+.filtro-productos label,
+.buscador-productos label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.filtro-productos select,
+.buscador-productos input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filtro-productos select:focus,
+.buscador-productos input:focus {
+  border-color: #999;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+  outline: none;
+}
+
+/* Mensaje vacío */
+#mensajeVacio {
+  display: none;
+  font-size: 1.2em;
+  color: #999;
+  margin-top: 20px;
+}
+
+/* Clase oculta */
+.oculto {
+  display: none;
+}
+
+/* ========== Media Queries para diseño responsivo ========== */
+
+/* Pantallas pequeñas (teléfonos) */
+@media (max-width: 576px) {
+  #productos {
+    grid-template-columns: 1fr; /* Una sola columna */
   }
 
-  .filtro-productos select {
-    width: 100%;
+  #productos img {
+    height: 150px; /* Ajustar altura de las imágenes */
   }
 
-  .contenedorProductos h2 {
-    font-size: 1.5rem;
+  #productos h4 {
+    font-size: 1.1em;
+  }
+
+  #productos p {
+    font-size: 0.9em;
+  }
+
+  #productos button {
+    padding: 8px 16px;
+    font-size: 0.9em;
   }
 }
 
-/* Responsive para pantallas pequeñas */
+/* Pantallas medianas (tabletas) */
 @media (max-width: 768px) {
-  .grid-productos {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajuste mínimo de 150px */
-    gap: 0.8rem; /* Espaciado reducido */
+  #productos {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
   }
 
-  .card-producto {
-    min-height: 300px; /* Altura mínima ajustada */
+  #productos img {
+    height: 160px;
   }
+}
 
-  .card-producto img {
-    height: 150px; /* Altura ajustada para pantallas pequeñas */
-  }
-
-  .card-producto h3 {
-    font-size: 0.9rem; /* Tamaño de fuente reducido */
-  }
-
-  .card-producto .precio {
-    font-size: 0.9rem; /* Tamaño de fuente reducido */
-  }
-
-  .card-producto .stock {
-    font-size: 0.8rem; /* Tamaño de fuente reducido */
-  }
-
-  .card-producto button {
-    font-size: 0.8rem; /* Tamaño de fuente reducido */
-    padding: 0.4rem; /* Espaciado reducido */
+/* Pantallas grandes (escritorios pequeños) */
+@media (max-width: 992px) {
+  #productos {
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
   }
 }
