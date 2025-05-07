@@ -18,147 +18,138 @@
     right: 0;
 }
 
-/* Header */
+.carrito-aside {
+    position: fixed;
+    top: 0;
+    right: -320px; /* Oculto fuera de la pantalla */
+    width: 300px;
+    height: 100%;
+    background: #f9f9f9;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.carrito-aside.mostrar {
+    right: 0; /* Muestra el carrito */
+}
+
 .carrito-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #c7a17a;
+    color: #fff;
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
-    background: #fff;
+    font-size: 1.2rem;
 }
 
-.carrito-header h2 {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #333;
-}
-
-#btnCerrarCarrito {
-    background: none;
+.carrito-header .btn-cerrar {
+    background: transparent;
     border: none;
     font-size: 1.5rem;
+    color: #fff;
     cursor: pointer;
-    color: #e63946;
 }
 
-/* Items container */
 .carrito-items {
     flex-grow: 1;
+    overflow-y: auto;
     padding: 1rem;
 }
 
-/* Item individual */
 .carrito-item {
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
 }
 
 .carrito-item-img {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    border-radius: 4px;
 }
 
 .carrito-item-info {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    font-size: 0.9rem;
 }
 
 .carrito-item-info h4 {
     margin: 0;
     font-size: 1rem;
     color: #333;
-    font-weight: 600;
-    text-transform: capitalize;
 }
 
 .carrito-item-info p {
-    margin: 0;
+    margin: 5px 0;
+    font-size: 0.9rem;
     color: #555;
 }
 
-.carrito-item-info .btn-eliminar {
-    align-self: flex-start;
-    margin-top: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    background-color: #e63946;
-    color: #fff;
+.btn-eliminar-item {
+    background: none;
     border: none;
-    border-radius: 6px;
+    color: red;
+    font-size: 1.2rem;
     cursor: pointer;
-    font-size: 0.85rem;
-    transition: background-color 0.3s ease;
 }
 
-.carrito-item-info .btn-eliminar:hover {
-    background-color: #c53030;
+.carrito-item img {
+    border-radius: 4px;
 }
 
-/* Footer */
+.carrito-item h4 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.carrito-item p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.eliminar-btn {
+    margin-left: auto;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.eliminar-btn:hover {
+    background-color: #c0392b;
+}
+
 .carrito-footer {
     padding: 1rem;
     border-top: 1px solid #ddd;
-    text-align: center;
-    background: #fff;
+    background-color: #f6efe6;
 }
 
 .carrito-footer p {
-    margin: 0 0 0.75rem;
-    font-size: 1rem;
-    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
 .btn-checkout {
     display: inline-block;
-    background: #513831;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #a86f3d;
+    color: white;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: background 0.2s;
+    border-radius: 5px;
 }
 
 .btn-checkout:hover {
-    background: #3e2a24;
-}
-
-/* Responsive móvil */
-@media (max-width: 480px) {
-    .aside-carrito {
-        width: 100%;
-        right: -100%;
-    }
-
-    .aside-carrito.mostrar {
-        right: 0;
-    }
-
-    .carrito-item-img {
-        width: 60px;
-        height: 60px;
-    }
-
-    .carrito-item-info h4 {
-        font-size: 0.9rem;
-    }
-
-    .carrito-item-info p {
-        font-size: 0.8rem;
-    }
-
-    .btn-checkout {
-        width: 100%;
-    }
+    background-color: #8a5b2f;
 }
