@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['usuario_id'])) {
+} else {
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -94,14 +97,28 @@ session_start();
     btnMenu.addEventListener('click', ()=> nav.classList.toggle('active'));
   })();
 
-  // Confirmar logout
-  function confirmLogout(e){
-    e.preventDefault();
-    if (confirm("¿Estás seguro de que deseas cerrar sesión?")) {
-      window.location.href = '../php/logout.php';
+  function confirmLogout(event) {
+    event.preventDefault(); // Evita que el enlace realice la acción por defecto
+
+    const confirmation = confirm("¿Estás seguro de que quieres cerrar sesión?");
+    if (confirmation) {
+        // Enviar petición AJAX para cerrar sesión
+        fetch('../php/logout.php')
+            .then(res => res.text())
+            .then(data => {
+                if (data === 'logout') {
+                    // Redirigir al inicio o login
+                    window.location.href = '../html/'; 
+                } else {
+                    alert("Error al cerrar sesión.");
+                }
+            })
+            .catch(err => alert("Hubo un problema con la desconexión."));
     }
-  }
+}
+
   
+  </script>
 <script src="../js/script.js"></script>
 <script src="../carrito/carrito.js"></script>
 </body>

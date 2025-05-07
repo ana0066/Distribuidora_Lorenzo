@@ -93,29 +93,29 @@ include "../menu.php";
 <!--cartas productos -->
 
 <section class="cards-productos">
-<h2 class="titulo-productos">Disfruta de nuestras mejores variedades al mejor precio. ¡Lo que buscas, lo tenemos!</h2>
+    <h2 class="titulo-productos">Disfruta de nuestras mejores variedades al mejor precio. ¡Lo que buscas, lo tenemos!</h2>
     
     <div class="contenedor">
-        <div class="categoria">
+        <a href="../html/productos.php?categoria=Mobiliaria" class="categoria">
             <img src="../img/Mobiliarida.jpeg" alt="Mobiliaria">
             <p>MOBILIARIA</p>
-        </div>
-        <div class="categoria">
+        </a>
+        <a href="../html/productos.php?categoria=Herramientas" class="categoria">
             <img src="../img/PRODUCTOS PARA EL HOGAR.jpeg" alt="Productos para el hogar">
             <p>HERRAMIENTAS</p>
-        </div>
-        <div class="categoria">
+        </a>
+        <a href="../html/productos.php?categoria=Decoraciones" class="categoria">
             <img src="../img/Decoracion de hogar.jpeg" alt="Decoraciones para el hogar">
             <p>DECORACIONES PARA EL HOGAR</p>
-        </div>
-        <div class="categoria">
+        </a>
+        <a href="../html/productos.php?categoria=Electrodomésticos" class="categoria">
             <img src="../img/eletrodomestico.jpeg" alt="Electrodomésticos">
             <p>ELECTRODOMÉSTICOS</p>
-        </div>
-        <div class="categoria">
+        </a>
+        <a href="../html/productos.php?categoria=Vajillas" class="categoria">
             <img src="../img/vaji.jpeg" alt="Vajillas">
             <p>VAJILLAS</p>
-        </div>
+        </a>
     </div>
 </section>
 
