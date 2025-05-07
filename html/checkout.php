@@ -248,7 +248,7 @@ paypal.Buttons({
     }).then(() => {
       window.location.href = '../php/gracias.php'; // Redirige a página de agradecimiento
     });
-  });
+  }); 
   }
 
 }).render('#paypal-button-container');
