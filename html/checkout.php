@@ -147,6 +147,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div id="paypal-button-container"></div>
+    <form action="../php/procesar_compra.php" method="POST">
+  <button type="submit" class="btn-checkout">Finalizar Compra</button>
+</form>
 
   <?php else: ?>
     <p>Tu carrito está vacío. <a href="productos.php">Ver productos</a></p>
@@ -207,6 +210,18 @@ document.querySelectorAll('.input-cantidad').forEach(input => {
           });
     });
 });
+
+
+function simularVenta() {
+    fetch('../php/simular_venta.php', {
+        method: 'POST'
+    })
+    .then(res => res.text())
+    .then(msg => alert(msg))
+    .catch(err => console.error('Error:', err));
+}
+
+
 
 document.querySelectorAll('.eliminar-item').forEach(btn => {
   btn.addEventListener('click', e => {
