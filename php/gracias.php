@@ -50,7 +50,7 @@ $grand_total = $total + $itbis;
   <p>Recibirás un correo con los detalles de tu pedido.</p>  
 
   <!-- Botón de imprimir -->
-  <button class="no-imprimir" onclick="window.print();">Imprimir Factura</button>
+  <button class="no-imprimir" onclick="window.print();">Imprimir Recibo</button>
 
   <!-- Resumen del pedido -->
   <div class="recibo">

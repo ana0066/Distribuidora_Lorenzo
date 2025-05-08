@@ -86,7 +86,4 @@
         width: 100%;
     }
 
-    .no-imprimir {
-        display: none; /* Oculta el botón de imprimir durante la impresión */
-    }
 }
