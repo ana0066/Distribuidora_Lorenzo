@@ -50,9 +50,6 @@
       }
 
 @media print {
-  body * {
-    visibility: hidden; /* Oculta todo el contenido */
-  }
 
   .gracias-container, .gracias-container * {
     visibility: visible; /* Muestra solo el contenedor y su contenido */
