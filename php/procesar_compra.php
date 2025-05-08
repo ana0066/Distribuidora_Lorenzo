@@ -70,8 +70,77 @@ $stmtVaciarCarrito->bind_param("i", $id_usuario);
 $stmtVaciarCarrito->execute();
 
 if ($stmtVaciarCarrito->execute()) {
-    // Redirigir al recibo (gracias.php)
-    header("Location: gracias.php");
+    // Obtener la última venta del usuario
+    $sqlVenta = "SELECT id FROM ventas WHERE id_usuario = ? ORDER BY id DESC LIMIT 1";
+    $stmtVenta = $conn->prepare($sqlVenta);
+    $stmtVenta->bind_param("i", $id_usuario);
+    $stmtVenta->execute();
+    $resVenta = $stmtVenta->get_result();
+
+    if ($resVenta->num_rows === 0) {
+        echo "No se encontró ninguna compra reciente.";
+        exit;
+    }
+
+    $venta = $resVenta->fetch_assoc();
+    $id_venta = $venta['id'];
+
+    // Obtener los detalles de la venta
+    $sqlDetalles = "SELECT dv.id_producto, dv.cantidad, dv.precio_unitario, p.nombre
+                    FROM detalle_venta dv
+                    JOIN products p ON dv.id_producto = p.id
+                    WHERE dv.id_venta = ?";
+    $stmtDetalles = $conn->prepare($sqlDetalles);
+    $stmtDetalles->bind_param("i", $id_venta);
+    $stmtDetalles->execute();
+    $resDetalles = $stmtDetalles->get_result();
+
+    $items = [];
+    while ($row = $resDetalles->fetch_assoc()) {
+        $items[] = $row;
+    }
+    ?>
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gracias por tu compra</title>
+    </head>
+    <body>
+    <div class="gracias-container">
+        <h1>¡Gracias por tu compra! 🎉</h1>
+        <p>Tu pago se ha procesado correctamente.</p>
+        <p>Recibirás un correo con los detalles de tu pedido.</p>  
+        <!-- Resumen del pedido -->
+        <div class="recibo">
+            <h3>Resumen de Compra</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($items as $item): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($item['nombre']) ?></td>
+                        <td><?= $item['cantidad'] ?></td>
+                        <td><?= number_format($item['precio_unitario'], 2) ?> DOP</td>
+                        <td><?= number_format($item['cantidad'] * $item['precio_unitario'], 2) ?> DOP</td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+    </html>
+    <?php
     exit;
 } else {
     echo "Error al procesar la compra.";
