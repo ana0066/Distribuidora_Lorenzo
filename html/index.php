@@ -212,10 +212,10 @@ include "../menu.php";
         </div>
         <div class="box">
             <h2>Menú inferior</h2>
-            <p><a href="../index.php">Inicio</a></p>
+            <p><a href="../html/index.php">Inicio</a></p>
             <p><a href="../html/contacto.php">Contactos</a></p>
             <p><a href="../html/nosotros.php">Nosotros</a></p>
-            <p><a href="#">Manual de Usuario</a></p>
+            <p><a href="https://drive.google.com/drive/folders/1eSqHjncdsiHG1lzmcSo9YBX6BlEinWQu?usp=sharing">Manual de Usuario</a></p>
         </div>
         <div class="box">
             <h2>Síguenos</h2>
