@@ -253,9 +253,9 @@ paypal.Buttons({
 
 }).render('#paypal-button-container');
 </script>
-<button id="pago-ficticio" class="btn-pago-ficticio">Pagar con Método Alternativo</button>
 <div id="paypal-button-container"></div>
 <script src="../js/checkout.js"></script>
+
 
 </body>
 </html>

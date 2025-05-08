@@ -107,8 +107,8 @@ function initializePayPalButtons(total) {
 
 
 
-document.getElementById('pago-ficticio').addEventListener('click', () => {
-  // Validar existencia antes de proceder
+document.getElementById('pago-ficticio').addEventListener('click', function () {
+  // Validar que el carrito está correcto
   fetch('', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -117,16 +117,18 @@ document.getElementById('pago-ficticio').addEventListener('click', () => {
   .then(res => res.text())
   .then(response => {
     if (response === 'ok') {
-      // Vaciar el carrito
+      // Vaciar carrito después del "pago"
       fetch('', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'action=vaciar'
-      }).then(() => {
+      })
+      .then(() => {
         window.location.href = '../html/gracias.php';
       });
     } else {
-      alert('Hubo un problema al procesar el pago. Verifica el stock.');
+      alert('Hubo un problema con el stock. Verifica tu carrito.');
     }
   });
 });
+
