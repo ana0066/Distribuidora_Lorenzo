@@ -1,197 +1,201 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 header {
-    top: 0;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    color: #000;
-    z-index: 1000;
-    box-shadow: #64626260 0px 1px 5px;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  z-index: 1000;
+  box-shadow: #64626260 0px 1px 5px;
 }
 
 .principal-info {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    z-index: 1000;
-     color: #513831;
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 1000;
+   color: #513831;
 }
 
 .info-logo img {
-    width: 100px;
+  width: 100px;
 }
 
 .info-nombre h1 {
-    font-size: 32px;
-    color: #513831;
+  font-size: 32px;
+  color: #513831;
 }
 
 .info-telefono {
-    font-size: 14px;
-    margin: 10px;
+  font-size: 14px;
+  margin: 10px;
 }
 
 /* Navigation & Icons */
 .navegador-info {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: auto;
-    color: #fff;
-    background-color: #513831;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: auto;
+  color: #fff;
+  background-color: #513831;
 }
 
 
 /*inicio incono letras slider*/  
 .slider-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .slide {
-    position: relative;
-    min-width: 100%;
-  }
-  
-  .slide img {
-    width: 100%;
-    display: block;
-  }
-  
-  .image-data {
-    position: absolute;
-    bottom: 20%;
-    left: 10%;
-    color: white;
-    text-shadow: 1px 1px 5px #302420;
-    max-width: 80%;
-    animation: fadeIn 1s ease-in;
-  }
-  
-  .image-data .text {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000000;;
-  }
-  
-  .image-data h2 {
-    font-size: 32px;
-    margin: 10px 0;
-  }
-  
-  .image-data .button {
-    background-color: #513831;;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-  }
-  
-  .image-data .button:hover {
-    background-color: #381c0a;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  position: relative;
+  min-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  display: block;
+}
+
+.image-data {
+  position: absolute;
+  bottom: 20%;
+  left: 10%;
+  color: white;
+  text-shadow: 1px 1px 5px #302420;
+  max-width: 80%;
+  animation: fadeIn 1s ease-in;
+}
+
+.image-data .text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;;
+}
+
+.image-data h2 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.image-data .button {
+  background-color: #513831;;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.image-data .button:hover {
+  background-color: #381c0a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 /*final incono letras slider*/  
 
 .nav {
-    flex: 1;
-    left: 0;
-    margin: auto 30px;
-    color: #fff;
+  flex: 1;
+  left: 0;
+  margin: auto 30px;
+  color: #fff;
 }
 
 .nav.active {
-    display: block; /* Mostrar el menú cuando tiene la clase active */
-    margin: 0px 30px;
+  display: block; /* Mostrar el menú cuando tiene la clase active */
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+  list-style: none;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links li a {
-    text-decoration: none;
-    color: #fff;
-    transition: 0.3s;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
 }
 
 .nav-links li a:hover {
-    color: #cfbfba;
-    transform: scale(1.1);
+  color: #cfbfba;
+  transform: scale(1.1);
 }
 
 /* Icons */
 .icons {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 40%;
 }
 
 .icons i {
-    cursor: pointer;
-    font-size: 18px;
-    color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+}
+
+.icons .carrito{
+  display: flex;
+  margin: 10px;
 }
 
 /* Estilos generales del input del buscador */
 
 .buscador-container {
-    position: relative; 
-    width: 100%; 
+  position: relative; 
+  width: 100%; 
 }
 
 .buscador {
-    margin: 10px;
-    width: 80%;
-    right: 0;
-    max-width: 300px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    font-size: 14px;
-    outline: none;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 10px;
+  width: 80%;
+  right: 0;
+  max-width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 
@@ -199,1090 +203,614 @@ header {
 
 /* Lista de sugerencias */
 .sugerencias {
-    position: absolute; 
-    top: 100%; 
-    left: 0;
-    width: 100%; 
-    max-height: 250px; 
-    overflow-y: auto; 
-    background-color: rgb(168, 144, 116); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10; 
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ffffff; 
-    border-radius: 5px; 
-}
-  
-  /* Estilo para cada sugerencia */
-  .sugerencias li {
-    padding: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    color: #000000; /* Color negro para el texto */
-    text-transform: capitalize; /* Capitaliza el texto */
-  }
-
-  .sugerencias li:hover {
-    background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
-  }
-
-  .sugerencias a{
-    text-decoration: none;
-    text-transform: uppercase;
-    justify-content: center;
-    text-align: center;
-    margin: 10px auto;
-    color: #513831;
-  }
-
-  .sugerencias p{
-    padding-top: 5px;
-  }
-  
-  /* Resaltar la palabra clave */
-  .highlight {
-    background-color: #513831;
-    font-weight: bold;
-}
-
-/* Lista de sugerencias */
-.sugerencias {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-height: 250px;
-    overflow-y: auto;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
+  position: absolute; 
+  top: 100%; 
+  left: 0;
+  width: 90%; 
+  max-height: 250px; 
+  overflow-y: auto; 
+  background-color: rgb(168, 144, 116); 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ffffff; 
+  border-radius: 5px; 
 }
 
 /* Estilo para cada sugerencia */
 .sugerencias li {
-    padding: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    color: #000000;
-    text-transform: capitalize;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  color: #000000; /* Color negro para el texto */
+  text-transform: capitalize; /* Capitaliza el texto */
 }
 
 .sugerencias li:hover {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+}
+
+.sugerencias a{
+  text-decoration: none;
+  text-transform: uppercase;
+  justify-content: center;
+  text-align: center;
+  margin: 10px auto;
+  color: #513831;
+}
+
+.sugerencias p{
+  padding-top: 5px;
+}
+
+/* Resaltar la palabra clave */
+.highlight {
+  background-color: #513831;
+  font-weight: bold;
+}
+
+/* Lista de sugerencias */
+.sugerencias {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+/* Estilo para cada sugerencia */
+.sugerencias li {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  color: #000000;
+  text-transform: capitalize;
+}
+
+.sugerencias li:hover {
+  background-color: #f0f0f0;
 }
 
 
 
 /* Resaltar la palabra clave */
 .highlight {
-    background-color: #e6c5bc;
-    font-weight: bold;
+  background-color: #e6c5bc;
+  font-weight: bold;
 }
 
 #cart-count {
-    background: red;
-    border-radius: 50%;
-    padding: 3px 6px;
-    font-size: 12px;
-    color: white;
-    position: relative;
-    right: 3%;
+  background: red;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 12px;
+  color: white;
+  position: relative;
+  right: 3%;
 }
 
 .username {
-    margin-left: 10px;
-    font-weight: bold;
-    text-transform: capitalize;
+  margin-left: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 
 /* SLIDER */
 .slider-container {
-    position: relative;
-    width: 100%; /* Ocupa el 100% del ancho del contenedor */
-    height: 82vh; /* Ocupa el 70% del alto de la pantalla */
-    overflow: hidden;
-    margin: 0 auto; /* Centra el slider horizontalmente */
+  position: relative;
+  width: 100%; /* Ocupa el 100% del ancho del contenedor */
+  height: 82vh; /* Ocupa el 70% del alto de la pantalla */
+  overflow: hidden;
+  margin: 0 auto; /* Centra el slider horizontalmente */
 }
 
 .slider {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    width: 100%;
-    height: 100%; /* Asegura que el slider ocupe todo el contenedor */
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  width: 100%;
+  height: 100%; /* Asegura que el slider ocupe todo el contenedor */
 }
 
 .slide {
-    flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho del contenedor */
-    height: 100%; /* Asegura que cada slide ocupe todo el alto del contenedor */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex: 0 0 100%; /* Cada slide ocupa el 100% del ancho del contenedor */
+  height: 100%; /* Asegura que cada slide ocupe todo el alto del contenedor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide img {
-    width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
-    height: 100%; /* Ajusta la altura de la imagen al 100% del contenedor */
-    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin deformarse */
-    display: block;
+  width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+  height: 100%; /* Ajusta la altura de la imagen al 100% del contenedor */
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor sin deformarse */
+  display: block;
 }
 
 .slide {
-    display: none;
-    transition: opacity 0.5s ease-in-out;
+  display: none;
+  transition: opacity 0.5s ease-in-out;
 }
 .slide.active {
-    display: block;
+  display: block;
 }
 
 /* Ajuste para las imágenes del slider */
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Oculta las imágenes por defecto */
-    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
-    z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Oculta las imágenes por defecto */
+  transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más suave */
+  z-index: 0;
 }
 
 .slide.active {
-    opacity: 1; /* Muestra la imagen activa */
-    z-index: 1;
+  opacity: 1; /* Muestra la imagen activa */
+  z-index: 1;
 }
 
 .prev, .next {
-    position: absolute;
-    top: 50%;
-    width: 50px;
-    height: 50px;
-    margin: auto;
-    transform: translateY(-50%);
-    background-color: rgba(81, 56, 49, 0.7); /* Color de tu empresa con transparencia */
-    color: white;
-    border: none;
-    border-radius: 80%;
-    cursor: pointer;
-    font-size: 30px;
-    z-index: 10;
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  transform: translateY(-50%);
+  background-color: rgba(81, 56, 49, 0.7); /* Color de tu empresa con transparencia */
+  color: white;
+  border: none;
+  border-radius: 80%;
+  cursor: pointer;
+  font-size: 30px;
+  z-index: 10;
 }
 
 .prev {
-    left: 10px;
+  left: 10px;
 }
 
 .next {
-    right: 10px;
+  right: 10px;
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(81, 56, 49, 1);
+  background-color: rgba(81, 56, 49, 1);
 }
 
 /*PRODUCTOS*/
 
 .cards-productos {
-    margin: 100px auto;
-    background-color: #cccccc38;
+  margin: 100px auto;
+  background-color: #cccccc38;
 }
 
 .titulo-productos {
-    width: 100%;
-    font-size: 28px;
-    font-weight: bold;
-    color: #000000;
-    text-align: center;
-    margin: 20px auto;
-    padding-top: 50px;
+  width: 100%;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  margin: 20px auto;
+  padding-top: 50px;
 }
 
 .contenedor {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 40px;
 }
 .categoria {
-    text-align: center;
-    width: 200px;
+  text-align: center;
+  width: 200px;
 }
 .categoria img {
-    width: 100%;
-    max-width: 1000px; /* Aumentado el tamaño */
-    height: auto;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #000000; /* Bordes más visibles */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 1000px; /* Aumentado el tamaño */
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #000000; /* Bordes más visibles */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .categoria p {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 15px;
-    color: #444;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #444;
 }
 .categoria img:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .pie-pagina {
-    width: 100%;
-    background-color: #ffffff;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .pie-pagina .grupo-1 {
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 50px;
-    padding: 45px 0px;
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 50px;
+  padding: 45px 0px;
 }
 
 .pie-pagina .grupo-1 .box figure {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pie-pagina .grupo-1 .box figure img{
-    width: 350px;
+  width: 350px;
 }
 
 .pie-pagina .grupo-1 .box figure img:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .pie-pagina .grupo-1 .box h2 {
-    color: #000;
-    margin-bottom: 15px;
-    font-size: 20px;
-    transition: color 0.3s ease;
+  color: #000;
+  margin-bottom: 15px;
+  font-size: 20px;
+  transition: color 0.3s ease;
 }
 
 .pie-pagina .grupo-1 .box p a {
-    text-decoration: none;
-    color: #000;
-    transition: color 0.3s ease;
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
 }
 
 .pie-pagina .grupo-1 .box p a:hover {
-    color: #513831;
+  color: #513831;
 }
 
 .pie-pagina .grupo-1 .box p {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .pie-pagina .grupo-1 .red-social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .pie-pagina .grupo-1 .red-social a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    width: 45px;
-    height: 45px;
-    color: #fff;
-    background-color: #513831;
-    border-radius: 50%;
-    font-size: 24px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  color: #fff;
+  background-color: #513831;
+  border-radius: 50%;
+  font-size: 24px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .pie-pagina .grupo-1 .red-social a:hover {
-    background-color: #513831;
-    transform: scale(1.2) rotate(5deg);
+  background-color: #513831;
+  transform: scale(1.2) rotate(5deg);
 }
 
 .pie-pagina .grupo-2 {
-    background-color: #513831;
-    padding: 15px 10px;
-    text-align: center;
-    color: #fff;
-}
-
-.pie-pagina .grupo-2 small {
-    font-size: 15px;
-}
-
-
-.menu-toggle {
-    display: none; /* Oculto por defecto */
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    transition: transform 0.3s ease;
-}
-
-.nav-links.active {
-    transform: translateX(0); /* Muestra el menú lateral */
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
-    }
-
-    .menu-toggle {
-      display: flex; 
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #fff; /* Color del ícono */
-      background: none;
-      border: none;
-      outline: none;
-      z-index: 1100;
-  }   
-
-    .nav {
-        display: none;
-        flex-direction: column; 
-        background-color: #513831; 
-        position: absolute;
-        top: 150px; 
-        left: 0; 
-        width: 30vw; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition:  0.3s ease; 
-        max-height: 0; 
-        overflow: hidden; 
-    }   
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 250px;
-        background-color: #513831;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%); /* Oculta el menú lateral */
-        gap: 30px;
-        padding-top: 50px;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    }
-    .nav.active {
-        display: flex; /* Muestra el menú */
-        max-height: 300px;
-        max-width: 350px;
-        background-color: rgb(73, 53, 48); 
-        margin: 0px 30px;
-        border-radius: 10px;
-    }  
-
-    .nav-links li a {
-        font-size: 18px;
-        color: white;
-    }
-
-    .nav-links {
-      flex-direction: column;
-      gap: 10px; 
-      padding: 10px 20px; 
-    }
-  .nav-links li a {
-      color: #ffffff; /* Color del texto */
-      text-decoration: none;
-      font-size: 18px; 
-      padding: 10px 0;
-      transition: color 0.3s ease;
-  }   
-  
-  .nav-links li a:hover {
-      color: #423836; 
-  }  
-}
-
-  
-  .section-container {
-    width: 90%;
-    max-width: none;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  .section-container h2{
-    font-size: 32px;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 0.3rem;
-  }
-  
-  .description {
-    margin-bottom: 2rem;
-    color: #666;
-  }
-  
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  
-  .card {
-    background: #e2dddd; /*tarjetas color*/
-    border-radius: 15px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .card img {
-    height: 150px;
-    object-fit: contain;
-    margin-bottom: 1rem;
-  }
-  
-  .card h3 {
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-  }
-  
-  .card .sub {
-    color: #777;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card .price {
-    color: #1a0c0e;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .add-btn {
-    border: 1.5px solid #110f0f;
-    background: transparent;
-    color: #0a0708;
-    border-radius: 25px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .add-btn:hover {
-    background-color: #0a0809;
-    color: white;
-  }
-  
-  .promo {
-    background-image: url("../img/Distri.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-    border-radius: 15px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .promo .overlay {
-    color: white;
-    text-align: center;
-  }
-  
-  .promo h2 {
-    font-size: 1.6rem;
-    margin-bottom: 0.2rem;
-  }
-  
-  .promo p {
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-  
-  .info-btn {
-    border: 1.5px solid #fff;
-    background: transparent;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .info-btn:hover {
-    background-color: white;
-    color: black;
-  }
-
-  .nav {
-    display: flex; /* Muestra el menú */
-    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-    background-color: #fff;
-    position: absolute;
-    top: 60px; /* Ajusta según la altura del header */
-    right: 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: 0.3s ease; /* Transición para el efecto desplegable */
-    max-height: 0; /* Oculta el menú inicialmente */
-    overflow: hidden; /* Oculta el contenido que exceda el contenedor */
-}
-
-.nav.active {
-    max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
-}
-
-.menu-toggle {
-    display: block; /* Muestra el botón toggle */
-    cursor: pointer;
-}
-  
-  @media (max-width: 900px) {
-    .product-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .nav-links {
-      flex-direction: column;
-      gap: 10px; 
-      padding: 10px 20px; 
-    }
-  .nav-links li a {
-      color: #ffffff; /* Color del texto */
-      text-decoration: none;
-      font-size: 18px; 
-      padding: 10px 0;
-      transition: color 0.3s ease;
-  }   
-  .nav.active {
-    display: flex; /* Muestra el menú */
-    max-height: 300px;
-    max-width: 350px;
-    background-color: rgb(73, 53, 48); 
-    margin: 0px 30px;
-    border-radius: 10px;
-}  
-  
-  .nav-links li a:hover {
-      color: #423836; 
-  }  
-  }
-  
-  @media (max-width: 600px) {
-    .product-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .card img {
-      height: 120px;
-    }
-  
-    .section-container h2 {
-      font-size: 24px;
-    }
-  
-    .add-btn, .info-btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.9rem;
-    }
-  
-    body {
-      padding: 1rem;
-    }
-
-    .nav {
-      display: none;
-      flex-direction: column; 
-      background-color: #513831; 
-      position: absolute;
-      top: 150px; 
-      left: 0; 
-      width: 30vw; 
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition:  0.3s ease; 
-      max-height: 0; 
-      overflow: hidden; 
-  }   
-
-    .nav-links {
-      flex-direction: column;
-      gap: 10px; 
-      padding: 10px 20px; 
-    }
-  .nav-links li a {
-      color: #ffffff; /* Color del texto */
-      text-decoration: none;
-      font-size: 18px; 
-      padding: 10px 0;
-      transition: color 0.3s ease;
-  }   
-  
-  .nav-links li a:hover {
-      color: #423836; 
-  }  
-
-  .nav.active {
-    display: flex; /* Muestra el menú */
-    max-height: 300px;
-    max-width: 350px;
-    background-color: rgb(73, 53, 48); 
-    margin: 0px 30px;
-    border-radius: 10px;
-}  
-    
-}
-
-/* Ocultar el buscador por defecto en pantallas pequeñas */
-@media (max-width: 580px) {
-
-  .menu-toggle{
-    margin-right: 50px
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px; 
-    padding: 10px 20px; 
-  }
-.nav-links li a {
-    color: #ffffff; /* Color del texto */
-    text-decoration: none;
-    font-size: 18px; 
-    padding: 10px 0;
-    transition: color 0.3s ease;
-}   
-
-.nav-links li a:hover {
-    color: #423836; 
-}  
-
-.nav.active {
-  display: flex; /* Muestra el menú */
-  max-height: 300px;
-  max-width: 350px;
-  background-color: rgb(73, 53, 48); 
-  margin: 0px 30px;
-  border-radius: 10px;
-}  
-
-  .buscador-container {
-      display: none; /* Oculto inicialmente */
-      position: absolute;
-      top: 60px; /* Ajusta según la altura del header */
-      left: 0;
-      width: 100%;
-      background-color: #fff;
-      padding: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-  }
-
-  .buscador-container.active {
-      display: block; /* Mostrar el buscador cuando esté activo */
-  }
-
-  .sugerencias {
-      display: none; /* Ocultar sugerencias por defecto */
-  }
-
-  .sugerencias.active {
-      display: block; /* Mostrar sugerencias cuando haya coincidencias */
-  }
-
-  .buscador {
-      width: 90%; /* Ajustar el ancho del input */
-      margin: 0 auto;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-  }
-
-  .search-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: #513831;
-      cursor: pointer;
-      margin: 10px;
-  }
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    transition: transform 0.3s ease;
-}
-
-.nav-links.active {
-    transform: translateX(0); /* Muestra el menú lateral */
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
-    }
-
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 250px;
-        background-color: #513831;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform: translateX(100%); /* Oculta el menú lateral */
-        gap: 30px;
-        padding-top: 50px;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .nav-links li a {
-        font-size: 18px;
-        color: white;
-    }
-
-    .nav.active {
-      display: flex; /* Muestra el menú */
-      max-height: 300px;
-      max-width: 350px;
-      background-color: rgb(73, 53, 48); 
-      margin: 0px 30px;
-      border-radius: 10px;
-  }  
-
-    .nav-links {
-      flex-direction: column;
-      gap: 10px; 
-      padding: 10px 20px; 
-    }
-  .nav-links li a {
-      color: #ffffff; /* Color del texto */
-      text-decoration: none;
-      font-size: 18px; 
-      padding: 10px 0;
-      transition: color 0.3s ease;
-  }   
-  
-  .nav-links li a:hover {
-      color: #423836; 
-  }  
-}
-
-@media (max-width: 1160px){
-    .menu-toggle {
-        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
-        margin-left: 20px;
-        background-color: #513831;
-        color: #fff;
-    }
-
-    .nav {
-      display: flex; /* Muestra el menú */
-      flex-direction: column; 
-      position: absolute;
-      top: 60px; /* Ajusta según la altura del header */
-      right: 0;
-      width: 100%;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      transition: max-height 0.3s ease; /* Transición para el efecto desplegable */
-      max-height: 0; /* Oculta el menú inicialmente */
-      overflow: hidden; /* Oculta el contenido que exceda el contenedor */
-  }
-
-  .nav.active {
-    display: flex; /* Muestra el menú */
-    max-height: 300px;
-    max-width: 350px;
-    background-color: rgb(73, 53, 48); 
-    margin: 0px 30px;
-    border-radius: 10px;
-}  
-
-  .nav-links {
-    flex-direction: column;
-    gap: 10px; 
-    padding: 10px 20px; 
-  }
-.nav-links li a {
-    color: #ffffff; /* Color del texto */
-    text-decoration: none;
-    font-size: 18px; 
-    padding: 10px 0;
-    transition: color 0.3s ease;
-}   
-
-.nav-links li a:hover {
-    color: #423836; 
-}  
-
-  .menu-toggle {
-      display: block; /* Muestra el botón toggle */
-      cursor: pointer;
-  }
-
-    .icons{
-        width: 100%;
-    }
-
-    .buscador-container{
-        width: 40vw;
-        margin: 10px auto;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .sugerencias{
-        margin: 10px;
-        width: 30vw;
-    }
-
-    .carrito{
-      margin-right: 20px;
-    }
-}
-
-.carrito-aside {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(100%); /* Oculto fuera de la pantalla */
-}
-
-.carrito-aside.mostrar {
-    display: block; /* Mostrar el aside */
-    transform: translateX(0); /* Moverlo dentro de la pantalla */
-}
-
-.menu-toggle {
-  display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
-  margin-left: 20px;
   background-color: #513831;
+  padding: 15px 10px;
+  text-align: center;
   color: #fff;
 }
 
-.nav {
-display: flex; /* Muestra el menú */
-flex-direction: column; 
-position: absolute;
-top: 60px; /* Ajusta según la altura del header */
-right: 0;
-width: 100%;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-z-index: 1000;
-transition: max-height 0.3s ease; /* Transición para el efecto desplegable */
-max-height: 0; /* Oculta el menú inicialmente */
-overflow: hidden; /* Oculta el contenido que exceda el contenedor */
+.pie-pagina .grupo-2 small {
+  font-size: 15px;
 }
 
-.nav.active {
-max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
-}
 
 .menu-toggle {
-display: block; /* Muestra el botón toggle */
-cursor: pointer;
+  display: none; /* Oculto por defecto */
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
 }
 
-.icons{
-  width: 100%;
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  transition: transform 0.3s ease;
 }
 
-.buscador-container{
-  width: 40vw;
-  margin: 10px auto;
+.nav-links.active {
+  transform: translateX(0); /* Muestra el menú lateral */
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+  }
+
+  .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #513831;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%); /* Oculta el menú lateral */
+      gap: 30px;
+      padding-top: 50px;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links li a {
+      font-size: 18px;
+      color: white;
+  }
+}
+
+
+.section-container {
+  width: 90%;
+  max-width: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.section-container h2{
+  font-size: 32px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+}
+
+.description {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  background: #e2dddd; /*tarjetas color*/
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card img {
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.card .sub {
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.card .price {
+  color: #1a0c0e;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.add-btn {
+  border: 1.5px solid #110f0f;
+  background: transparent;
+  color: #0a0708;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-btn:hover {
+  background-color: #0a0809;
+  color: white;
+}
+
+.promo {
+  background-image: url("../img/Distri.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.sugerencias{
-  margin: 10px;
-  width: 30vw;
+.promo .overlay {
+  color: white;
+  text-align: center;
 }
 
-.carrito{
-margin-right: 20px;
+.promo h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
 }
 
+.promo p {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.info-btn {
+  border: 1.5px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.info-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 120px;
+  }
+
+  .section-container h2 {
+    font-size: 24px;
+  }
+
+  .add-btn, .info-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  body {
+    padding: 1rem;
+  }
+}
+
+
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.nav-links.active {
+  transform: translateX(0); /* Muestra el menú lateral */
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+  }
+
+  .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #513831;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateX(100%); /* Oculta el menú lateral */
+      gap: 30px;
+      padding-top: 50px;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links li a {
+      font-size: 18px;
+      color: white;
+  }
+}
+
+@media (max-width: 1160px){
+  .menu-toggle {
+      display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+      margin-left: 20px;
+      background-color: #513831;
+      color: #fff;
+  }
+
+  .nav-links.active {
+      transform: translateX(0); 
+      
+  }
+
+  .nav{
+      display: none;
+  }
+
+  .icons{
+      width: 100%;
+  }
+
+  .buscador-container{
+      width: 50vw;
+      margin: 10px auto;
+      text-align: center;
+      justify-content: center;
+  }
+
+  .sugerencias{
+      margin: 10px;
+      width: 30vw;
+  }
+}
 
 .carrito-aside {
-display: none; /* Oculto por defecto */
-position: fixed;
-top: 0;
-right: 0;
-width: 300px;
-height: 100%;
-background-color: #fff;
-box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-z-index: 1000;
-overflow-y: auto;
-transition: transform 0.3s ease-in-out;
-transform: translateX(100%); /* Oculto fuera de la pantalla */
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%); /* Oculto fuera de la pantalla */
 }
 
 .carrito-aside.mostrar {
-display: block; /* Mostrar el aside */
-transform: translateX(0); /* Moverlo dentro de la pantalla */
+  display: block; /* Mostrar el aside */
+  transform: translateX(0); /* Moverlo dentro de la pantalla */
 }
-
-/* Mostrar el menú cuando tenga la clase active */
-.nav.active {
-display: flex;
-max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
-}
-
-/* Estilo del botón de menú */
-.menu-toggle {
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-font-size: 1.5rem;
-color: #333;
-background: none;
-border: none;
-outline: none;
-z-index: 1100;
-}
-
-/* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
-.menu-toggle.active i {
-content: "\f00d"; /* Código de la "X" en Font Awesome */
-font-family: "Font Awesome 5 Free";
-font-weight: 900;
-}
-/* Estilo del botón de menú */
-.menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer; 
-    font-size: 1.5rem;
-    color: #333;
-    background: none;
-    border: none;
-    outline: none;
-    z-index: 1100;
-}   
-
-/* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
-.menu-toggle.active i {
-    content: "\f00d"; 
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-}  
-
-
-/* Ocultar el menú por defecto en pantallas pequeñas */
-@media (max-width: 1159px) {
-    .nav {
-        display: none;
-        flex-direction: column; 
-        background-color: #513831; 
-        position: absolute;
-        top: 150px; 
-        left: 0; 
-        width: 30vw; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        transition:  0.3s ease; 
-        max-height: 0; 
-        overflow: hidden; 
-    }   
-    }
-    .nav.active {
-        display: flex; /* Muestra el menú */
-        max-height: 300px;
-        max-width: 350px;
-        background-color: rgb(73, 53, 48); 
-        margin: 0px 30px;
-        border-radius: 10px;
-    }  
-    
-    .nav-links {
-        flex-direction: column;
-        gap: 10px; 
-        padding: 10px 20px; 
-      }
-    .nav-links li a {
-        color: #ffffff; /* Color del texto */
-        text-decoration: none;
-        font-size: 18px; 
-        padding: 10px 0;
-        transition: color 0.3s ease;
-    }   
-    
-    .nav-links li a:hover {
-        color: #423836; 
-    }  
-    
-    .menu-toggle {
-        display: flex; 
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 1.5rem;
-        color: #fff; /* Color del ícono */
-        background: none;
-        border: none;
-        outline: none;
-        z-index: 1100;
-    }   
-    
-    /* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
-    .menu-toggle.active i {
-        content: "\f00d"; /* Código de la "X" en Font Awesome */
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-    }   
-    
-    .sugerencias{
-      margin-left: 110px;
-    } 
-    
-    .icons #cart-count{
-      margin-right: 0;
-}   
-
