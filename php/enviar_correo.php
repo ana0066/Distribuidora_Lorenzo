@@ -4,7 +4,7 @@ function enviarCorreoVerificacion($correoDestino, $nombre, $token) {
     $url = 'https://api.brevo.com/v3/smtp/email';
 
     // Dirección de tu sitio
-    $enlace = "http://localhost/Distribuidora_Lorenzo/php/verificar.php?token=" . urlencode($token);
+    $enlace = "http://distribuidoralorenzo.onlinewebshop.net/php/verificar.php?token=" . urlencode($token);
 
     $data = [
         'sender' => [

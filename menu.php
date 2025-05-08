@@ -23,7 +23,7 @@ if (!isset($_SESSION['usuario_id'])) {
 <header>
   <div class="principal-info">
     
-    <div class="info-logo"><img src="../img/logo.png" alt="Logo de Distribuidora Lorenzo"></div>
+    <div class="info-logo"><img src="../img/LOGO.png" alt="Logo de Distribuidora Lorenzo"></div>
     <div class="info-nombre"><h1>Distribuidora Lorenzo</h1></div>
     <div class="info-telefono"><p><i class="fas fa-phone"></i> (809) 906-3559</p></div>
 </div>

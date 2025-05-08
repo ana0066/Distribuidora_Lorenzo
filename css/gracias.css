@@ -1,4 +1,4 @@
-    .gracias-container {
+.gracias-container {
       max-width: 600px;
       margin: 50px auto;
       padding: 30px;
@@ -48,4 +48,20 @@
           display: none; /* Ocultar el botón de imprimir al momento de la impresión */
         }
       }
-      
+
+@media print {
+  body * {
+    visibility: hidden; /* Oculta todo el contenido */
+  }
+
+  .gracias-container, .gracias-container * {
+    visibility: visible; /* Muestra solo el contenedor y su contenido */
+  }
+
+  .gracias-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
