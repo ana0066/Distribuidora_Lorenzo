@@ -44,11 +44,10 @@
 }
 
 /* Estilos para el botón de imprimir */
-.no-imprimir {
+.gracias.gracias-container .no-imprimir {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
@@ -58,11 +57,11 @@
     text-decoration: none;
 }
 
-.no-imprimir:hover {
+.gracias.gracias-container .no-imprimir:hover {
     background-color: #45a049;
 }
 
-.no-imprimir:active {
+.gracias.gracias-container .no-imprimir:active {
     background-color: #3e8e41;
 }
 
@@ -86,4 +85,7 @@
         width: 100%;
     }
 
+    .no-imprimir {
+        display: none; /* Oculta el botón de imprimir durante la impresión */
+    }
 }
