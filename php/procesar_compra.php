@@ -57,13 +57,19 @@ $stmt->bind_param("i", $id_usuario);
 $stmt->execute();
 
 // Actualizar la cantidad en la tabla products
-$stmtUpdateProduct = $conn->prepare("UPDATE products SET stock = stock - ? WHERE id = ?");
+$stmtUpdateProduct = $conn->prepare("UPDATE products SET existencia = existencia - ? WHERE id = ?");
 foreach ($productos as $p) {
     $stmtUpdateProduct->bind_param("ii", $p['cantidad'], $p['id_producto']);
     $stmtUpdateProduct->execute();
 }
 
-if ($stmt->execute()) {
+// Vaciar el carrito después de la compra
+$sqlVaciarCarrito = "DELETE FROM carrito WHERE id_usuario = ?";
+$stmtVaciarCarrito = $conn->prepare($sqlVaciarCarrito);
+$stmtVaciarCarrito->bind_param("i", $id_usuario);
+$stmtVaciarCarrito->execute();
+
+if ($stmtVaciarCarrito->execute()) {
     // Redirigir al recibo (gracias.php)
     header("Location: gracias.php");
     exit;
