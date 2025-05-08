@@ -25,21 +25,29 @@ $resultado = $stmt->get_result();
     <h2 class="titulo-seccion">Catálogo de Productos</h2>
 
     <div class="filtros-productos">
-      <div class="filtro">
-        <label for="filtroCategoria">Categoría</label>
-        <select id="filtroCategoria">
-          <option value="">Todas</option>
-          <option value="mobiliaria">Mobiliaria</option>
-          <option value="vajilla">Vajilla</option>
-          <option value="decoraciones">Decoraciones</option>
-          <option value="herramientas">Herramientas</option>
-          <option value="electrodomesticos">Electrodomésticos</option>
-        </select>
-      </div>
+    <div class="filtros-productos">
+  <div class="filtro">
+    <label for="filtroCategoria">Categoría</label>
+    <div class="filtro-wrapper">
+      <select id="filtroCategoria">
+        <option value="">Todas</option>
+        <option value="mobiliaria">Mobiliaria</option>
+        <option value="vajilla">Vajilla</option>
+        <option value="decoraciones">Decoraciones</option>
+        <option value="herramientas">Herramientas</option>
+        <option value="electrodomesticos">Electrodomésticos</option>
+      </select>
+    </div>
+  </div>
 
-      <div class="filtro">
-        <label for="inputBuscar">Buscar</label>
-        <input type="text" id="inputBuscar" placeholder="Ej. cama, vajilla...">
+  <div class="filtro">
+    <label for="inputBuscar">Buscar</label>
+    <div class="filtro-wrapper">
+      <input type="text" id="inputBuscar" placeholder="Ej. cama, vajilla...">
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
 

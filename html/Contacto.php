@@ -19,14 +19,8 @@ include "../menu.php";
       
 
     <!-- CSS -->
-     <br>
-     <br>
-    <link rel="stylesheet" href="../Contacto.css" />
-    <section class="gallery-section">
-  <center><h2 class="gallery-title">¿Cuáles categorías te gustaron? <span>¡Contáctanos!</span></h2></center>
-
-    
-    
+     
+  
   </div>
     <div class="container">
       
@@ -69,9 +63,6 @@ include "../menu.php";
         
 
         <div class="contact-form">
-          
-        
-
           <form action="https://formsubmit.co/distribuidoralorenzo19@gmail.com" method="POST">
             <h3 class="title">Contactanos</h3>
             <div class="input-container">
@@ -115,10 +106,9 @@ include "../menu.php";
         <div class="box">
             <h2>Mnu inferior</h2>
             <p><a href="../index.php">Inicio</a></p>
-            <p><a href="#">Contactos</a></p>
-            <p><a href="#">Nosotros</a></p>
-            <p><a href="#">Políticas de la empresa</a></p>
-            <p><a href="#">Políticas de devolución</a></p>
+            <p><a href="../html/contacto.php">Contactos</a></p>
+            <p><a href="../html/nosotros.php">Nosotros</a></p>
+            <p><a href="https://drive.google.com/drive/folders/1eSqHjncdsiHG1lzmcSo9YBX6BlEinWQu?usp=sharing">Manual de Usuario</a></p>
         </div>
         <div class="box">
             <h2>Siguenos</h2>
