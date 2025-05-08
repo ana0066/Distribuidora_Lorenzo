@@ -142,6 +142,7 @@ if ($stmtVaciarCarrito->execute()) {
                 </tbody>
             </table>
         </div>
+        <p><a href="../html/productos.php">Seguir comprando</a></p>
     </div>
     </body>
     </html>
