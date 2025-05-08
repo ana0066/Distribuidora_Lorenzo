@@ -1,4 +1,12 @@
 <?php
+include "../menu.php";
+
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: ../php/login.php");
+    exit;
+}
+
 include '../php/db.php';
 include '../php/enviar_correo.php'; // Asegúrate de tener esta función
 

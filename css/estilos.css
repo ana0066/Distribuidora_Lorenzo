@@ -251,8 +251,24 @@ button:hover {
     text-align: center;
     font-weight: bold;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  }
-  
+}
+
+.btn-invitado {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #513831;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-invitado:hover {
+    background-color: #3e2c28;
+}
+
 
 
 

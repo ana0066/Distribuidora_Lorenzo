@@ -186,8 +186,8 @@ document.querySelectorAll('.input-cantidad').forEach(input => {
         }
 
         if (cantidad > stock) {
-            alert(`La cantidad no puede ser mayor al stock disponible (${stock}).`);
-            e.target.value = stock;
+            alert(`La cantidad ingresada (${cantidad}) excede el stock disponible (${stock}).`);
+            e.target.value = stock; // Revertir al stock máximo
             return;
         }
 

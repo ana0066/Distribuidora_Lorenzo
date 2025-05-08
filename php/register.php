@@ -68,7 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Registrarse</button>
             </form>
             <a href="login.php">¿Ya tienes cuenta? Inicia sesión</a>
+            <button onclick="entrarComoInvitado()" class="btn-invitado">Entrar como invitado</button>
         </div>
     </div>
+
+    <script>
+        function entrarComoInvitado() {
+            // Redirigir al usuario como invitado
+            window.location.href = "../html/index.php"; // Cambia la ruta si es necesario
+        }
+    </script>
 </body>
 </html>

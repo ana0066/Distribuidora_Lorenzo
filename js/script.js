@@ -70,11 +70,59 @@
 })();
 
 // ===== Menu =====
-(function(){
-  const btnMenu = document.getElementById('menu-toggle');
-  const nav     = document.getElementById('nav');
-  btnMenu.addEventListener('click', ()=> {
-    nav.classList.toggle('active');
-  });
-})();
+document.addEventListener('DOMContentLoaded', () => {
+    const btnMenu = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+
+    // Función para verificar si el ícono de hamburguesa es visible
+    function isVisible(element) {
+        return window.getComputedStyle(element).display !== 'none';
+    }
+
+    if (btnMenu && nav) {
+        btnMenu.addEventListener('click', () => {
+            if (isVisible(btnMenu)) { // Verifica si el ícono es visible
+                nav.classList.toggle('active'); // Alterna la clase 'active' en el menú
+                btnMenu.classList.toggle('active'); // Alterna la clase 'active' en el botón
+            }
+        });
+    } else {
+        console.error('No se encontró el botón del menú o el contenedor del menú.');
+    }
+
+    const searchIcon = document.getElementById('search-icon');
+    const buscadorContainer = document.getElementById('buscador-container');
+    const buscadorInput = document.getElementById('buscador');
+    const sugerencias = document.getElementById('sugerencias');
+
+    // Alternar la visibilidad del buscador
+    searchIcon.addEventListener('click', () => {
+        buscadorContainer.classList.toggle('active'); // Mostrar/ocultar el buscador
+    });
+
+    // Mostrar sugerencias solo cuando haya coincidencias
+    buscadorInput.addEventListener('input', () => {
+        const query = buscadorInput.value.trim().toLowerCase();
+
+        if (query.length > 0) {
+            // Simular sugerencias (puedes reemplazar esto con datos reales)
+            const resultados = ['producto 1', 'producto 2', 'producto 3'].filter(item =>
+                item.toLowerCase().includes(query)
+            );
+
+            if (resultados.length > 0) {
+                sugerencias.innerHTML = resultados
+                    .map(item => `<li>${item}</li>`)
+                    .join('');
+                sugerencias.classList.add('active'); // Mostrar sugerencias
+            } else {
+                sugerencias.innerHTML = '';
+                sugerencias.classList.remove('active'); // Ocultar sugerencias
+            }
+        } else {
+            sugerencias.innerHTML = '';
+            sugerencias.classList.remove('active'); // Ocultar sugerencias
+        }
+    });
+});
 

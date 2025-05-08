@@ -137,6 +137,7 @@ header {
 
 .nav.active {
     display: block; /* Mostrar el menú cuando tiene la clase active */
+    margin: 0px 30px;
 }
 
 .nav-links {
@@ -545,6 +546,34 @@ header {
         display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
     }
 
+    .menu-toggle {
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #fff; /* Color del ícono */
+      background: none;
+      border: none;
+      outline: none;
+      z-index: 1100;
+  }   
+
+    .nav {
+        display: none;
+        flex-direction: column; 
+        background-color: #513831; 
+        position: absolute;
+        top: 150px; 
+        left: 0; 
+        width: 30vw; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition:  0.3s ease; 
+        max-height: 0; 
+        overflow: hidden; 
+    }   
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -560,11 +589,36 @@ header {
         padding-top: 50px;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     }
+    .nav.active {
+        display: flex; /* Muestra el menú */
+        max-height: 300px;
+        max-width: 350px;
+        background-color: rgb(73, 53, 48); 
+        margin: 0px 30px;
+        border-radius: 10px;
+    }  
 
     .nav-links li a {
         font-size: 18px;
         color: white;
     }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 10px; 
+      padding: 10px 20px; 
+    }
+  .nav-links li a {
+      color: #ffffff; /* Color del texto */
+      text-decoration: none;
+      font-size: 18px; 
+      padding: 10px 0;
+      transition: color 0.3s ease;
+  }   
+  
+  .nav-links li a:hover {
+      color: #423836; 
+  }  
 }
 
   
@@ -684,11 +738,60 @@ header {
     background-color: white;
     color: black;
   }
+
+  .nav {
+    display: flex; /* Muestra el menú */
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    background-color: #fff;
+    position: absolute;
+    top: 60px; /* Ajusta según la altura del header */
+    right: 0;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: 0.3s ease; /* Transición para el efecto desplegable */
+    max-height: 0; /* Oculta el menú inicialmente */
+    overflow: hidden; /* Oculta el contenido que exceda el contenedor */
+}
+
+.nav.active {
+    max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
+}
+
+.menu-toggle {
+    display: block; /* Muestra el botón toggle */
+    cursor: pointer;
+}
   
   @media (max-width: 900px) {
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .nav-links {
+      flex-direction: column;
+      gap: 10px; 
+      padding: 10px 20px; 
+    }
+  .nav-links li a {
+      color: #ffffff; /* Color del texto */
+      text-decoration: none;
+      font-size: 18px; 
+      padding: 10px 0;
+      transition: color 0.3s ease;
+  }   
+  .nav.active {
+    display: flex; /* Muestra el menú */
+    max-height: 300px;
+    max-width: 350px;
+    background-color: rgb(73, 53, 48); 
+    margin: 0px 30px;
+    border-radius: 10px;
+}  
+  
+  .nav-links li a:hover {
+      color: #423836; 
+  }  
   }
   
   @media (max-width: 600px) {
@@ -712,9 +815,126 @@ header {
     body {
       padding: 1rem;
     }
+
+    .nav {
+      display: none;
+      flex-direction: column; 
+      background-color: #513831; 
+      position: absolute;
+      top: 150px; 
+      left: 0; 
+      width: 30vw; 
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition:  0.3s ease; 
+      max-height: 0; 
+      overflow: hidden; 
+  }   
+
+    .nav-links {
+      flex-direction: column;
+      gap: 10px; 
+      padding: 10px 20px; 
+    }
+  .nav-links li a {
+      color: #ffffff; /* Color del texto */
+      text-decoration: none;
+      font-size: 18px; 
+      padding: 10px 0;
+      transition: color 0.3s ease;
+  }   
+  
+  .nav-links li a:hover {
+      color: #423836; 
+  }  
+
+  .nav.active {
+    display: flex; /* Muestra el menú */
+    max-height: 300px;
+    max-width: 350px;
+    background-color: rgb(73, 53, 48); 
+    margin: 0px 30px;
+    border-radius: 10px;
+}  
+    
 }
 
+/* Ocultar el buscador por defecto en pantallas pequeñas */
+@media (max-width: 580px) {
 
+  .menu-toggle{
+    margin-right: 50px
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px; 
+    padding: 10px 20px; 
+  }
+.nav-links li a {
+    color: #ffffff; /* Color del texto */
+    text-decoration: none;
+    font-size: 18px; 
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}   
+
+.nav-links li a:hover {
+    color: #423836; 
+}  
+
+.nav.active {
+  display: flex; /* Muestra el menú */
+  max-height: 300px;
+  max-width: 350px;
+  background-color: rgb(73, 53, 48); 
+  margin: 0px 30px;
+  border-radius: 10px;
+}  
+
+  .buscador-container {
+      display: none; /* Oculto inicialmente */
+      position: absolute;
+      top: 60px; /* Ajusta según la altura del header */
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+  }
+
+  .buscador-container.active {
+      display: block; /* Mostrar el buscador cuando esté activo */
+  }
+
+  .sugerencias {
+      display: none; /* Ocultar sugerencias por defecto */
+  }
+
+  .sugerencias.active {
+      display: block; /* Mostrar sugerencias cuando haya coincidencias */
+  }
+
+  .buscador {
+      width: 90%; /* Ajustar el ancho del input */
+      margin: 0 auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+  }
+
+  .search-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #513831;
+      cursor: pointer;
+      margin: 10px;
+  }
+}
 
 .nav-links {
     display: flex;
@@ -752,6 +972,32 @@ header {
         font-size: 18px;
         color: white;
     }
+
+    .nav.active {
+      display: flex; /* Muestra el menú */
+      max-height: 300px;
+      max-width: 350px;
+      background-color: rgb(73, 53, 48); 
+      margin: 0px 30px;
+      border-radius: 10px;
+  }  
+
+    .nav-links {
+      flex-direction: column;
+      gap: 10px; 
+      padding: 10px 20px; 
+    }
+  .nav-links li a {
+      color: #ffffff; /* Color del texto */
+      text-decoration: none;
+      font-size: 18px; 
+      padding: 10px 0;
+      transition: color 0.3s ease;
+  }   
+  
+  .nav-links li a:hover {
+      color: #423836; 
+  }  
 }
 
 @media (max-width: 1160px){
@@ -762,21 +1008,57 @@ header {
         color: #fff;
     }
 
-    .nav-links.active {
-        transform: translateX(0); 
-        
-    }
+    .nav {
+      display: flex; /* Muestra el menú */
+      flex-direction: column; 
+      position: absolute;
+      top: 60px; /* Ajusta según la altura del header */
+      right: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: max-height 0.3s ease; /* Transición para el efecto desplegable */
+      max-height: 0; /* Oculta el menú inicialmente */
+      overflow: hidden; /* Oculta el contenido que exceda el contenedor */
+  }
 
-    .nav{
-        display: none;
-    }
+  .nav.active {
+    display: flex; /* Muestra el menú */
+    max-height: 300px;
+    max-width: 350px;
+    background-color: rgb(73, 53, 48); 
+    margin: 0px 30px;
+    border-radius: 10px;
+}  
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px; 
+    padding: 10px 20px; 
+  }
+.nav-links li a {
+    color: #ffffff; /* Color del texto */
+    text-decoration: none;
+    font-size: 18px; 
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}   
+
+.nav-links li a:hover {
+    color: #423836; 
+}  
+
+  .menu-toggle {
+      display: block; /* Muestra el botón toggle */
+      cursor: pointer;
+  }
 
     .icons{
         width: 100%;
     }
 
     .buscador-container{
-        width: 50vw;
+        width: 40vw;
         margin: 10px auto;
         text-align: center;
         justify-content: center;
@@ -785,6 +1067,10 @@ header {
     .sugerencias{
         margin: 10px;
         width: 30vw;
+    }
+
+    .carrito{
+      margin-right: 20px;
     }
 }
 
@@ -807,3 +1093,194 @@ header {
     display: block; /* Mostrar el aside */
     transform: translateX(0); /* Moverlo dentro de la pantalla */
 }
+
+.menu-toggle {
+  display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
+  margin-left: 20px;
+  background-color: #513831;
+  color: #fff;
+}
+
+.nav {
+display: flex; /* Muestra el menú */
+flex-direction: column; 
+position: absolute;
+top: 60px; /* Ajusta según la altura del header */
+right: 0;
+width: 100%;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+transition: max-height 0.3s ease; /* Transición para el efecto desplegable */
+max-height: 0; /* Oculta el menú inicialmente */
+overflow: hidden; /* Oculta el contenido que exceda el contenedor */
+}
+
+.nav.active {
+max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
+}
+
+.menu-toggle {
+display: block; /* Muestra el botón toggle */
+cursor: pointer;
+}
+
+.icons{
+  width: 100%;
+}
+
+.buscador-container{
+  width: 40vw;
+  margin: 10px auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.sugerencias{
+  margin: 10px;
+  width: 30vw;
+}
+
+.carrito{
+margin-right: 20px;
+}
+
+
+.carrito-aside {
+display: none; /* Oculto por defecto */
+position: fixed;
+top: 0;
+right: 0;
+width: 300px;
+height: 100%;
+background-color: #fff;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+overflow-y: auto;
+transition: transform 0.3s ease-in-out;
+transform: translateX(100%); /* Oculto fuera de la pantalla */
+}
+
+.carrito-aside.mostrar {
+display: block; /* Mostrar el aside */
+transform: translateX(0); /* Moverlo dentro de la pantalla */
+}
+
+/* Mostrar el menú cuando tenga la clase active */
+.nav.active {
+display: flex;
+max-height: 500px; /* Altura máxima para mostrar el menú desplegable */
+}
+
+/* Estilo del botón de menú */
+.menu-toggle {
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+font-size: 1.5rem;
+color: #333;
+background: none;
+border: none;
+outline: none;
+z-index: 1100;
+}
+
+/* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
+.menu-toggle.active i {
+content: "\f00d"; /* Código de la "X" en Font Awesome */
+font-family: "Font Awesome 5 Free";
+font-weight: 900;
+}
+/* Estilo del botón de menú */
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; 
+    font-size: 1.5rem;
+    color: #333;
+    background: none;
+    border: none;
+    outline: none;
+    z-index: 1100;
+}   
+
+/* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
+.menu-toggle.active i {
+    content: "\f00d"; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}  
+
+
+/* Ocultar el menú por defecto en pantallas pequeñas */
+@media (max-width: 1159px) {
+    .nav {
+        display: none;
+        flex-direction: column; 
+        background-color: #513831; 
+        position: absolute;
+        top: 150px; 
+        left: 0; 
+        width: 30vw; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition:  0.3s ease; 
+        max-height: 0; 
+        overflow: hidden; 
+    }   
+    }
+    .nav.active {
+        display: flex; /* Muestra el menú */
+        max-height: 300px;
+        max-width: 350px;
+        background-color: rgb(73, 53, 48); 
+        margin: 0px 30px;
+        border-radius: 10px;
+    }  
+    
+    .nav-links {
+        flex-direction: column;
+        gap: 10px; 
+        padding: 10px 20px; 
+      }
+    .nav-links li a {
+        color: #ffffff; /* Color del texto */
+        text-decoration: none;
+        font-size: 18px; 
+        padding: 10px 0;
+        transition: color 0.3s ease;
+    }   
+    
+    .nav-links li a:hover {
+        color: #423836; 
+    }  
+    
+    .menu-toggle {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: #fff; /* Color del ícono */
+        background: none;
+        border: none;
+        outline: none;
+        z-index: 1100;
+    }   
+    
+    /* Cambiar el ícono de hamburguesa a una "X" cuando el menú esté activo */
+    .menu-toggle.active i {
+        content: "\f00d"; /* Código de la "X" en Font Awesome */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+    }   
+    
+    .sugerencias{
+      margin-left: 110px;
+    } 
+    
+    .icons #cart-count{
+      margin-right: 0;
+}   
+

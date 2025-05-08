@@ -52,12 +52,13 @@ if (!isset($_SESSION['usuario_id'])) {
     <div class="menu-toggle" id="menu-toggle">
     <i class="fas fa-bars"></i>
   </div>
-      <div class="buscador-container">
-        <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
-        
+      <div class="search-icon" id="search-icon">
         <i class="fas fa-search"></i>
-        
-        <ul id="sugerencias" class="sugerencias"></ul>
+      </div>
+
+      <div class="buscador-container" id="buscador-container">
+        <input type="text" id="buscador" class="buscador" placeholder="Buscar...">
+        <ul class="sugerencias" id="sugerencias"></ul>
       </div>
 
       <?php 
@@ -70,8 +71,10 @@ if (!isset($_SESSION['usuario_id'])) {
       ?>
 
       <!-- Carrito Icon -->
+       <div class="carrito">
       <i id="cartIcon" class="fas fa-shopping-cart"></i>
       <span id="cart-count">0</span>
+    </div>
     </div>
   </div>
 </header>

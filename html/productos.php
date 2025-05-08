@@ -1,13 +1,13 @@
 <?php
-
 include "../menu.php";
 include_once '../php/db.php';
 
+// Verificar si el usuario está autenticado
+$usuarioAutenticado = isset($_SESSION['usuario_id']) ? 'true' : 'false';
 
 $stmt = $conn->prepare("SELECT * FROM products WHERE existencia > 0");
 $stmt->execute();
 $resultado = $stmt->get_result();
-
 ?>
 
 <!DOCTYPE html>
@@ -60,8 +60,15 @@ $resultado = $stmt->get_result();
 </main>
 
 <script>
+  // Variable para verificar si el usuario está autenticado
+  const usuarioAutenticado = <?= $usuarioAutenticado ?>;
 
   function agregarCarrito(idProducto) {
+      if (!usuarioAutenticado) {
+          alert('Debes iniciar sesión para agregar productos al carrito.');
+          return;
+      }
+
       fetch('../carrito/agregar.php', {
           method: 'POST',
           headers: {'Content-Type': 'application/x-www-form-urlencoded'},

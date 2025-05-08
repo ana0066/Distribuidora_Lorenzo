@@ -100,7 +100,7 @@
 }
 
 .carrito-items .item-info .cantidad-control input {
-    width: 50px; /* Ajusta el ancho para que no se salga del contenedor */
+    width: 10px; 
     height: 30px; /* Altura adecuada para las flechitas */
     text-align: center; /* Centra el texto dentro del input */
     font-size: 0.9rem;
@@ -114,6 +114,24 @@
 .carrito-items .item-info .cantidad-control input::-webkit-inner-spin-button,
 .carrito-items .item-info .cantidad-control input::-webkit-outer-spin-button {
     appearance: auto; /* Habilita las flechitas en navegadores basados en WebKit */
+}
+
+/* Ajustar el tamaño del input de cantidad en el carrito */
+.carrito-items .input-cantidad {
+    width: 50px; /* Ajusta el ancho para que no se salga del contenedor */
+    height: 30px; /* Altura adecuada */
+    text-align: center; /* Centra el texto dentro del input */
+    font-size: 0.9rem; /* Tamaño de fuente adecuado */
+    border: 1px solid #ccc; /* Borde para que se vea limpio */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 0; /* Elimina el padding adicional */
+    box-sizing: border-box; /* Asegura que el tamaño incluya el borde */
+}
+
+/* Habilitar las flechitas en navegadores basados en WebKit */
+.carrito-items .input-cantidad::-webkit-inner-spin-button,
+.carrito-items .input-cantidad::-webkit-outer-spin-button {
+    appearance: auto;
 }
 
 /* Botón de eliminar */
