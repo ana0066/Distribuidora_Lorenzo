@@ -112,7 +112,6 @@ if ($stmtVaciarCarrito->execute()) {
     <div class="gracias-container">
         <h1>¡Gracias por tu compra! 🎉</h1>
         <p>Tu pago se ha procesado correctamente.</p>
-        <p>Recibirás un correo con los detalles de tu pedido.</p>  
         <!-- Resumen del pedido -->
         <div class="recibo">
             <h3>Resumen de Compra</h3>

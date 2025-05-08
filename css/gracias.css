@@ -64,4 +64,9 @@
     left: 0;
     width: 100%;
   }
+
+  /* Ocultar elementos específicos durante la impresión */
+  .no-imprimir {
+    display: none !important;
+  }
 }
