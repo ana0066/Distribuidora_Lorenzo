@@ -44,9 +44,6 @@
           padding: 0;
           box-shadow: none;
         }
-        button {
-          display: none; /* Ocultar el botón de imprimir al momento de la impresión */
-        }
       }
 
 @media print {
@@ -63,7 +60,5 @@
   }
 
   /* Ocultar elementos específicos durante la impresión */
-  .no-imprimir {
-    display: none !important;
-  }
+  
 }
