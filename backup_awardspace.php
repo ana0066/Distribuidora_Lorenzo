@@ -30,9 +30,13 @@ foreach ($tables as $table) {
     while ($row = $result->fetch_row()) {
         $sqlScript .= "INSERT INTO `$table` VALUES(";
         for ($i = 0; $i < $columnCount; $i++) {
-            $row[$i] = $conn->real_escape_string($row[$i]);
-            $row[$i] = str_replace("\n", "\\n", $row[$i]);
-            $sqlScript .= isset($row[$i]) ? "'$row[$i]'" : "NULL";
+            if (isset($row[$i])) {
+                $value = $conn->real_escape_string($row[$i]);
+                $value = str_replace("\n", "\\n", $value);
+                $sqlScript .= "'$value'";
+            } else {
+                $sqlScript .= "NULL";
+            }
             if ($i < ($columnCount - 1)) $sqlScript .= ',';
         }
         $sqlScript .= ");\n";
