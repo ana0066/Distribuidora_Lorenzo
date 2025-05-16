@@ -107,12 +107,17 @@ if ($stmtVaciarCarrito->execute()) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gracias por tu compra</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/gracias.css">
     </head>
     <body>
     <div class="gracias-container">
+
+        <!-- Botón de imprimir -->
+  <button class="no-imprimir" onclick="window.print();">Imprimir Recibo</button>
+
         <h1>¡Gracias por tu compra! 🎉</h1>
         <p>Tu pago se ha procesado correctamente.</p>
-        <p>Recibirás un correo con los detalles de tu pedido.</p>  
         <!-- Resumen del pedido -->
         <div class="recibo">
             <h3>Resumen de Compra</h3>
@@ -137,6 +142,7 @@ if ($stmtVaciarCarrito->execute()) {
                 </tbody>
             </table>
         </div>
+        <p><a href="../html/productos.php">Seguir comprando</a></p>
     </div>
     </body>
     </html>

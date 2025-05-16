@@ -3,7 +3,6 @@ function enviarCorreoVerificacion($correoDestino, $nombre, $token) {
     $apiKey = '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';
     $url = 'https://api.brevo.com/v3/smtp/email';
 
-    // Dirección de tu sitio
     $enlace = "http://distribuidoralorenzo.onlinewebshop.net/php/verificar.php?token=" . urlencode($token);
 
     $data = [
@@ -45,7 +44,10 @@ function enviarCorreoVerificacion($correoDestino, $nombre, $token) {
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    // Verifica si fue exitoso (HTTP 201 = creado)
+    // ⚠️ GUARDAR LOG DE RESPUESTA
+    file_put_contents("log_correo.txt", "HTTP: $httpCode\nRespuesta: $response\nError: $error");
+
     return $httpCode === 201;
 }
+
 ?>

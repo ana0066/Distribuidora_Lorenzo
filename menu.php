@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario_id'])) {
 </head>
 <body>
 
-<header>
+<header class="no-imprimir">
   <div class="principal-info">
     
     <div class="info-logo"><img src="../img/LOGO.png" alt="Logo de Distribuidora Lorenzo"></div>

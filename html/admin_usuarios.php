@@ -156,7 +156,6 @@ if ($result) {
 </head>
 <body>
 
-<?php include '../menu.php'; ?>
 
 <?php
 if ($success) {

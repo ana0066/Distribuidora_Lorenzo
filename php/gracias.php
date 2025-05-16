@@ -48,6 +48,10 @@ $grand_total = $total + $itbis;
   <h1>¡Gracias por tu compra! 🎉</h1>
   <p>Tu pago se ha procesado correctamente.</p>
   <p>Recibirás un correo con los detalles de tu pedido.</p>  
+
+  <!-- Botón de imprimir -->
+  <button class="no-imprimir" onclick="window.print();">Imprimir Recibo</button>
+
   <!-- Resumen del pedido -->
   <div class="recibo">
     <h3>Resumen de Compra</h3>
@@ -56,6 +60,7 @@ $grand_total = $total + $itbis;
         <tr>
           <th>Producto</th>
           <th>Cantidad</th>
+          <th>Precio Unitario</th>
           <th>Subtotal</th>
         </tr>
       </thead>
@@ -64,6 +69,7 @@ $grand_total = $total + $itbis;
         <tr>
           <td><?= htmlspecialchars($item['nombre']) ?></td>
           <td><?= $item['cantidad'] ?></td>
+          <td><?= number_format($item['valor'], 2) ?> DOP</td>
           <td><?= number_format($item['subtotal'], 2) ?> DOP</td>
         </tr>
         <?php endforeach; ?>
@@ -73,9 +79,6 @@ $grand_total = $total + $itbis;
     <p><strong>ITBIS (18%):</strong> <?= number_format($itbis, 2) ?> DOP</p>
     <p><strong>Total:</strong> <?= number_format($grand_total, 2) ?> DOP</p>
   </div>
-
-  <!-- Botón de impresión -->
-  <button onclick="window.print();">Imprimir Recibo</button>
 
   <p><a href="../html/productos.php">Seguir comprando</a></p>
 </div>
