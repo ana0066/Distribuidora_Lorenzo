@@ -93,7 +93,7 @@ include "../menu.php";
         <div class="more-info">
           <div class="text-block">
             <h3>¿Qué hacemos?</h3>
-            <p>DComercializamos artículos para el hogar y cocina, tanto al por mayor como al detalle, 
+            <p>Comercializamos artículos para el hogar y cocina, tanto al por mayor como al detalle, 
               con atención personalizada y productos de alta rotación.</p>
           </div>
           <div class="text-block">
